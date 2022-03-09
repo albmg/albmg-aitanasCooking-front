@@ -1,5 +1,9 @@
 # AitanasCookingFront
 
+Web App for a local food store: "La Cocina de Aitana"
+
+Backend repository: https://github.com/albmg/aitanasCooking_back
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
 ## Development server
