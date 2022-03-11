@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { HomeComponent } from './customers/pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => import('./customers/customers.module').then( m => m.CustomersModule )
+  },
+  {
+    path: '',
+    component: HomeComponent
   },
   {
     path: '404',

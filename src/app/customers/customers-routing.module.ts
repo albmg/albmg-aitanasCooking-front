@@ -13,7 +13,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'pedido',
+        path: 'pedidos',
         component: CreateOrdersComponent
       },
       {
