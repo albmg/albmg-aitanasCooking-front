@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ShowProductsComponent } from './pages/show-products/show-products.component';
 import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { MenuCardComponent } from './components/menu-card/menu-card.component';
 
 
 
@@ -21,6 +22,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     ShowProductsComponent,
     ShowMenusComponent,
     ProductCardComponent,
+    MenuCardComponent,
   ],
   imports: [
     CommonModule,
