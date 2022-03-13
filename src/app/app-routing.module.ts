@@ -12,10 +12,10 @@ const routes: Routes = [
     path: 'clientes',
     loadChildren: () => import('./customers/customers.module').then( m => m.CustomersModule )
   },
-  {
+  /* {
     path: '',
     component: HomeComponent
-  },
+  }, */
   {
     path: '404',
     component: ErrorPageComponent

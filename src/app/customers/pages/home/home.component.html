@@ -1,5 +1,61 @@
-<h1>La Cocinita</h1>
-<p>home component</p>
-<hr>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav>
 
-<router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+
+      <button mat-icon-button
+              (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./productos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon mat-list-icon>egg</mat-icon>
+        <span>Ver productos</span>
+      </a>
+
+      <a routerLink="./menus"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+        <span>Ver menús</span>
+      </a>
+
+
+      <a routerLink="./pedidos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>set_meal</mat-icon>
+        <span>Crear pedido</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button
+            (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-button>
+      Login
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

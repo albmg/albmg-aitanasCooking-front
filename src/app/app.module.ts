@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material/material.module';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
@@ -17,7 +18,8 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
