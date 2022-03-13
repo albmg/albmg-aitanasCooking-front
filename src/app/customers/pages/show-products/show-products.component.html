@@ -1,1 +1,34 @@
-<p>show-products works!</p>
+<h1>Productos</h1>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row wrap"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px">
+
+  <div fxFlex="20"
+       fxFlex.lg="15"
+       fxFlex.sm="30"
+       *ngFor="let product of products">
+
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title> {{ product.name }}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image src="{{ product.image }}">
+
+      <mat-card-content color="primary">
+        <h3>Descripción:</h3> {{ product.description }}
+        <br>
+        <h3>Ingredientes:</h3> {{ product.ingredients }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+
+
