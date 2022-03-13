@@ -5,4 +5,5 @@ export interface Product {
   description: string;
   ingredients: string[];
   createdDate: Date;
+  __v?:        number;
 }
