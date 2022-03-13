@@ -1,4 +1,4 @@
-export interface Menus {
+export interface Menu {
   _id:         string;
   name:        string;
   createdDate: null;

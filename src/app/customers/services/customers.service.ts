@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Product } from '../interfaces/products.interface';
 import { Observable } from 'rxjs';
+import { Menu } from '../interfaces/menus.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class CustomersService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:3000/api/products')
+  }
+
+  getMenus(): Observable<Menu[]> {
+    return this.http.get<Menu[]>('http://localhost:3000/api/menus')
   }
 }
