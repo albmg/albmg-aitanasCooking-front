@@ -1,0 +1,14 @@
+<mat-card >
+  <mat-card-header>
+    <mat-card-title> {{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image src="{{ product.image }} ">
+
+  <mat-card-content>
+    <!-- <h3>Descripción:</h3> {{ product.description }}
+    <hr> -->
+    <h3>Ingredientes:</h3> {{ product.ingredients }}
+  </mat-card-content>
+</mat-card>

@@ -10,6 +10,7 @@ import { CreateOrdersComponent } from './pages/create-orders/create-orders.compo
 import { HomeComponent } from './pages/home/home.component';
 import { ShowProductsComponent } from './pages/show-products/show-products.component';
 import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 
@@ -19,6 +20,7 @@ import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
     HomeComponent,
     ShowProductsComponent,
     ShowMenusComponent,
+    ProductCardComponent,
   ],
   imports: [
     CommonModule,

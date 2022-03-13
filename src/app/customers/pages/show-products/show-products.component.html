@@ -12,20 +12,7 @@
        fxFlex.sm="30"
        *ngFor="let product of products">
 
-    <mat-card >
-      <mat-card-header>
-        <mat-card-title> {{ product.name }}</mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
-      </mat-card-header>
-
-      <img mat-card-image src="{{ product.image }}">
-
-      <mat-card-content color="primary">
-        <h3>Descripción:</h3> {{ product.description }}
-        <br>
-        <h3>Ingredientes:</h3> {{ product.ingredients }}
-      </mat-card-content>
-    </mat-card>
+    <app-product-card [product]="product"></app-product-card>
   </div>
 </div>
 
