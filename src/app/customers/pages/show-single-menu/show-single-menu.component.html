@@ -1,1 +1,10 @@
-<p>show-single-menu works!</p>
+<mat-grid-list cols="1" *ngIf="!menu; else divMenu">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divMenu>
+  {{ menu | json }}
+</ng-template>
+

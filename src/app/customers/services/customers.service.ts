@@ -20,4 +20,8 @@ export class CustomersService {
   getMenus(): Observable<Menu[]> {
     return this.http.get<Menu[]>('http://localhost:3000/api/menus')
   }
+
+  getMenuById( id: string ): Observable<Menu> {
+    return this.http.get<Menu>(`http://localhost:3000/api/menus/${ id }`)
+  }
 }
