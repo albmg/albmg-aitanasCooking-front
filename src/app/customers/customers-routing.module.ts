@@ -6,6 +6,7 @@ import { CreateOrdersComponent } from './pages/create-orders/create-orders.compo
 import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
 import { ShowProductsComponent } from './pages/show-products/show-products.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ShowSingleMenuComponent } from './pages/show-single-menu/show-single-menu.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'menus',
         component: ShowMenusComponent
+      },
+      {
+        path: 'menus/:id',
+        component: ShowSingleMenuComponent
       },
       {
         path: 'productos',
