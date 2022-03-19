@@ -5,6 +5,32 @@
 </mat-grid-list>
 
 <ng-template #divMenu>
-  {{ menu | json }}
+
+  <div fxLayout="column"
+
+       fxLayoutGap="30px"
+  >
+    <div fxFlex="50">
+      <h1>{{ menu.name }}</h1>
+      <mat-divider></mat-divider>
+      <br>
+      <img [src]=menu.image/>
+    </div>
+
+    <div fxFlex="50">
+      Descripcion: {{ menu.description }}
+      <mat-divider></mat-divider>
+      Comensales: {{ menu.diners}}
+      <mat-divider></mat-divider>
+      Platos:{{ menu. dishes}}
+
+      <button mat-button
+              color="warn"
+              (click)="goBack()">
+        Volver
+      </button>
+    </div>
+  </div>
+
 </ng-template>
 
