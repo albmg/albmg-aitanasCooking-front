@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { emailPattern } from 'src/app/shared/validator/validations';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
@@ -16,11 +17,9 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
-  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-
   createOrderForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
-    email: ['', [ Validators.required, Validators.pattern( this.emailPattern )]],
+    email: ['', [ Validators.required, Validators.pattern( emailPattern )]],
     adress: ['', [ Validators.required ]],
     phone: ['', [ Validators.required ]]
   })
