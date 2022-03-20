@@ -17,15 +17,20 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
+  nuevoFavorito: FormControl = this.fb.control('')
+
   createOrderForm: FormGroup = this.fb.group({
-    name: ['', [ Validators.required ]],
-    email: ['', [ Validators.required, Validators.pattern( emailPattern )]],
-    adress: ['', [ Validators.required ]],
-    phone: ['', [ Validators.required ]]
+    clientName: ['Claire', [ Validators.required ]],
+    email: ['claire@claire.com', [ Validators.required, Validators.pattern( emailPattern )]],
+    adress: ['Rue', [ Validators.required ]],
+    phone: ['286', [ Validators.required ]],
+    purchasedProducts: [''],
+    purchasedMenus: ['']
   })
 
   constructor( private selectProductService: CustomersService,
-               private fb: FormBuilder ) { }
+               private fb: FormBuilder,
+               private saveOrderService: CustomersService ) { }
 
   ngOnInit(): void {
 
@@ -38,6 +43,11 @@ export class CreateOrdersComponent implements OnInit {
 
   submit() {
     console.log( this.createOrderForm.value )
+
+    this.saveOrderService.saveOrder( this.createOrderForm.value )
+      .subscribe( resp => {
+        console.log('Respuesta', resp)
+      })
   }
 
 }

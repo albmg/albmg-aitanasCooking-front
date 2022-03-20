@@ -1,10 +1,9 @@
 import { Menu } from "./menus.interface";
 import { Product } from "./products.interface";
 
-export interface Orders {
+export interface Order {
   purchasedMenus:    Menu[];
   _id:               string;
-  username?:         string;
   email:             string;
   adress:            string;
   phone:             string;

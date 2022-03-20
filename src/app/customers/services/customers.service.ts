@@ -5,6 +5,7 @@ import { Product } from '../interfaces/products.interface';
 import { Observable } from 'rxjs';
 import { Menu } from '../interfaces/menus.interface';
 import { environment } from '../../../environments/environment';
+import { Order } from '../interfaces/orders.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class CustomersService {
 
   getMenuById( id: string ): Observable<Menu> {
     return this.http.get<Menu>(`${ this.baseUrl }/menus/${ id }`)
+  }
+
+  saveOrder( order: Order ): Observable<Order> {
+    return this.http.post<Order>(`${ this.baseUrl }/orders`, order)
   }
 }

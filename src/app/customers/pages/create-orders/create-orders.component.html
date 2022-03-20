@@ -11,7 +11,7 @@
       <p>
         <mat-form-field appearance="legacy">
           <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Nombre" formControlName="name" required>
+          <input matInput placeholder="Nombre" formControlName="clientName" required>
           <mat-icon matSuffix>perm_identity</mat-icon>
           <mat-hint>Introduce tu nombre</mat-hint>
         </mat-form-field>
@@ -53,8 +53,9 @@
       <p>
         <mat-form-field appearance="legacy">
           <mat-label>Selecciona productos</mat-label>
-          <mat-select multiple>
-            <mat-option *ngFor="let product of products">
+          <mat-select multiple formControlName="purchasedProducts">
+          <!-- <mat-select multiple [formControl]="nuevoFavorito"> -->
+            <mat-option *ngFor="let product of products" [value]="product._id">
               {{ product.name }}
             </mat-option>
           </mat-select>
@@ -64,8 +65,8 @@
       <p>
         <mat-form-field appearance="legacy">
           <mat-label>Selecciona menus</mat-label>
-          <mat-select multiple>
-            <mat-option *ngFor="let menu of menus">
+          <mat-select multiple formControlName="purchasedMenus">
+            <mat-option *ngFor="let menu of menus" [value]="menu._id">
               {{ menu.name }}
             </mat-option>
           </mat-select>
@@ -84,7 +85,3 @@
     </mat-card-actions>
   </form>
 </mat-card>
-
-
-
-<!-- <form [formGroup]="createOrderForm"></form> -->
