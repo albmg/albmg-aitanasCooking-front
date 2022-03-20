@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateOrdersComponent } from './pages/create-orders/create-orders.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
@@ -29,8 +28,10 @@ import { MenuCardComponent } from './components/menu-card/menu-card.component';
   imports: [
     CommonModule,
     CustomersRoutingModule,
+    FormsModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomersModule { }

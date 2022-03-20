@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
@@ -16,7 +16,17 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
-  constructor( private selectProductService: CustomersService ) { }
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+
+  createOrderForm: FormGroup = this.fb.group({
+    name: ['', [ Validators.required ]],
+    email: ['', [ Validators.required, Validators.pattern( this.emailPattern )]],
+    adress: ['', [ Validators.required ]],
+    phone: ['', [ Validators.required ]]
+  })
+
+  constructor( private selectProductService: CustomersService,
+               private fb: FormBuilder ) { }
 
   ngOnInit(): void {
 
@@ -25,6 +35,10 @@ export class CreateOrdersComponent implements OnInit {
 
     this.selectProductService.getMenus()
     .subscribe( menus => this.menus = menus )
+  }
+
+  submit() {
+    console.log('hola')
   }
 
 }

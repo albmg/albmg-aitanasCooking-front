@@ -1,68 +1,90 @@
 <h1>Crear pedido</h1>
 <mat-divider></mat-divider>
 
-<!-- Nombre -->
-<p>
-  <mat-form-field appearance="legacy">
-    <!-- <mat-label>Nombre</mat-label> -->
-    <input matInput placeholder="Nombre">
-    <mat-icon matSuffix>perm_identity</mat-icon>
-    <mat-hint>Introduce tu nombre</mat-hint>
-  </mat-form-field>
-</p>
+<mat-card>
+  <form autocomplete="off"
+        [formGroup]="createOrderForm"
+        (ngSubmit)="submit()" >
+
+    <mat-card-content>
+      <!-- Nombre -->
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="name" required>
+          <mat-icon matSuffix>perm_identity</mat-icon>
+          <mat-hint>Introduce tu nombre</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <!-- email -->
+      <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Introduce email</mat-label>
+            <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email" required>
+            <mat-hint>Introduce tu correo electrónico</mat-hint>
+            <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+             <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+      </p>
+
+        <!-- Dirección -->
+      <p>
+        <mat-form-field appearance="legacy">
+          <!-- <mat-label>Nombre</mat-label> -->
+          <input matInput placeholder="Dirección" formControlName="adress" required>
+          <mat-icon matSuffix>add_location</mat-icon>
+          <mat-hint>Introduce tu dirección</mat-hint>
+        </mat-form-field>
+      </p>
 
 
-<!-- email -->
-<p>
-    <mat-form-field appearance="legacy">
-    <!-- <mat-label>Enter your email</mat-label> -->
-      <input matInput placeholder="ejemplo@ejemplo.com">
-      <mat-hint>Introduce tu correo electrónico</mat-hint>
-      <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-       <mat-icon matSuffix>email</mat-icon>
-    </mat-form-field>
-</p>
+        <!-- Telefono -->
+      <p>
+        <mat-form-field appearance="legacy">
+          <!-- <mat-label>Nombre</mat-label> -->
+          <input matInput placeholder="Telefono" formControlName="phone" required>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-hint>Introduce tu teléfono</mat-hint>
+        </mat-form-field>
+      </p>
 
-  <!-- Dirección -->
-<p>
-  <mat-form-field appearance="legacy">
-    <!-- <mat-label>Nombre</mat-label> -->
-    <input matInput placeholder="Dirección">
-    <mat-icon matSuffix>add_location</mat-icon>
-    <mat-hint>Introduce tu dirección</mat-hint>
-  </mat-form-field>
-</p>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Selecciona productos</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let product of products">
+              {{ product.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Selecciona menus</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let menu of menus">
+              {{ menu.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
 
 
-  <!-- Telefono -->
-<p>
-  <mat-form-field appearance="legacy">
-    <!-- <mat-label>Nombre</mat-label> -->
-    <input matInput placeholder="Telefono">
-    <mat-icon matSuffix>phone</mat-icon>
-    <mat-hint>Introduce tu teléfono</mat-hint>
-  </mat-form-field>
-</p>
 
-<p>
-  <mat-form-field appearance="legacy">
-    <mat-label>Selecciona productos</mat-label>
-    <mat-select multiple>
-      <mat-option *ngFor="let product of products">
-        {{ product.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</p>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              type="submit">
+          Enviar
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>
 
-<p>
-  <mat-form-field appearance="legacy">
-    <mat-label>Selecciona menus</mat-label>
-    <mat-select multiple>
-      <mat-option *ngFor="let menu of menus">
-        {{ menu.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</p>
+
+
+<!-- <form [formGroup]="createOrderForm"></form> -->
