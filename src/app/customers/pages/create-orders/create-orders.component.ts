@@ -37,7 +37,7 @@ export class CreateOrdersComponent implements OnInit {
   }
 
   submit() {
-    console.log('hola')
+    console.log( this.createOrderForm.value )
   }
 
 }
