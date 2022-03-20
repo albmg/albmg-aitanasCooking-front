@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailPattern } from 'src/app/shared/validator/validations';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
@@ -16,8 +16,6 @@ export class CreateOrdersComponent implements OnInit {
   products: Product[] = [];
 
   menus: Menu[] = []
-
-  nuevoFavorito: FormControl = this.fb.control('')
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
@@ -42,8 +40,6 @@ export class CreateOrdersComponent implements OnInit {
   }
 
   submit() {
-    console.log( this.createOrderForm.value )
-
     this.saveOrderService.saveOrder( this.createOrderForm.value )
       .subscribe( resp => {
         console.log('Respuesta', resp)
