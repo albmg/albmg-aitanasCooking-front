@@ -22,7 +22,11 @@
       <mat-divider></mat-divider>
       Comensales: {{ menu.diners}}
       <mat-divider></mat-divider>
-      Platos:{{ menu. dishes}}
+      Platos:
+      <div *ngFor="let dish of menu.dishes; let i = index">
+        {{ i + 1 }}
+        {{ dish.name }}
+      </div>
 
       <button mat-button
               color="warn"
