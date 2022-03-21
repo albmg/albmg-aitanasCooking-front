@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'clientes',
     loadChildren: () => import('./customers/customers.module').then( m => m.CustomersModule )
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./protected/protected.module').then( m => m.ProtectedModule )
+  },
   /* {
     path: '',
     component: HomeComponent
@@ -22,7 +26,6 @@ const routes: Routes = [
   },
   {
     path: '**',
-    //component: ErrorPageComponent
     redirectTo: '404'
   }
 ];
