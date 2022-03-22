@@ -1,1 +1,64 @@
-<p>register works!</p>
+<h1>Registrarse</h1>
+<mat-divider></mat-divider>
+
+
+  <form autocomplete="off"
+        [formGroup]="registerForm"
+        (ngSubmit)="signup()" >
+
+
+      <!-- Nombre -->
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="username" required>
+          <mat-icon matSuffix>perm_identity</mat-icon>
+          <mat-hint>Introduce tu nombre</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <!-- email -->
+      <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Introduce email</mat-label>
+            <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email" required>
+            <mat-hint>Introduce tu correo electrónico</mat-hint>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+      </p>
+
+      <!-- Password -->
+
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Introduce contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+
+      <!-- Repeat Password -->
+
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Introduce contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatPassword" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+
+
+
+      <button mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="registerForm.invalid">
+          Enviar
+      </button>
+
+  </form>
+
