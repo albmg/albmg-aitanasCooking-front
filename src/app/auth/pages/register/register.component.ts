@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailPattern } from 'src/app/shared/validator/validations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
     repeatPassword: ['', [ Validators.required, Validators.minLength(6)]]
   })
 
-  constructor( private fb: FormBuilder ) { }
+  constructor( private fb: FormBuilder,
+               private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,8 @@ export class RegisterComponent implements OnInit {
   signup() {
       console.log(this.registerForm.value)
       console.log(this.registerForm.valid)
+
+      this.router.navigateByUrl('/dashboard')
     }
   }
 
