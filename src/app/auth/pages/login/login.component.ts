@@ -35,10 +35,17 @@ export class LoginComponent implements OnInit {
 
     this.authservice.login( email, password )
       .subscribe( resp => {
+
         console.log(resp)
+
+        if ( resp.token ) {
+          this.router.navigateByUrl('/dashboard')
+        } else {
+          //mostrar mensaje de error
+          alert('email y/o contraseña erróneos')
+        }
       })
 
-    //this.router.navigateByUrl('/dashboard')
   }
 
 }
