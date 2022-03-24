@@ -34,11 +34,10 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value
 
     this.authservice.login( email, password )
-      .subscribe( resp => {
+      .subscribe( ok => {
 
-        console.log(resp)
-
-        if ( resp.token ) {
+        //console.log(resp)
+        if ( ok ) {
           this.router.navigateByUrl('/dashboard')
         } else {
           //mostrar mensaje de error
