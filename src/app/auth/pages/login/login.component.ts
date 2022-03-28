@@ -35,9 +35,8 @@ export class LoginComponent implements OnInit {
 
     this.authservice.login( email, password )
       .subscribe( ok => {
-
         //console.log(resp)
-        if ( ok ) {
+        if ( ok  === true ) {
           this.router.navigateByUrl('/dashboard')
         } else {
           //mostrar mensaje de error
@@ -45,6 +44,9 @@ export class LoginComponent implements OnInit {
         }
       })
 
+     /*  this.authservice.validateToken()
+        .subscribe(console.log)
+ */
   }
 
 }

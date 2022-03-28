@@ -1,9 +1,16 @@
 export interface AuthResponse {
-  ok: boolean
-  token: string,
-  email: string
+  ok: boolean;
+  token?: string;
+  email?: string;
+  id?: string
 }
 
+
 export interface Usuario {
-  email: string
-}
+  //ok: boolean;
+  id:   string;
+  email: string;
+  __v?:   number;
+ }
+
+

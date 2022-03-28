@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthResponse, Usuario } from '../interfaces/auth-interfaces';
 import { catchError, map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 
 
@@ -30,28 +30,40 @@ export class AuthService {
     return this.http.post<AuthResponse>( url, body )
       .pipe(
         tap( resp => {
+          console.log('resp del login',resp)
           if ( resp.ok ) {
+            localStorage.setItem('token', resp.token!)
             this._usuario = {
-              email: resp.email
+              id: resp.id!,
+              email: resp.email!
             }
           }
         }),
         map( resp => resp.ok ),
         catchError( err => of(false) )
-       /*  tap( resp => {
-          if ( resp.token ){
-            localStorage.setItem('token', resp.token)
-          }
-        }) */
       )
   }
 
-  validateToken() {
+  validateToken(): Observable<boolean> {
 
     const url = `${this.baseUrl}/auth/me`
     const headers = new HttpHeaders()
       .set('token', localStorage.getItem('token') || '')
 
-    return this.http.get( url, { headers })
+    return this.http.get<AuthResponse>( url, { headers })
+      .pipe(
+        map( resp => {
+      //localStorage.setItem('token', resp.token!)
+             this._usuario = {
+              email: resp.email!,
+              id: resp.id!
+            }
+          localStorage.getItem('token')
+          console.log('console del validate', resp)
+          //console.log('console del validate', resp.ok)
+          return resp.ok
+        }),
+        catchError( err => of(false))
+      )
   }
 }

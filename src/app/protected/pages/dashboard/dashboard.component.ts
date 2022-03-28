@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
 
@@ -8,17 +8,14 @@ import { AuthService } from '../../../auth/services/auth.service';
   styles: [
   ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
   get usuario() {
     return this.authservice.usuario
   }
 
   constructor( private router: Router,
-                private authservice: AuthService ) { }
-
-  ngOnInit(): void {
-  }
+               private authservice: AuthService ) { }
 
   logout() {
     this.router.navigateByUrl('/auth')
