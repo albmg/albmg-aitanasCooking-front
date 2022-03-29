@@ -3,14 +3,15 @@ export interface AuthResponse {
   token?: string;
   email?: string;
   id?: string
+  username?: string
 }
 
 
 export interface Usuario {
-  //ok: boolean;
   id:   string;
+  username: string;
   email: string;
   __v?:   number;
- }
+}
 
 

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private router: Router,
-               private authservice: AuthService ) { }
+               private authService: AuthService ) { }
 
   ngOnInit(): void {
   }
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     const { email, password } = this.loginForm.value
 
-    this.authservice.login( email, password )
+    this.authService.login( email, password )
       .subscribe( ok => {
         //console.log(resp)
         if ( ok  === true ) {

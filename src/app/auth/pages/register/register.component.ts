@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailPattern } from 'src/app/shared/validator/validations';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  hide = false
+  hide = true
 
   registerForm: FormGroup = this.fb.group({
     username:['', [ Validators.required ]],
@@ -21,16 +22,28 @@ export class RegisterComponent implements OnInit {
   })
 
   constructor( private fb: FormBuilder,
-               private router: Router ) { }
+               private router: Router,
+               private authService: AuthService ) { }
 
   ngOnInit(): void {
   }
 
   signup() {
-      console.log(this.registerForm.value)
-      console.log(this.registerForm.valid)
+      //console.log(this.registerForm.value)
+      //console.log(this.registerForm.valid)
 
-      this.router.navigateByUrl('/dashboard')
+      const { username, email, password } = this.registerForm.value
+
+    this.authService.register( username, email, password )
+      .subscribe( ok => {
+        //console.log(resp)
+        if ( ok  === true ) {
+          this.router.navigateByUrl('/dashboard')
+        } else {
+          //mostrar mensaje de error
+          alert('email y/o contraseña erróneos')
+        }
+      })
     }
   }
 

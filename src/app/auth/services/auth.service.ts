@@ -22,6 +22,30 @@ export class AuthService {
   constructor( private http: HttpClient) { }
 
 
+  register( user_username: string, user_email: string, user_password: string ) {
+
+    const url = `${this.baseUrl}/auth/signup`
+    const body = { user_username, user_email, user_password }
+
+    return this.http.post<AuthResponse>( url, body )
+      .pipe(
+        tap( resp => {
+          console.log('resp del login',resp)
+          if ( resp.ok ) {
+            localStorage.setItem('token', resp.token!)
+            this._usuario = {
+              id: resp.id!,
+              email: resp.email!,
+              username: resp.username!
+            }
+          }
+        }),
+        map( resp => resp.ok ),
+        catchError( err => of(false) )
+      )
+  }
+
+
   login( user_email: string, user_password: string) {
 
     const url = `${this.baseUrl}/auth/login`
@@ -35,7 +59,8 @@ export class AuthService {
             localStorage.setItem('token', resp.token!)
             this._usuario = {
               id: resp.id!,
-              email: resp.email!
+              email: resp.email!,
+              username: resp.username!
             }
           }
         }),
@@ -55,8 +80,9 @@ export class AuthService {
         map( resp => {
       //localStorage.setItem('token', resp.token!)
              this._usuario = {
+              id: resp.id!,
               email: resp.email!,
-              id: resp.id!
+              username: resp.username!
             }
           localStorage.getItem('token')
           console.log('console del validate', resp)
