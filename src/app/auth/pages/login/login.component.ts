@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { emailPattern } from 'src/app/shared/validator/validations';
 import { AuthService } from '../../services/auth.service';
+import { ValidatorService } from '../../../shared/validator/validator.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
 
   loginForm: FormGroup = this.fb.group({
-    email: ['testalb2@test.com', [ Validators.required, Validators.pattern( emailPattern )]],
+    email: ['testalb2@test.com', [ Validators.required, Validators.pattern( this.validatorService.emailPattern )]],
     password: ['123456', [ Validators.required, Validators.minLength(6)]]
   });
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private router: Router,
-               private authService: AuthService ) { }
+               private authService: AuthService,
+               private validatorService: ValidatorService ) { }
 
   ngOnInit(): void {
   }
