@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailPattern } from 'src/app/shared/validator/validations';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ValidatorService } from '../../../shared/validator/validator.service';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +17,17 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = this.fb.group({
     username:['', [ Validators.required ]],
-    email:['', [ Validators.required, Validators.pattern( emailPattern )]],
+    email:['', [ Validators.required, Validators.pattern( this.validatorService.emailPattern )]],
     password: ['', [ Validators.required, Validators.minLength(6)]],
-    repeatPassword: ['', [ Validators.required, Validators.minLength(6)]]
+    repeatPassword: ['', [ Validators.required ]]
+  }, {
+    validators: [ this.validatorService.checkPasswords('password', 'repeatPassword')]
   })
 
   constructor( private fb: FormBuilder,
                private router: Router,
-               private authService: AuthService ) { }
+               private authService: AuthService,
+               private validatorService: ValidatorService ) { }
 
   ngOnInit(): void {
   }
