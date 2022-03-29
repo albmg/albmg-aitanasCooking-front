@@ -37,7 +37,7 @@ export class ValidateTokenGuard implements CanActivate, CanLoad {
         })
       )
 
-      return true
+      //return true
 
   }
 }
