@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'gestionar-productos',
-       component: CreateProductsComponent
+        component: CreateProductsComponent
       },
       {
         path: 'gestionar-menus',

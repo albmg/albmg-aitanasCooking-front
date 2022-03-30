@@ -1,3 +1,70 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav>
+
+    <!-- <h1>Sidenav</h1> -->
+
+   <mat-toolbar color="primary">
+      <span>Menú</span>
+      <!-- <span class="spacer"></span> -->
+
+      <button mat-icon-button
+              (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="../gestionar-productos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon mat-list-icon>egg</mat-icon>
+        <span>Gestionar productos</span>
+      </a>
+
+      <a routerLink="../gestionar-menus"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+        <span>Gestionar menús</span>
+      </a>
+
+
+      <a routerLink="../gestionar-pedidos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>set_meal</mat-icon>
+        <span>Gestionar pedidos</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+
+  <mat-toolbar>
+    <button mat-icon-button
+            (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-button (click)="logout()">
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
 <h1>Dashboard - Gestión de la aplicación</h1>
 <hr>
 
@@ -6,7 +73,7 @@
 <h4>User info</h4>
 <pre>{{ usuario | json }}</pre>
 
-<button mat-button color="primary" (click)="logout()">
+<button mat-button color="primary" >
   Logout
 </button>
 
