@@ -29,7 +29,11 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'gestionar'
-      }
+      },
+      /* {
+        path:'**',
+        component: DashboardComponent
+      } */
     ]
   }
 ];

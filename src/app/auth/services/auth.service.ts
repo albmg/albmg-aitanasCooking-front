@@ -33,11 +33,11 @@ export class AuthService {
           console.log('resp del login',resp)
           if ( resp.ok ) {
             localStorage.setItem('token', resp.token!)
-            this._usuario = {
+            /* this._usuario = {
               id: resp.id!,
               email: resp.email!,
               username: resp.username!
-            }
+            } */
           }
         }),
         map( resp => resp.ok ),
@@ -57,11 +57,11 @@ export class AuthService {
           console.log('resp del login',resp)
           if ( resp.ok ) {
             localStorage.setItem('token', resp.token!)
-            this._usuario = {
+           /*  this._usuario = {
               id: resp.id!,
               email: resp.email!,
               username: resp.username!
-            }
+            } */
           }
         }),
         map( resp => resp.ok ),
@@ -84,8 +84,8 @@ export class AuthService {
               email: resp.email!,
               username: resp.username!
             }
-          localStorage.getItem('token')
-          console.log('console del validate', resp)
+         /*  localStorage.getItem('token')
+          console.log('console del validate', resp) */
           //console.log('console del validate', resp.ok)
           return resp.ok
         }),
