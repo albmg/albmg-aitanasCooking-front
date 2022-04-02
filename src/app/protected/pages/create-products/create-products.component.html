@@ -29,19 +29,61 @@
 
             <p>
               <mat-form-field appearance="legacy">
-                <mat-label>Ingredientes</mat-label>
-                <input matInput placeholder="Nombre" formControlName="ingredients" required>
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p>
-
-            <p>
-              <mat-form-field appearance="legacy">
                 <mat-label>Imagen</mat-label>
                 <input matInput placeholder="Añadir imagen" formControlName="image" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
             </p>
+
+            <div>
+              <label>Ingredientes</label>
+
+              <div class="input-group">
+                <input class="form-control"
+                       [formControl]="newIngredient"
+                       placeholder="Añadir ingrediente"
+                       (keyup.enter)="addIngredient()">
+
+                <button (click)="addIngredient()">
+                  Añadir
+                </button>
+              </div>
+
+              <div formArrayName="ingredients">
+                <div class="input-group"
+                      *ngFor="let ingredient of ingredientsArray.controls; let i = index">
+                  <input class="form-control"
+                         [formControlName]="i"
+                         >
+
+                  <button (click)="removeIngredient(i)">
+                    Eliminar
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>Ingredientes</mat-label>
+                <input matInput placeholder="Nombre" formArrayName="ingredients" required>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <button mat-button></button>
+
+              </mat-form-field>
+            </p>
+
+            <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>Ingredientes</mat-label>
+                <input matInput placeholder="Nombre" formArrayName="ingredients" required>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+            </p> -->
+
+
 
             <p>
               <mat-form-field appearance="legacy">
