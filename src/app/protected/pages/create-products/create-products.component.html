@@ -4,7 +4,9 @@
 <!-- <ng-template #divProduct> -->
   <div fxLayout="row"
         fxLayout.xs="column"
-        faxLayoutGap="3'px">
+        faxLayoutGap="30px">
+
+    <div fxFlex="50" fxLayout="column">
 
         <!-- Form -->
         <div fxFlex="50">
@@ -106,18 +108,38 @@
               color="primary"
               type="submit"
               [disabled]="createProductForm.invalid">
-                Enviar
+                Crear producto
             </button>
 
 
           </form>
+
         </div>
 
-        <mat-divider></mat-divider>
+    </div>
+
+    <mat-divider></mat-divider>
 
         <!-- Preview -->
-        <div fxFlex="50">
-          <pre>{{ createProductForm.value | json }}</pre>
+        <div fxFlex="50" *ngIf="previewProduct">
+          <!-- <pre>{{ createProductForm.value | json }}</pre> -->
+          <h2>Previsualizando producto</h2>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ previewProduct.name }}</mat-card-title>
+              <mat-card-subtitle>{{ previewProduct.description }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <img mat-card-image [src]="previewProduct.image">
+
+            <mat-card-content>
+              <p>Ingredientes: {{ previewProduct.ingredients }}</p>
+              <p>Unidades: {{ previewProduct.units }}</p>
+              <p>Peso: {{ previewProduct.weight }}</p>
+            </mat-card-content>
+
+          </mat-card>
+
         </div>
 
   </div>

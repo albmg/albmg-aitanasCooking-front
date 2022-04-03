@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { ProtectedService } from '../../services/protected.service';
+import { Product } from '../../../customers/interfaces/products.interface';
 
 @Component({
   selector: 'app-create-products',
@@ -11,6 +12,7 @@ import { ProtectedService } from '../../services/protected.service';
 })
 export class CreateProductsComponent implements OnInit {
 
+  previewProduct!: Product
 
   createProductForm: FormGroup = this.fb.group({
     name: ['Papitas super sabrosas', [ Validators.required ]],
@@ -49,7 +51,8 @@ export class CreateProductsComponent implements OnInit {
 
   submit() {
     this.saveProductService.saveProduct( this.createProductForm.value )
-      .subscribe( resp => console.log('holita', resp))
+      //.subscribe( resp => console.log('holita', resp))
+      .subscribe( product => this.previewProduct = product )
   }
 
 }
