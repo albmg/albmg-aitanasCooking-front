@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3000/api'
+  baseUrl: 'http://localhost:3000/api',
+  firebaseConfig : {
+    apiKey: "AIzaSyAzxqAtd8HwYA8XvbSbIaw6ybUSjBgJBDg",
+    authDomain: "aitanas-cooking.firebaseapp.com",
+    projectId: "aitanas-cooking",
+    storageBucket: "aitanas-cooking.appspot.com",
+    messagingSenderId: "884488944797",
+    appId: "1:884488944797:web:e9105e69c3871e44a22874"
+  }
 };
 
 /*

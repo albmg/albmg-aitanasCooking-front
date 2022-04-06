@@ -13,6 +13,7 @@ import { Product } from '../../interfaces/products.interface';
     `
   ]
 })
+
 export class ShowProductsComponent implements OnInit {
 
   products: Product[] = [];

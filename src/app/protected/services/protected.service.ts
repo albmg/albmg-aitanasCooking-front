@@ -15,6 +15,10 @@ export class ProtectedService {
 
   constructor( private http: HttpClient ) { }
 
+  getProductById( id: string):Observable<Product>  {
+    return this.http.get<Product>(`${ this.baseUrl }/products/${ id }`)
+  }
+
 
   saveProduct( product: Product ): Observable<Product> {
 

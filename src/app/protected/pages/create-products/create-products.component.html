@@ -1,7 +1,8 @@
-<h1>Crear producto</h1>
+<h1>Gestionar productos</h1>
 <mat-divider></mat-divider>
 
 <!-- <ng-template #divProduct> -->
+  <h2>Crear producto</h2>
   <div fxLayout="row"
         fxLayout.xs="column"
         faxLayoutGap="30px">
@@ -29,12 +30,22 @@
               </mat-form-field>
             </p>
 
-            <p>
+            <!-- <p>
               <mat-form-field appearance="legacy">
                 <mat-label>Imagen</mat-label>
                 <input matInput placeholder="Añadir imagen" formControlName="image" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
+            </p> -->
+
+            <p>
+              <label>Imagen: </label>
+              <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
+
+              <label for="inputFile" class="labelInputFile">
+                <img src="https://icons-for-free.com/iconfiles/png/512/cloud+upload+file+storage+upload+icon-1320190558968694328.png" alt="upload file" width="50px">
+              </label>
+
             </p>
 
             <div>
@@ -44,9 +55,12 @@
                 <input class="form-control"
                        [formControl]="newIngredient"
                        placeholder="Añadir ingrediente"
-                       (keyup.enter)="addIngredient()">
+                       (keyup.enter)="addIngredient()"
+                       >
 
-                <button (click)="addIngredient()">
+
+                <button (click)="addIngredient()"
+                type="button">
                   Añadir
                 </button>
               </div>
@@ -58,7 +72,8 @@
                          [formControlName]="i"
                          >
 
-                  <button (click)="removeIngredient(i)">
+                  <button (click)="removeIngredient(i)"
+                  type="button">
                     Eliminar
                   </button>
                 </div>
@@ -103,7 +118,6 @@
               </mat-form-field>
             </p>
 
-
             <button mat-raised-button
               color="primary"
               type="submit"
@@ -120,12 +134,13 @@
 
     <mat-divider></mat-divider>
 
-        <!-- Preview -->
+
         <div fxFlex="50" *ngIf="previewProduct">
-          <!-- <pre>{{ createProductForm.value | json }}</pre> -->
+
           <h2>Previsualizando producto</h2>
           <mat-card>
             <mat-card-header>
+              <mat-card-title>{{ previewProduct._id}}</mat-card-title>
               <mat-card-title>{{ previewProduct.name }}</mat-card-title>
               <mat-card-subtitle>{{ previewProduct.description }}</mat-card-subtitle>
             </mat-card-header>
@@ -139,6 +154,8 @@
             </mat-card-content>
 
           </mat-card>
+
+          <button mat-raised-button type="button" (click)="holita()">check id</button>
 
         </div>
 
