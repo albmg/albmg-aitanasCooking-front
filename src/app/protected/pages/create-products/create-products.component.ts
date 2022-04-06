@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { ProtectedService } from '../../services/protected.service';
 import { Product } from '../../../customers/interfaces/products.interface';
@@ -12,6 +12,8 @@ import { StorageService } from '../../services/storage.service';
 })
 
 export class CreateProductsComponent implements OnInit {
+
+  @Input () urlImagen: string = ''
 
   previewProduct!: Product
 
@@ -55,43 +57,24 @@ export class CreateProductsComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
-    console.log(this.createProductForm.value)
+    //console.log(this.createProductForm.value)
+
     this.saveProductService.saveProduct( this.createProductForm.value )
       .subscribe( product => this.previewProduct = product )
+  }
+
+  addImage(imagen: string ) {
+    console.log('hola')
+    console.log('soy imagen', imagen)
+    this.createProductForm.patchValue({
+      image: imagen
+      })
   }
 
   holita() {
     alert(this.previewProduct._id)
   }
 
-   // image picker
 
-   productImages: any[] = [];
-
-   loadImage(event: any) {
-
-     //console.log(event)
-
-     let filePicked = event.target.files;
-     let productName = "producto";
-
-     for (let i = 0; i < filePicked.length; i++) {
-
-       let reader = new FileReader();
-       reader.readAsDataURL(filePicked[0]);
-       reader.onloadend = () => {
-         console.log(reader.result);
-         this.productImages.push(reader.result);
-
-         this.storageService.uploadImage(productName + "_" + Date.now(), reader.result)
-           .then(urlImagen => {
-             console.log(urlImagen);
-             this.createProductForm.patchValue({
-              image: urlImagen
-              })
-           });
-       }
-     }
-   }
 
 }

@@ -11,6 +11,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { CreateMenusComponent } from './pages/create-menus/create-menus.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
+import { ImagePickerComponent } from './components/image-picker/image-picker.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.compo
     DashboardComponent,
     CreateProductsComponent,
     CreateMenusComponent,
-    ManageOrdersComponent
+    ManageOrdersComponent,
+    ImagePickerComponent
   ],
   imports: [
     CommonModule,
