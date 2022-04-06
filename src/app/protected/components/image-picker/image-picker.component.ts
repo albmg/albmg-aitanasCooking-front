@@ -6,6 +6,11 @@ import { StorageService } from '../../services/storage.service';
   selector: 'app-image-picker',
   templateUrl: './image-picker.component.html',
   styles: [
+    `
+    #inputFile{
+      display: none;
+    }
+    `
   ]
 })
 export class ImagePickerComponent implements OnInit {
