@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { ProtectedService } from '../../services/protected.service';
 import { Product } from '../../../customers/interfaces/products.interface';
-import { StorageService } from '../../services/storage.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-products',
@@ -13,16 +14,18 @@ import { StorageService } from '../../services/storage.service';
 
 export class CreateProductsComponent implements OnInit {
 
-  @Input () urlImagen: string = ''
+  //@Input () urlImagen: string = ''
 
-  previewProduct!: Product
+  //previewProduct!: Product
 
-  previewImage: string = ''
+  product!: Product
+
+  //previewImage: string = ''
 
 
   createProductForm: FormGroup = this.fb.group({
-    name: ['papas riquisimas', [ Validators.required ]],
-    description: ['desde la app', [ Validators.required ]],
+    name: ['', [ Validators.required ]],
+    description: ['', [ Validators.required ]],
     ingredients: this.fb.array([], Validators.required ),
     image: ['', [ Validators.required ]],
     units: [''],
@@ -37,7 +40,8 @@ export class CreateProductsComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private saveProductService: ProtectedService,
-               private storageService: StorageService ) { }
+               private router: Router,
+               private snackBar: MatSnackBar ) { }
 
 
   addIngredient() {
@@ -56,25 +60,24 @@ export class CreateProductsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  submit() {
-    //console.log(this.createProductForm.value)
-
+  saveProduct() {
     this.saveProductService.saveProduct( this.createProductForm.value )
-      .subscribe( product => this.previewProduct = product )
+      .subscribe( product => {
+        this.showSnackBar(' Producto creado satisfactoriamente ')
+        this.router.navigate(['/dashboard/gestionar-productos', product._id])
+        //this.previewProduct = product
+      })
   }
 
   addImage(imagen: string ) {
-    console.log('hola')
-    console.log('soy imagen', imagen)
     this.createProductForm.patchValue({
       image: imagen
       })
   }
 
-  holita() {
-    alert(this.previewProduct._id)
+  showSnackBar( message: string ) {
+    this.snackBar.open( message, 'cerrar', {
+      duration: 2500
+    })
   }
-
-
-
 }

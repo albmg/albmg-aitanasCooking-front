@@ -2,7 +2,11 @@
 <mat-divider></mat-divider>
 
 <!-- <ng-template #divProduct> -->
-  <h2>Crear producto</h2>
+  <h2>
+    Crear producto
+    <!-- {{ ( product._id )? 'Editar' : 'Nuevo' }} -->
+    <!-- <small>{{ product.name }}</small> -->
+  </h2>
   <div fxLayout="row"
         fxLayout.xs="column"
         faxLayoutGap="30px">
@@ -13,7 +17,7 @@
         <div fxFlex="50">
           <form autocomplete="off"
           [formGroup]="createProductForm"
-          (ngSubmit)="submit()">
+          (ngSubmit)="saveProduct()">
             <p>
               <mat-form-field appearance="legacy">
                 <mat-label>Nombre del producto</mat-label>
@@ -134,7 +138,7 @@
     <mat-divider></mat-divider>
 
 
-        <div fxFlex="50" *ngIf="previewProduct">
+        <!-- <div fxFlex="50" *ngIf="previewProduct">
 
           <h2>Previsualizando producto</h2>
           <mat-card>
@@ -154,9 +158,7 @@
 
           </mat-card>
 
-          <button mat-raised-button type="button" (click)="holita()">check id</button>
-
-        </div>
+        </div> -->
 
   </div>
 <!-- </ng-template> -->
