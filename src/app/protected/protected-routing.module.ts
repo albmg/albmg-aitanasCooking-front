@@ -19,7 +19,7 @@ const routes: Routes = [
         component: CreateProductsComponent
       },
       {
-        path: 'gestionar-productos/:id',
+        path: 'gestionar-productos/editar/:id',
         component: CreateProductsComponent
       },
       {
@@ -33,11 +33,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'gestionar'
-      },
-      /* {
-        path:'**',
-        component: DashboardComponent
-      } */
+      }
     ]
   }
 ];

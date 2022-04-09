@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { ProtectedService } from '../../services/protected.service';
 import { Product } from '../../../customers/interfaces/products.interface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-create-products',
@@ -14,14 +15,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class CreateProductsComponent implements OnInit {
 
-  //@Input () urlImagen: string = ''
-
-  //previewProduct!: Product
-
   product!: Product
 
-  //previewImage: string = ''
-
+  createdProduct!: Product
 
   createProductForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
@@ -41,8 +37,26 @@ export class CreateProductsComponent implements OnInit {
   constructor( private fb: FormBuilder,
                private saveProductService: ProtectedService,
                private router: Router,
-               private snackBar: MatSnackBar ) { }
+               private snackBar: MatSnackBar,
+               private activatedRoute: ActivatedRoute ) { }
 
+
+  ngOnInit(): void {
+
+    if( !this.router.url.includes('/editar')) {
+      return;
+    }
+
+    this.activatedRoute.params
+    .pipe(
+      switchMap( ({id}) => this.saveProductService.getProductById(id))
+    )
+    .subscribe( product => {
+      this.product = product
+      console.log(this.product)
+    })
+
+  }
 
   addIngredient() {
     if ( this.newIngredient.invalid) {
@@ -58,14 +72,12 @@ export class CreateProductsComponent implements OnInit {
     this.ingredientsArray.removeAt(i)
   }
 
-  ngOnInit(): void {}
 
   saveProduct() {
     this.saveProductService.saveProduct( this.createProductForm.value )
-      .subscribe( product => {
+      .subscribe( createdProduct => {
         this.showSnackBar(' Producto creado satisfactoriamente ')
-        this.router.navigate(['/dashboard/gestionar-productos', product._id])
-        //this.previewProduct = product
+        this.router.navigate(['/dashboard/gestionar-productos/editar/', createdProduct._id])
       })
   }
 

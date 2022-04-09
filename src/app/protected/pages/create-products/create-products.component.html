@@ -1,12 +1,12 @@
 <h1>Gestionar productos</h1>
 <mat-divider></mat-divider>
 
-<!-- <ng-template #divProduct> -->
+  <!-- <h2 *ngIf="product"> Editar Producto</h2>
+  <h2 *ngIf="!product">Crear producto</h2> -->
   <h2>
-    Crear producto
-    <!-- {{ ( product._id )? 'Editar' : 'Nuevo' }} -->
-    <!-- <small>{{ product.name }}</small> -->
+    {{ product ? 'Editar' : 'Crear' }}  Producto
   </h2>
+
   <div fxLayout="row"
         fxLayout.xs="column"
         faxLayoutGap="30px">
@@ -20,7 +20,10 @@
           (ngSubmit)="saveProduct()">
             <p>
               <mat-form-field appearance="legacy">
-                <mat-label>Nombre del producto</mat-label>
+                <mat-label *ngIf="product">{{ product.name }}</mat-label>
+                <mat-label *ngIf="!product">Añadir nombre</mat-label>
+                <!-- <mat-label>Añadir nombre</mat-label> -->
+
                 <input matInput placeholder="Nombre" formControlName="name" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
@@ -28,7 +31,8 @@
 
             <p>
               <mat-form-field appearance="legacy">
-                <mat-label>Descripción</mat-label>
+                <mat-label *ngIf="product">{{ product.description }}</mat-label>
+                <mat-label *ngIf="!product">Descripción</mat-label>
                 <input matInput placeholder="Añade un subtítulo" formControlName="description" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
@@ -107,7 +111,7 @@
             <p>
               <mat-form-field appearance="legacy">
                 <mat-label>Unidades</mat-label>
-                <input matInput placeholder="Añadir imagen" formControlName="units" >
+                <input matInput placeholder="Añadir unidades" formControlName="units" >
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
             </p>
@@ -115,17 +119,39 @@
             <p>
               <mat-form-field appearance="legacy">
                 <mat-label>Peso</mat-label>
-                <input matInput placeholder="Añadir imagen" formControlName="weight" >
+                <input matInput placeholder="Añadir peso" formControlName="weight" >
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
             </p>
 
-            <button mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="createProductForm.invalid">
-                Crear producto
-            </button>
+            <div *ngIf="product">
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                [disabled]="createProductForm.invalid">
+                  Editar
+              </button>
+
+              <button
+                mat-raised-button
+                color="warn"
+                type="button">
+                Eliminar
+              </button>
+            </div>
+            <div *ngIf="!product">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="createProductForm.invalid">
+                  Crear producto
+              </button>
+
+
+            </div>
+
 
 
 
