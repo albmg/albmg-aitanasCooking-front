@@ -1,11 +1,23 @@
 <p>
     <mat-label> {{ product ? 'Modificar' : 'Añadir' }} imagen: </mat-label>
-    <!-- <img src="{{product.image}}" alt="" width="50px"> -->
-    <!-- {{ product.image }} -->
+
     <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
 
     <label for="inputFile" class="labelInputFile">
       <mat-icon>cloud_upload</mat-icon>
     </label>
+
+    <mat-card>
+      <mat-card-header>{{ product ? 'Modificar' : 'Añadir' }} imagen:</mat-card-header>
+      <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
+
+      <label for="inputFile" class="labelInputFile">
+        <mat-icon>cloud_upload</mat-icon>
+      </label>
+
+
+
+    </mat-card>
+
 
 </p>

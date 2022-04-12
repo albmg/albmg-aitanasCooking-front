@@ -39,6 +39,7 @@
               [product]="product"
               (onShareImage)="addImage( $event )"
             >
+
             </app-image-picker>
 
             <div>
@@ -95,7 +96,7 @@
 
             <p>
               <mat-form-field appearance="legacy">
-                <mat-label>Unidades</mat-label>
+                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Unidades</mat-label>
                 <input matInput placeholder="Añadir unidades" formControlName="units" >
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
@@ -103,7 +104,7 @@
 
             <p>
               <mat-form-field appearance="legacy">
-                <mat-label>Peso</mat-label>
+                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Peso</mat-label>
                 <input matInput placeholder="Añadir peso" formControlName="weight" >
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
