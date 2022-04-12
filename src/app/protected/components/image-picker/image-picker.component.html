@@ -1,14 +1,22 @@
 <p>
-    <mat-label> {{ product ? 'Modificar' : 'Añadir' }} imagen: </mat-label>
+    <!-- <mat-label> {{ product ? 'Modificar' : 'Añadir' }} imagen: </mat-label> -->
 
-    <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
+
+
+    <!-- <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
 
     <label for="inputFile" class="labelInputFile">
       <mat-icon>cloud_upload</mat-icon>
-    </label>
+    </label> -->
+
 
     <mat-card>
       <mat-card-header>{{ product ? 'Modificar' : 'Añadir' }} imagen:</mat-card-header>
+      <img src="{{ prewImage }}" alt="" width="25%">
+      <div *ngIf="product">
+        <img src="{{ product.image }}" alt="" width="50%">
+      </div>
+
       <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
 
       <label for="inputFile" class="labelInputFile">

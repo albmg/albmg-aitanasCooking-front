@@ -34,13 +34,7 @@
               </mat-form-field>
             </p>
 
-            <!-- Image picker component -->
-            <app-image-picker
-              [product]="product"
-              (onShareImage)="addImage( $event )"
-            >
 
-            </app-image-picker>
 
             <div>
               <label>{{ product ? 'Modificar' : 'Añadir'}} Ingredientes</label>
@@ -146,5 +140,15 @@
     </div>
 
     <mat-divider></mat-divider>
+
+    <div fxFlex="50" fxLayout="column">
+       <!-- Image picker component -->
+            <app-image-picker
+              [product]="product"
+              (onShareImage)="addImage( $event )"
+            >
+
+            </app-image-picker>
+    </div>
 
   </div>

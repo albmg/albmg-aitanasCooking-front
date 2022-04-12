@@ -20,10 +20,12 @@ export class ImagePickerComponent implements OnInit {
 
   @Output() onShareImage: EventEmitter<string> = new EventEmitter();
 
+  prewImage: string = ''
+
   constructor( private storageService: StorageService ) { }
 
   ngOnInit(): void {
-    console.log('product on imagePicker', this.product)
+   //console.log('product on imagePicker', this.product)
   }
 
   // image picker
@@ -43,7 +45,7 @@ export class ImagePickerComponent implements OnInit {
 
         this.storageService.uploadImage(productName + "_" + Date.now(), reader.result)
           .then(urlImagen => {
-            //console.log(urlImagen);
+            this.prewImage = urlImagen!
             this.onShareImage.emit(urlImagen!)
           });
       }
