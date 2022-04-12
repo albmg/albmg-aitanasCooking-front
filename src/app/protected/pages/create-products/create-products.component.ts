@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { ProtectedService } from '../../services/protected.service';
 import { Product } from '../../../customers/interfaces/products.interface';
@@ -28,11 +28,12 @@ export class CreateProductsComponent implements OnInit {
     weight: ['',],
   })
 
-  newIngredient : FormControl = this.fb.control('', Validators.required)
+  newIngredient: FormControl = this.fb.control('', Validators.required)
 
   get ingredientsArray() {
     return this.createProductForm.get('ingredients') as FormArray
   }
+
 
   constructor( private fb: FormBuilder,
                private saveProductService: ProtectedService,
@@ -47,15 +48,20 @@ export class CreateProductsComponent implements OnInit {
       return;
     }
 
+
     this.activatedRoute.params
     .pipe(
       switchMap( ({id}) => this.saveProductService.getProductById(id))
     )
     .subscribe( product => {
       this.product = product
-      console.log(this.product)
-    })
+      this.createProductForm.reset(product)
 
+      for (const ingredientsFromBackend of product.ingredients) {
+        this.ingredientsArray.push(this.fb.control(ingredientsFromBackend, Validators.required))
+      }
+
+    })
   }
 
   addIngredient() {
@@ -68,6 +74,7 @@ export class CreateProductsComponent implements OnInit {
     this.newIngredient.reset()
   }
 
+
   removeIngredient( i: number ) {
     this.ingredientsArray.removeAt(i)
   }
@@ -75,9 +82,17 @@ export class CreateProductsComponent implements OnInit {
 
   saveProduct() {
     this.saveProductService.saveProduct( this.createProductForm.value )
-      .subscribe( createdProduct => {
+      .subscribe(createdProduct => {
         this.showSnackBar(' Producto creado satisfactoriamente ')
         this.router.navigate(['/dashboard/gestionar-productos/editar/', createdProduct._id])
+      })
+  }
+
+  updateProduct() {
+    this.saveProductService.upgradeProduct( this.product._id, this.createProductForm.value )
+      .subscribe( updatedProduct => {
+        this.showSnackBar(' Producto actualizado satisfactoriamente ')
+        this.router.navigate(['/dashboard/gestionar-productos'])
       })
   }
 

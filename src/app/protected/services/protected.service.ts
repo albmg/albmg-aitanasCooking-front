@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/customers/interfaces/products.interface';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,18 @@ export class ProtectedService {
     return this.http.get<Product>(`${ this.baseUrl }/products/${ id }`)
   }
 
+
+  deleteProduct( id: string ):Observable<Product> {
+    return this.http.delete<Product>(`${ this.baseUrl }/products/${ id }`)
+  }
+
+  upgradeProduct( id: string, product: Product ):Observable<Product> {
+    const url = `${ this.baseUrl }/products/me/${ id }`
+    const headers = new HttpHeaders()
+      .set('token', localStorage.getItem('token') || '')
+
+    return this.http.put<Product>(url,  product, { headers })
+  }
 
   saveProduct( product: Product ): Observable<Product> {
 
