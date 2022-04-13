@@ -24,9 +24,7 @@ export class ImagePickerComponent implements OnInit {
 
   constructor( private storageService: StorageService ) { }
 
-  ngOnInit(): void {
-   //console.log('product on imagePicker', this.product)
-  }
+  ngOnInit(): void {}
 
   // image picker
   productImages: any[] = [];
