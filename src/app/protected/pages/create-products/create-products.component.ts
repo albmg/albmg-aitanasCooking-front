@@ -5,6 +5,8 @@ import { Product } from '../../../customers/interfaces/products.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs/operators'
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-create-products',
@@ -39,7 +41,8 @@ export class CreateProductsComponent implements OnInit {
                private saveProductService: ProtectedService,
                private router: Router,
                private snackBar: MatSnackBar,
-               private activatedRoute: ActivatedRoute ) { }
+               private activatedRoute: ActivatedRoute,
+               public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -94,6 +97,24 @@ export class CreateProductsComponent implements OnInit {
         this.showSnackBar(' Producto actualizado satisfactoriamente ')
         this.router.navigate(['/dashboard/gestionar-productos'])
       })
+  }
+
+  removeProduct() {
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: this.product
+    })
+
+    dialog.afterClosed().subscribe(
+      (result) => {
+        if (result) {
+          this.saveProductService.deleteProduct(this.product._id)
+            .subscribe(resp => {
+              console.log(resp)
+            })
+        }
+      }
+    )
   }
 
   addImage(imagen: string ) {

@@ -20,24 +20,28 @@ export class ProtectedService {
   }
 
 
-  deleteProduct( id: string ):Observable<Product> {
-    return this.http.delete<Product>(`${ this.baseUrl }/products/${ id }`)
+  saveProduct( product: Product ): Observable<Product> {
+
+    const url = `${ this.baseUrl }/products/me`
+    const headers = new HttpHeaders()
+    .set('token', localStorage.getItem('token') || '')
+
+    return this.http.post<Product>( url,  product, { headers })
   }
 
   upgradeProduct( id: string, product: Product ):Observable<Product> {
     const url = `${ this.baseUrl }/products/me/${ id }`
     const headers = new HttpHeaders()
-      .set('token', localStorage.getItem('token') || '')
+    .set('token', localStorage.getItem('token') || '')
 
     return this.http.put<Product>(url,  product, { headers })
   }
 
-  saveProduct( product: Product ): Observable<Product> {
-
-    const url = `${ this.baseUrl }/products/me`
+  deleteProduct(id: string): Observable<Product> {
+    const url = `${ this.baseUrl }/products/me/${ id }`
     const headers = new HttpHeaders()
       .set('token', localStorage.getItem('token') || '')
 
-    return this.http.post<Product>( url,  product, { headers })
+    return this.http.delete<Product>(url, { headers } )
   }
 }
