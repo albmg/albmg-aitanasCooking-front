@@ -1,1 +1,133 @@
-<p>create-menus works!</p>
+
+<h1>Gestionar Menús</h1>
+<mat-divider></mat-divider>
+
+  <h2>
+    {{ menu ? 'Editar' : 'Crear' }}  Menú
+  </h2>
+  <div fxLayout="row"
+        fxLayout.xs="column"
+        faxLayoutGap="30px">
+
+    <div fxFlex="50" fxLayout="column">
+
+        <!-- Form -->
+        <div fxFlex="50">
+          <form autocomplete="off"
+          [formGroup]="createMenuForm"
+          (ngSubmit)="saveMenu()">
+            <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Nombre</mat-label>
+                <input matInput placeholder="Nombre" formControlName="name">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+            </p>
+
+            <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Descripción</mat-label>
+                <input matInput placeholder="subtítulo" formControlName="description">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+            </p>
+
+            <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Número</mat-label>
+                <input matInput placeholder="número" formControlName="number">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+            </p>
+
+            <p>
+              <mat-form-field appearance="legacy">
+                <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Comensales</mat-label>
+                <input matInput placeholder="número" formControlName="diners">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+            </p>
+
+
+
+            <div>
+              <label>{{ menu ? 'Modificar' : 'Añadir'}} Platos</label>
+
+              <!-- Add a dish -->
+              <div class="input-group">
+                <input class="form-control"
+                       [formControl]="newDish"
+                       placeholder="p.e jamoncitos de pollo"
+                       (keyup.enter)="addDish()"
+                       >
+                <button (click)="addDish()"
+                type="button">
+                  Añadir
+                </button>
+              </div>
+
+              <!-- Remove a dish -->
+              <div formArrayName="dishes">
+                  <div class="input-group"
+                        *ngFor="let dish of dishesArray.controls; let i = index">
+                    <input class="form-control"
+                           [formControlName]="i"
+                           >
+
+                    <button (click)="removeDish(i)"
+                    type="button">
+                      Eliminar
+                    </button>
+                  </div>
+              </div>
+            </div>
+
+            <div *ngIf="menu">
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                [disabled]="createMenuForm.invalid"
+                (click)="updateMenu()">
+                  Actualizar
+              </button>
+
+              <button
+                mat-raised-button
+                color="warn"
+                type="button"
+                (click)="removeMenu()">
+                Eliminar
+              </button>
+            </div>
+            <div *ngIf="!menu">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="createMenuForm.invalid">
+                  Crear producto
+              </button>
+
+
+            </div>
+
+          </form>
+
+        </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div fxFlex="50" fxLayout="column">
+       <!-- Image picker component -->
+            <app-image-picker
+              (onShareImage)="addImage( $event )"
+            >
+
+            </app-image-picker>
+    </div>
+
+  </div>
+
