@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/customers/interfaces/products.interface';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Menu } from 'src/app/customers/interfaces/menus.interface';
 
 
 @Injectable({
@@ -13,7 +14,9 @@ export class ProtectedService {
 
   private baseUrl: string = environment.baseUrl
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
+
+  // product services
 
   getProductById( id: string):Observable<Product>  {
     return this.http.get<Product>(`${ this.baseUrl }/products/${ id }`)
@@ -44,4 +47,20 @@ export class ProtectedService {
 
     return this.http.delete<Product>(url, { headers } )
   }
+
+  // menus services
+
+   getMenutById( id: string):Observable<Menu>  {
+    return this.http.get<Menu>(`${ this.baseUrl }/menus/${ id }`)
+   }
+
+  saveMenu( menu: Menu ): Observable<Menu> {
+
+    const url = `${ this.baseUrl }/menus/me`
+    const headers = new HttpHeaders()
+    .set('token', localStorage.getItem('token') || '')
+
+    return this.http.post<Menu>( url,  menu, { headers })
+  }
+
 }

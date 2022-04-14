@@ -7,6 +7,8 @@ import { Menu } from '../../../customers/interfaces/menus.interface';
 import { ProtectedService } from '../../services/protected.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { Product } from '../../../customers/interfaces/products.interface';
+import { CustomersService } from '../../../customers/services/customers.service';
 
 
 @Component({
@@ -20,18 +22,20 @@ export class CreateMenusComponent implements OnInit {
 
   menu!: Menu
 
+  dishesList!: Product[]
+
   createdMenu!: Menu
 
   createMenuForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
     description: ['', [ Validators.required ]],
     dishes: this.fb.array([], Validators.required ),
-    image: ['', [ Validators.required ]],
+    image: ['asdasd', [ Validators.required ]],
     number: [''],
     diners: ['',],
   })
 
-   newDish: FormControl = this.fb.control('', Validators.required)
+  newDish: FormControl = this.fb.control('', Validators.required)
 
   get dishesArray() {
     return this.createMenuForm.get('dishes') as FormArray
@@ -42,10 +46,22 @@ export class CreateMenusComponent implements OnInit {
                private router: Router,
                private activatedRoute: ActivatedRoute,
                private snackBar: MatSnackBar,
-               public dialog: MatDialog) { }
+               public dialog: MatDialog,
+               private getAllProductsService: CustomersService) { }
 
   ngOnInit(): void {
-     if( !this.router.url.includes('/editar')) {
+
+    this.getAllProductsService.getProducts()
+      .subscribe(products =>
+        this.dishesList = products)
+
+  /*   this.createMenuForm.get('dishes')?.valueChanges
+      .subscribe(dish => {
+        console.log(dish)
+      })
+ */
+
+    /* if( !this.router.url.includes('/editar')) {
       return;
     }
 
@@ -62,7 +78,7 @@ export class CreateMenusComponent implements OnInit {
         this.dishesArray.push(this.fb.control(ingredientsFromBackend, Validators.required))
       }
 
-    })
+    }) */
   }
 
   addDish() {
@@ -70,9 +86,11 @@ export class CreateMenusComponent implements OnInit {
       return
     }
 
-    this.dishesArray.push( this.fb.control(this.newDish.value, Validators.required) )
+    this.dishesArray.push(this.fb.control(this.newDish.value, Validators.required))
+    console.log(this.dishesArray.value)
 
     this.newDish.reset()
+
   }
 
   removeDish( i: number ) {
@@ -80,10 +98,10 @@ export class CreateMenusComponent implements OnInit {
   }
 
   saveMenu() {
-    this.saveMenuService.saveProduct( this.createMenuForm.value )
+    this.saveMenuService.saveMenu( this.createMenuForm.value )
       .subscribe(createdMenu => {
         this.showSnackBar(' Menu creado satisfactoriamente ')
-        this.router.navigate(['/dashboard/gestionar-productos/editar/', createdMenu._id])
+        //this.router.navigate(['/dashboard/gestionar-productos/editar/', createdMenu._id])
       })
   }
 
