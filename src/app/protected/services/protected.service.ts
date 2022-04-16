@@ -50,9 +50,9 @@ export class ProtectedService {
 
   // menus services
 
-   getMenutById( id: string):Observable<Menu>  {
+  getMenutById( id: string):Observable<Menu>  {
     return this.http.get<Menu>(`${ this.baseUrl }/menus/${ id }`)
-   }
+  }
 
   saveMenu( menu: Menu ): Observable<Menu> {
 
@@ -63,12 +63,21 @@ export class ProtectedService {
     return this.http.post<Menu>( url,  menu, { headers })
   }
 
- upgradeMenu( id: string, menu: Menu ):Observable<Menu> {
+  upgradeMenu( id: string, menu: Menu ):Observable<Menu> {
     const url = `${ this.baseUrl }/menus/me/${ id }`
     const headers = new HttpHeaders()
     .set('token', localStorage.getItem('token') || '')
 
     return this.http.put<Menu>(url,  menu, { headers })
+  }
+
+
+  deleteMenu(id: string): Observable<Menu> {
+    const url = `${ this.baseUrl }/menus/me/${ id }`
+    const headers = new HttpHeaders()
+      .set('token', localStorage.getItem('token') || '')
+
+    return this.http.delete<Menu>(url, { headers } )
   }
 
 }

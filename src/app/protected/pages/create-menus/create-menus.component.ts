@@ -131,7 +131,7 @@ export class CreateMenusComponent implements OnInit {
     dialog.afterClosed().subscribe(
       (result) => {
         if (result) {
-          this.saveMenuService.deleteProduct(this.menu._id)
+          this.saveMenuService.deleteMenu(this.menu._id)
             .subscribe(resp => {
               console.log(resp)
             })
