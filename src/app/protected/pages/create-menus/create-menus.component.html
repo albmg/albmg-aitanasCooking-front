@@ -35,7 +35,7 @@
             <p>
               <mat-form-field appearance="legacy">
                 <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Número</mat-label>
-                <input matInput placeholder="número" formControlName="number">
+                <input type="number" matInput placeholder="número de menú" formControlName="number">
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
             </p>
@@ -43,7 +43,7 @@
             <p>
               <mat-form-field appearance="legacy">
                 <mat-label>{{ menu ? 'Actualizar' : 'Añadir' }} Comensales</mat-label>
-                <input matInput placeholder="número" formControlName="diners">
+                <input type="number" matInput placeholder="número de comensales" formControlName="diners">
                 <mat-icon matSuffix>perm_identity</mat-icon>
               </mat-form-field>
             </p>
@@ -59,6 +59,34 @@
                 </mat-form-field>
                 <button mat-button (click)="addDish()" type="button">Añadir</button>
             </p>
+
+            <div *ngIf="productito.length > 1">
+              <ul *ngFor="let prod of productito">
+                <li>{{ prod }}</li>
+              </ul>
+            </div>
+
+             <!-- Remove a dish -->
+              <div formArrayName="dishes">
+                  <div class="input-group"
+                       *ngFor="let dish of dishesArray.controls; let i = index">
+
+                    <input class="form-control"
+                           [formControlName]="i"
+                           readonly="readonly"
+                           >
+
+                    <button (click)="removeDish(i)"
+                    type="button">
+                      Eliminar
+                    </button>
+
+
+
+                  </div>
+              </div>
+
+            <hr>
 
 
 
@@ -111,7 +139,3 @@
     </div>
 
   </div>
-
-
-  <pre>{{ createMenuForm.valid }} </pre>
-

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { Menu } from '../../../customers/interfaces/menus.interface';
 import { ProtectedService } from '../../services/protected.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,10 +10,16 @@ import { Product } from '../../../customers/interfaces/products.interface';
 import { CustomersService } from '../../../customers/services/customers.service';
 
 
+
 @Component({
   selector: 'app-create-menus',
   templateUrl: './create-menus.component.html',
   styles: [
+    `
+    .form-control {
+      color: purple
+    }
+    `
   ]
 })
 export class CreateMenusComponent implements OnInit {
@@ -26,11 +31,13 @@ export class CreateMenusComponent implements OnInit {
 
   createdMenu!: Menu
 
+  productito: any[] = ['']
+
   createMenuForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
     description: ['', [ Validators.required ]],
     dishes: this.fb.array([], Validators.required ),
-    image: ['asdasd', [ Validators.required ]],
+    image: ['a', [ Validators.required ]],
     number: [''],
     diners: ['',],
   })
@@ -52,14 +59,9 @@ export class CreateMenusComponent implements OnInit {
   ngOnInit(): void {
 
     this.getAllProductsService.getProducts()
-      .subscribe(products =>
-        this.dishesList = products)
-
-  /*   this.createMenuForm.get('dishes')?.valueChanges
-      .subscribe(dish => {
-        console.log(dish)
+      .subscribe(products => {
+        this.dishesList = products
       })
- */
 
     /* if( !this.router.url.includes('/editar')) {
       return;
@@ -82,12 +84,19 @@ export class CreateMenusComponent implements OnInit {
   }
 
   addDish() {
-    if ( this.newDish.invalid) {
+
+    const repeatedProduct = this.dishesList.filter(m => m._id === this.newDish.value).map(m => m.name)
+
+    if ( this.newDish.invalid ) {
       return
     }
 
+    if (this.dishesArray.value.includes(this.newDish.value)) {
+
+      return alert(`${ repeatedProduct } ya ha sido añadido`)
+    }
+
     this.dishesArray.push(this.fb.control(this.newDish.value, Validators.required))
-    console.log(this.dishesArray.value)
 
     this.newDish.reset()
 

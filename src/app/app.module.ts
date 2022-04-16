@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

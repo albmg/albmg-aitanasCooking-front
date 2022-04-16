@@ -13,7 +13,6 @@ import { CreateMenusComponent } from './pages/create-menus/create-menus.componen
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
 import { ImagePickerComponent } from './components/image-picker/image-picker.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
