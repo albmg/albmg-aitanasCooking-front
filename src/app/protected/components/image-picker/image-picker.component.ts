@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { Product } from '../../../customers/interfaces/products.interface';
+import { Menu } from 'src/app/customers/interfaces/menus.interface';
 
 @Component({
   selector: 'app-image-picker',
@@ -17,6 +18,8 @@ import { Product } from '../../../customers/interfaces/products.interface';
 export class ImagePickerComponent implements OnInit {
 
   @Input() product!: Product
+
+  @Input() menu!: Menu
 
   @Output() onShareImage: EventEmitter<string> = new EventEmitter();
 

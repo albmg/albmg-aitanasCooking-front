@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Product } from '../../../customers/interfaces/products.interface';
 import { CustomersService } from '../../../customers/services/customers.service';
+import { switchMap } from 'rxjs/operators'
+
 
 
 
@@ -30,8 +32,6 @@ export class CreateMenusComponent implements OnInit {
   dishesList!: Product[]
 
   createdMenu!: Menu
-
-  productito: any[] = ['']
 
   createMenuForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
@@ -63,24 +63,24 @@ export class CreateMenusComponent implements OnInit {
         this.dishesList = products
       })
 
-    /* if( !this.router.url.includes('/editar')) {
+    if( !this.router.url.includes('/editar')) {
       return;
     }
 
 
     this.activatedRoute.params
     .pipe(
-      switchMap( ({id}) => this.saveMenuService.getProductById(id))
+      switchMap( ({id}) => this.saveMenuService.getMenutById(id))
     )
-    .subscribe( product => {
-      //this.menu = menu
-      this.createMenuForm.reset(product)
+    .subscribe( menu => {
+      this.menu = menu
+      this.createMenuForm.reset(menu)
 
-      for (const ingredientsFromBackend of product.ingredients) {
-        this.dishesArray.push(this.fb.control(ingredientsFromBackend, Validators.required))
+      for (const dishesFromBackend of menu.dishes) {
+        this.dishesArray.push(this.fb.control(dishesFromBackend._id, Validators.required))
       }
 
-    }) */
+    })
   }
 
   addDish() {
@@ -110,15 +110,15 @@ export class CreateMenusComponent implements OnInit {
     this.saveMenuService.saveMenu( this.createMenuForm.value )
       .subscribe(createdMenu => {
         this.showSnackBar(' Menu creado satisfactoriamente ')
-        //this.router.navigate(['/dashboard/gestionar-productos/editar/', createdMenu._id])
+        this.router.navigate(['/dashboard/gestionar-productos/editar/', createdMenu._id])
       })
   }
 
   updateMenu() {
-    this.saveMenuService.upgradeProduct( this.menu._id, this.createMenuForm.value )
-      .subscribe( updatedProduct => {
+    this.saveMenuService.upgradeMenu( this.menu._id, this.createMenuForm.value )
+      .subscribe( updatedMenu => {
         this.showSnackBar(' Menu actualizado satisfactoriamente ')
-        this.router.navigate(['/dashboard/gestionar-productos'])
+        //this.router.navigate(['/dashboard/gestionar-menus'])
       })
   }
 

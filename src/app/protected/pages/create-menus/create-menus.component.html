@@ -60,12 +60,6 @@
                 <button mat-button (click)="addDish()" type="button">Añadir</button>
             </p>
 
-            <div *ngIf="productito.length > 1">
-              <ul *ngFor="let prod of productito">
-                <li>{{ prod }}</li>
-              </ul>
-            </div>
-
              <!-- Remove a dish -->
               <div formArrayName="dishes">
                   <div class="input-group"
@@ -132,6 +126,7 @@
     <div fxFlex="50" fxLayout="column">
        <!-- Image picker component -->
             <app-image-picker
+              [menu]="menu"
               (onShareImage)="addImage( $event )"
             >
 

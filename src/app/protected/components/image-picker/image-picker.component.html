@@ -6,6 +6,10 @@
         <img src="{{ product.image }}" alt="" width="50%">
       </div>
 
+      <div *ngIf="menu">
+        <img src="{{ menu.image }}" alt="" width="50%">
+      </div>
+
       <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
 
       <label for="inputFile" class="labelInputFile">

@@ -63,4 +63,12 @@ export class ProtectedService {
     return this.http.post<Menu>( url,  menu, { headers })
   }
 
+ upgradeMenu( id: string, menu: Menu ):Observable<Menu> {
+    const url = `${ this.baseUrl }/menus/me/${ id }`
+    const headers = new HttpHeaders()
+    .set('token', localStorage.getItem('token') || '')
+
+    return this.http.put<Menu>(url,  menu, { headers })
+  }
+
 }

@@ -27,6 +27,10 @@ const routes: Routes = [
         component: CreateMenusComponent
       },
       {
+        path: 'gestionar-menus/editar/:id',
+        component: CreateMenusComponent
+      },
+      {
         path: 'gestionar-pedidos',
         component: ManageOrdersComponent
       },
