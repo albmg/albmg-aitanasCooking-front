@@ -5,6 +5,7 @@ import { Product } from 'src/app/customers/interfaces/products.interface';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/customers/interfaces/menus.interface';
+import { Order } from 'src/app/customers/interfaces/orders.interface';
 
 
 @Injectable({
@@ -78,6 +79,15 @@ export class ProtectedService {
       .set('token', localStorage.getItem('token') || '')
 
     return this.http.delete<Menu>(url, { headers } )
+  }
+
+
+  // orders services
+
+  viewAllOrders() {
+    const url = `${ this.baseUrl }/orders`
+
+    return this.http.get<Order[]>( url )
   }
 
 }

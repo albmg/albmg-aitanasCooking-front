@@ -2,12 +2,12 @@ import { Menu } from "./menus.interface";
 import { Product } from "./products.interface";
 
 export interface Order {
-  purchasedMenus:    Menu[];
-  _id:               string;
-  email:             string;
-  adress:            string;
-  phone:             string;
-  purchasedProducts: Product[];
-  __v?:              number;
+  _id?:               string;
   clientName?:       string;
+  email?:             string;
+  adress?:            string;
+  phone?:             string;
+  purchasedProducts?: Product[];
+  purchasedMenus?:    Menu[];
+  __v?:              number;
 }
