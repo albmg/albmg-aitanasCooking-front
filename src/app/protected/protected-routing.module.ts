@@ -4,6 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { CreateMenusComponent } from './pages/create-menus/create-menus.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
+import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
 
 const routes: Routes = [
   {
@@ -15,24 +16,28 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'gestionar-productos',
+        path: 'gestionar/productos',
         component: CreateProductsComponent
       },
       {
-        path: 'gestionar-productos/editar/:id',
+        path: 'gestionar/productos/editar/:id',
         component: CreateProductsComponent
       },
       {
-        path: 'gestionar-menus',
+        path: 'gestionar/menus',
         component: CreateMenusComponent
       },
       {
-        path: 'gestionar-menus/editar/:id',
+        path: 'gestionar/menus/editar/:id',
         component: CreateMenusComponent
       },
       {
-        path: 'gestionar-pedidos',
+        path: 'gestionar/pedidos',
         component: ManageOrdersComponent
+      },
+      {
+        path: 'gestionar/pedidos/detalles/:id',
+        component: ViewOrdersComponent
       },
       {
         path: '',

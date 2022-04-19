@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtectedService } from '../../services/protected.service';
 import { Order } from '../../../customers/interfaces/orders.interface';
-import { Product } from '../../../customers/interfaces/products.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manage-orders',
@@ -18,16 +18,19 @@ import { Product } from '../../../customers/interfaces/products.interface';
 
 export class ManageOrdersComponent implements OnInit {
 
-  order: Order[] = []
+  orders: Order[] = []
 
-  displayedColumns: string[] = ['clientName', 'email', 'address', 'phone', 'date'];
+  displayedColumns: string[] = ['clientName', 'email', 'date', 'button'];
 
-  constructor( private manageOrder: ProtectedService) { }
+
+
+  constructor(private manageOrder: ProtectedService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.manageOrder.viewAllOrders()
       .subscribe(orders => {
-        this.order = orders
+        this.orders = orders
       })
   }
 

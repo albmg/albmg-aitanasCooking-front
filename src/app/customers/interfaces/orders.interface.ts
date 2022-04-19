@@ -6,7 +6,8 @@ export interface Order {
   clientName?:       string;
   email?:             string;
   adress?:            string;
-  phone?:             string;
+  phone?: string;
+  createdDate?: number;
   purchasedProducts?: Product[];
   purchasedMenus?:    Menu[];
   __v?:              number;

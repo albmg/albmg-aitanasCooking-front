@@ -12,6 +12,7 @@ import { CreateProductsComponent } from './pages/create-products/create-products
 import { CreateMenusComponent } from './pages/create-menus/create-menus.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
 import { ImagePickerComponent } from './components/image-picker/image-picker.component';
+import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ImagePickerComponent } from './components/image-picker/image-picker.com
     CreateProductsComponent,
     CreateMenusComponent,
     ManageOrdersComponent,
-    ImagePickerComponent
+    ImagePickerComponent,
+    ViewOrdersComponent
   ],
   imports: [
     CommonModule,
