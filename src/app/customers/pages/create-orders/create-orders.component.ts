@@ -9,6 +9,11 @@ import { CustomersService } from '../../services/customers.service';
   selector: 'app-create-orders',
   templateUrl: './create-orders.component.html',
   styles: [
+    `
+    .mat-form-field {
+      margin: 5px;
+    }
+    `
   ]
 })
 export class CreateOrdersComponent implements OnInit {
@@ -23,7 +28,9 @@ export class CreateOrdersComponent implements OnInit {
     adress: ['Rue', [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [''],
-    purchasedMenus: ['']
+    purchasedMenus: [''],
+    deliveryDate: ['', [ Validators.required ]],
+    deliveryTime: ['']
   })
 
   constructor( private selectProductService: CustomersService,
@@ -36,7 +43,10 @@ export class CreateOrdersComponent implements OnInit {
     .subscribe( products => this.products = products )
 
     this.selectProductService.getMenus()
-    .subscribe( menus => this.menus = menus )
+      .subscribe(menus => this.menus = menus)
+
+    console.log('value del datePicker', this.createOrderForm.controls.deliveryDate.value)
+    console.log('value del datePicker', this.createOrderForm.value)
   }
 
   submit() {

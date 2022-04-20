@@ -7,50 +7,50 @@
         (ngSubmit)="submit()" >
 
     <mat-card-content>
+    <div fxFlex="50" fxLayout="column">
       <!-- Nombre -->
-      <p>
+
         <mat-form-field appearance="legacy">
           <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Nombre" formControlName="clientName" required>
+          <input matInput placeholder="Nombre" formControlName="clientName">
           <mat-icon matSuffix>perm_identity</mat-icon>
           <mat-hint>Introduce tu nombre</mat-hint>
         </mat-form-field>
-      </p>
+
 
       <!-- email -->
-      <p>
-          <mat-form-field appearance="legacy">
-            <mat-label>Introduce email</mat-label>
-            <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email" required>
-            <mat-hint>Introduce tu correo electrónico</mat-hint>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Introduce email</mat-label>
+          <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email">
+          <mat-hint>Introduce tu correo electrónico</mat-hint>
             <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-             <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
-      </p>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
 
-        <!-- Dirección -->
-      <p>
+
+      <!-- Dirección -->
+
         <mat-form-field appearance="legacy">
           <!-- <mat-label>Nombre</mat-label> -->
-          <input matInput placeholder="Dirección" formControlName="adress" required>
+          <input matInput placeholder="Dirección" formControlName="adress">
           <mat-icon matSuffix>add_location</mat-icon>
           <mat-hint>Introduce tu dirección</mat-hint>
         </mat-form-field>
-      </p>
+
 
 
         <!-- Telefono -->
-      <p>
+
         <mat-form-field appearance="legacy">
           <!-- <mat-label>Nombre</mat-label> -->
-          <input matInput placeholder="Telefono" formControlName="phone" required>
+          <input matInput placeholder="Telefono" formControlName="phone">
           <mat-icon matSuffix>phone</mat-icon>
           <mat-hint>Introduce tu teléfono</mat-hint>
         </mat-form-field>
-      </p>
 
-      <p>
+
         <mat-form-field appearance="legacy">
           <mat-label>Selecciona productos</mat-label>
           <mat-select multiple formControlName="purchasedProducts">
@@ -60,9 +60,8 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
 
-      <p>
+
         <mat-form-field appearance="legacy">
           <mat-label>Selecciona menus</mat-label>
           <mat-select multiple formControlName="purchasedMenus">
@@ -71,7 +70,31 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
+
+    </div>
+
+    <div fxFlex="50" fxLayout="column">
+      <!-- <mat-form-field appearance="legacy" class="example-form-field">
+        <mat-label>Elije una fecha de entrega</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="deliveryDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="legacy" class="example-form-field">
+        <mat-label>Elije fecha y hora de entrega</mat-label>
+        <input matInput   type="datetime-local" formControlName="deliveryDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+      </mat-form-field>
+
+    </div>
+
     </mat-card-content>
 
 
