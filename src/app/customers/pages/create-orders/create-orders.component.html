@@ -93,10 +93,13 @@
         </mat-datepicker>
       </mat-form-field> -->
 
-      <mat-form-field appearance="legacy" class="example-form-field">
+      <mat-form-field appearance="legacy">
         <mat-label>Elije fecha y hora de entrega</mat-label>
-        <input matInput   type="datetime-local" formControlName="deliveryDate">
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
+        <input matInput [min]="nextDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint>DD/MM/YYYY</mat-hint>
       </mat-form-field>
 
     </div>

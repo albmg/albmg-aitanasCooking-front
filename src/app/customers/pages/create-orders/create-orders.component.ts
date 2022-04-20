@@ -31,7 +31,7 @@ export class CreateOrdersComponent implements OnInit {
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [[]],
     purchasedMenus: [[]],
-    deliveryDate: ['2023/05/12', [ Validators.required ]]
+    deliveryDate: ['', [ Validators.required ]]
   }, { validators: this.vs.checkPurchasing })
 
   constructor( private selectProductService: CustomersService,
@@ -46,6 +46,8 @@ export class CreateOrdersComponent implements OnInit {
 
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
+
+    console.log(this.nextDate)
   }
 
   submit() {
@@ -54,5 +56,10 @@ export class CreateOrdersComponent implements OnInit {
         console.log('Respuesta', resp)
       })
   }
+
+
+  days = 4;
+  // Date.now() gives the epoch date value (in milliseconds) of current date
+  nextDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
 }
