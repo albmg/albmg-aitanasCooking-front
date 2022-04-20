@@ -29,8 +29,7 @@ export class CreateOrdersComponent implements OnInit {
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [''],
     purchasedMenus: [''],
-    deliveryDate: ['', [ Validators.required ]],
-    deliveryTime: ['']
+    deliveryDate: ['', [ Validators.required ]]
   })
 
   constructor( private selectProductService: CustomersService,
