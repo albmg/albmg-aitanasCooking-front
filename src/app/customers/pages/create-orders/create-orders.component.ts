@@ -4,6 +4,7 @@ import { emailPattern } from 'src/app/shared/validator/validations';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
+import { ValidatorService } from '../../../shared/validator/validator.service';
 
 @Component({
   selector: 'app-create-orders',
@@ -22,12 +23,6 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
-  checkPurchasing: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const prod = control.get('purchasedProducts');
-  const menu = control.get('purchasedMenus');
-
-  return prod?.value.length === 0 && menu?.value.length === 0 ? { checkPurchasing: true } : null;
-};
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
@@ -37,11 +32,12 @@ export class CreateOrdersComponent implements OnInit {
     purchasedProducts: [[]],
     purchasedMenus: [[]],
     deliveryDate: ['2023/05/12', [ Validators.required ]]
-  }, { validators: this.checkPurchasing })
+  }, { validators: this.vs.checkPurchasing })
 
   constructor( private selectProductService: CustomersService,
                private fb: FormBuilder,
-               private saveOrderService: CustomersService ) { }
+               private saveOrderService: CustomersService,
+               private vs: ValidatorService) { }
 
   ngOnInit(): void {
 
@@ -50,9 +46,6 @@ export class CreateOrdersComponent implements OnInit {
 
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
-
-
-    console.log('value del datePicker', this.createOrderForm.value)
   }
 
   submit() {
