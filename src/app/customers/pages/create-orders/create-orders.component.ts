@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { emailPattern } from 'src/app/shared/validator/validations';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
@@ -22,15 +22,22 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
+  checkPurchasing: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const prod = control.get('purchasedProducts');
+  const menu = control.get('purchasedMenus');
+
+  return prod?.value.length === 0 && menu?.value.length === 0 ? { checkPurchasing: true } : null;
+};
+
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
     email: ['claire@claire.com', [ Validators.required, Validators.pattern( emailPattern )]],
     adress: ['Rue', [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
-    purchasedProducts: [''],
-    purchasedMenus: [''],
-    deliveryDate: ['', [ Validators.required ]]
-  })
+    purchasedProducts: [[]],
+    purchasedMenus: [[]],
+    deliveryDate: ['2023/05/12', [ Validators.required ]]
+  }, { validators: this.checkPurchasing })
 
   constructor( private selectProductService: CustomersService,
                private fb: FormBuilder,
@@ -44,7 +51,7 @@ export class CreateOrdersComponent implements OnInit {
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
 
-    console.log('value del datePicker', this.createOrderForm.controls.deliveryDate.value)
+
     console.log('value del datePicker', this.createOrderForm.value)
   }
 
