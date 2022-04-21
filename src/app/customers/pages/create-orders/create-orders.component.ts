@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { emailPattern } from 'src/app/shared/validator/validations';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
@@ -26,12 +25,13 @@ export class CreateOrdersComponent implements OnInit {
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
-    email: ['claire@claire.com', [ Validators.required, Validators.pattern( emailPattern )]],
+    email: ['claire@claire.com', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
     adress: ['Rue', [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [[]],
     purchasedMenus: [[]],
-    deliveryDate: ['', [ Validators.required ]]
+    deliveryDate: ['', [Validators.required]],
+    deliveryTime:['', [Validators.required, Validators.min(12), Validators.max(20)]]
   }, { validators: this.vs.checkPurchasing })
 
   constructor( private selectProductService: CustomersService,
@@ -47,7 +47,7 @@ export class CreateOrdersComponent implements OnInit {
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
 
-    console.log(this.nextDate)
+    console.log(this.createOrderForm.controls.deliveryTime.value)
   }
 
   submit() {
@@ -59,7 +59,6 @@ export class CreateOrdersComponent implements OnInit {
 
 
   days = 4;
-  // Date.now() gives the epoch date value (in milliseconds) of current date
-  nextDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
+  orderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
 }

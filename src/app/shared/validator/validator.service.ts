@@ -36,4 +36,5 @@ export class ValidatorService {
 
     return prod?.value.length === 0 && menu?.value.length === 0 ? { checkPurchasing: true } : null;
   }
+
 }

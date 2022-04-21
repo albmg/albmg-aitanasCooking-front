@@ -94,13 +94,20 @@
       </mat-form-field> -->
 
       <mat-form-field appearance="legacy">
-        <mat-label>Elije fecha y hora de entrega</mat-label>
+        <mat-label>Elije fecha entrega</mat-label>
         <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
-        <input matInput [min]="nextDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date">
+        <input matInput [min]="orderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-hint>DD/MM/YYYY</mat-hint>
       </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Elije un rango horario para la entrega</mat-label>
+        <input matInput type="time"  max="20:00:00" formControlName="deliveryTime">
+        <mat-hint>Entre las 12h y 20h</mat-hint>
+      </mat-form-field>
+
 
     </div>
 
