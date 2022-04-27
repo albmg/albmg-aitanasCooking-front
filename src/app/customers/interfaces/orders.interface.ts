@@ -9,6 +9,8 @@ export interface Order {
   phone?: string;
   createdDate?: number;
   purchasedProducts?: Product[];
-  purchasedMenus?:    Menu[];
+  purchasedMenus?: Menu[];
+  deliveryDate: string;
+  deliveryTime?: string;
   __v?:              number;
 }

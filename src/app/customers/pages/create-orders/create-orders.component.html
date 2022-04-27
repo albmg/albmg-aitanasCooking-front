@@ -96,17 +96,21 @@
       <mat-form-field appearance="legacy">
         <mat-label>Elije fecha entrega</mat-label>
         <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
-        <input matInput [min]="orderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date">
+        <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker touchUi #picker></mat-datepicker>
         <mat-hint>DD/MM/YYYY</mat-hint>
       </mat-form-field>
 
+      <!-- [matDatepickerFilter]="dateFilter"-->
+
       <mat-form-field appearance="legacy">
         <mat-label>Elije un rango horario para la entrega</mat-label>
-        <input matInput type="time"  max="20:00:00" formControlName="deliveryTime">
+        <input matInput type="time" formControlName="deliveryTime">
         <mat-hint>Entre las 12h y 20h</mat-hint>
       </mat-form-field>
+
+
 
 
     </div>
@@ -123,10 +127,13 @@
               >
           Enviar
       </button>
+
     </mat-card-actions>
   </form>
 </mat-card>
 
 
 <pre>{{ createOrderForm.valid }}</pre>
+
+
 

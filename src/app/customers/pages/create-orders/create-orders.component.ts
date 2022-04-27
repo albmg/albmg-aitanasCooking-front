@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
 import { ValidatorService } from '../../../shared/validator/validator.service';
+import { ProtectedService } from '../../../protected/services/protected.service';
+
+import { Order } from '../../interfaces/orders.interface';
+
+
+
+import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angular/material/datepicker';
+
 
 @Component({
   selector: 'app-create-orders',
@@ -12,6 +20,11 @@ import { ValidatorService } from '../../../shared/validator/validator.service';
     `
     .mat-form-field {
       margin: 5px;
+    }
+
+    button.example-custom-date-class {
+      background: orange;
+      border-radius: 100%;
     }
     `
   ]
@@ -22,6 +35,11 @@ export class CreateOrdersComponent implements OnInit {
 
   menus: Menu[] = []
 
+  orders!: Order[]
+
+  availableOrderDate!: Date
+
+   days: number = 4
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
@@ -30,14 +48,15 @@ export class CreateOrdersComponent implements OnInit {
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [[]],
     purchasedMenus: [[]],
-    deliveryDate: ['', [Validators.required]],
-    deliveryTime:['', [Validators.required, Validators.min(12), Validators.max(20)]]
+    deliveryDate: ['' , [Validators.required]],
+    deliveryTime:['', [Validators.required, Validators.min(12), Validators.max(19)]]
   }, { validators: this.vs.checkPurchasing })
 
   constructor( private selectProductService: CustomersService,
                private fb: FormBuilder,
                private saveOrderService: CustomersService,
-               private vs: ValidatorService) { }
+               private vs: ValidatorService,
+               private manageOrder: ProtectedService) { }
 
   ngOnInit(): void {
 
@@ -47,7 +66,11 @@ export class CreateOrdersComponent implements OnInit {
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
 
-    console.log(this.createOrderForm.controls.deliveryTime.value)
+    this.manageOrder.viewAllOrders()
+      .subscribe(orders => this.orders = orders)
+
+    this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
+    console.log(this.availableOrderDate)
   }
 
   submit() {
@@ -57,8 +80,21 @@ export class CreateOrdersComponent implements OnInit {
       })
   }
 
+  myUnavailableDayFilter = (d: Date | null): boolean => {
 
-  days = 4;
-  orderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
+    const time = d?.getTime();
+
+    const getDatesFromOrders = this.orders.map(m => m.deliveryDate)
+
+
+    const filterDeliveryDates = getDatesFromOrders.filter((item, index) => getDatesFromOrders.indexOf(item) != index).map(date => new Date(date))
+
+    // check duplicates dates
+    const myUnavailableDates = [...new Set(filterDeliveryDates)]
+
+
+    console.log('this.myUnavailableDates', myUnavailableDates)
+        return !myUnavailableDates.find(x=>x.getTime()==time);
+  }
 
 }
