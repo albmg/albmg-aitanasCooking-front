@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
@@ -10,7 +10,7 @@ import { Order } from '../../interfaces/orders.interface';
 
 
 
-import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 
 @Component({
@@ -22,12 +22,13 @@ import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angula
       margin: 5px;
     }
 
-    button.example-custom-date-class {
-      background: orange;
+    .example-custom-date-class {
+      background-color: orange;
       border-radius: 100%;
     }
     `
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CreateOrdersComponent implements OnInit {
 
@@ -68,9 +69,10 @@ export class CreateOrdersComponent implements OnInit {
 
     this.manageOrder.viewAllOrders()
       .subscribe(orders => this.orders = orders)
+    //.subscribe(orders => orders.map(m => m.deliveryDate))
 
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
-    console.log(this.availableOrderDate)
+    //console.log(this.availableOrderDate)
   }
 
   submit() {
@@ -93,8 +95,8 @@ export class CreateOrdersComponent implements OnInit {
     const myUnavailableDates = [...new Set(filterDeliveryDates)]
 
 
-    console.log('this.myUnavailableDates', myUnavailableDates)
-        return !myUnavailableDates.find(x=>x.getTime()==time);
+    //console.log('this.myUnavailableDates', myUnavailableDates)
+    return !myUnavailableDates.find(x=>x.getTime()==time);
   }
 
 }
