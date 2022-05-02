@@ -84,6 +84,8 @@ export class CreateOrdersComponent implements OnInit {
 
   myUnavailableDayFilter = (d: Date | null): boolean => {
 
+    if( !this.orders ) throw Error('No orders')
+
     const time = d?.getTime();
 
     const getDatesFromOrders = this.orders.map(m => m.deliveryDate)
@@ -93,7 +95,6 @@ export class CreateOrdersComponent implements OnInit {
 
     // check duplicates dates
     const myUnavailableDates = [...new Set(filterDeliveryDates)]
-
 
     //console.log('this.myUnavailableDates', myUnavailableDates)
     return !myUnavailableDates.find(x=>x.getTime()==time);
