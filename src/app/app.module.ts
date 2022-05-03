@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { MapsModule } from './maps/maps.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    MapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -40,7 +40,9 @@ export class CreateOrdersComponent implements OnInit {
 
   availableOrderDate!: Date
 
-   days: number = 4
+  days: number = 4
+
+  display = false
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
@@ -98,6 +100,13 @@ export class CreateOrdersComponent implements OnInit {
 
     //console.log('this.myUnavailableDates', myUnavailableDates)
     return !myUnavailableDates.find(x=>x.getTime()==time);
+  }
+
+   onPress() {
+    //this.display = true;
+
+    //To toggle the component
+    this.display = !this.display;
   }
 
 }

@@ -36,9 +36,16 @@
         <mat-form-field appearance="legacy">
           <!-- <mat-label>Nombre</mat-label> -->
           <input matInput placeholder="Dirección" formControlName="adress">
-          <mat-icon matSuffix>add_location</mat-icon>
+          <!-- <mat-icon matSuffix>add_location</mat-icon> -->
           <mat-hint>Introduce tu dirección</mat-hint>
+          <button type="button" mat-button (click)="onPress()">
+            <mat-icon matSuffix>add_location</mat-icon>
+          </button>
         </mat-form-field>
+
+        <div id="map-component" *ngIf="display">
+          <app-map-screen></app-map-screen>
+        </div>
 
 
 
@@ -110,14 +117,9 @@
         <mat-hint>Entre las 12h y 20h</mat-hint>
       </mat-form-field>
 
-
-
-
     </div>
 
     </mat-card-content>
-
-
 
     <mat-card-actions>
       <button mat-raised-button

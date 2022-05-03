@@ -12,6 +12,7 @@ import { ShowProductsComponent } from './pages/show-products/show-products.compo
 import { ShowSingleMenuComponent } from './pages/show-single-menu/show-single-menu.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { MenuCardComponent } from './components/menu-card/menu-card.component';
+import { MapsModule } from '../maps/maps.module';
 
 
 
@@ -31,7 +32,8 @@ import { MenuCardComponent } from './components/menu-card/menu-card.component';
     FormsModule,
     FlexLayoutModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MapsModule
   ]
 })
 export class CustomersModule { }
