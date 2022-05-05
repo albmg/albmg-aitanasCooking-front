@@ -7,10 +7,16 @@
         (ngSubmit)="submit()" >
 
     <mat-card-content>
-    <div fxFlex="50" fxLayout="column">
+      <div fxFlex="30"
+           fxFlex.xs="80"
+           fxFlex.sm="80"
+           fxFlex.md="50"
+           fxLayout="column"
+           fxLayoutAlign="center"
+           fxLayoutGap="30px">
       <h2>Datos de contacto:</h2>
-      <!-- Nombre -->
 
+      <!-- Nombre -->
         <mat-form-field appearance="legacy">
           <mat-label>Nombre</mat-label>
           <input matInput placeholder="Nombre" formControlName="clientName">
@@ -18,9 +24,7 @@
           <mat-hint>Introduce tu nombre</mat-hint>
         </mat-form-field>
 
-
       <!-- email -->
-
         <mat-form-field appearance="legacy">
           <mat-label>Introduce email</mat-label>
           <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email">
@@ -30,27 +34,7 @@
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
-
-      <!-- Dirección -->
-
-        <mat-form-field appearance="legacy">
-          <!-- <mat-label>Nombre</mat-label> -->
-          <input matInput placeholder="Dirección" formControlName="adress">
-          <!-- <mat-icon matSuffix>add_location</mat-icon> -->
-          <mat-hint>Introduce tu dirección</mat-hint>
-          <button type="button" mat-button (click)="onPress()">
-            <mat-icon matSuffix>add_location</mat-icon>
-          </button>
-        </mat-form-field>
-
-        <div id="map-component" *ngIf="display">
-          <app-map-screen></app-map-screen>
-        </div>
-
-
-
         <!-- Telefono -->
-
         <mat-form-field appearance="legacy">
           <!-- <mat-label>Nombre</mat-label> -->
           <input matInput placeholder="Telefono" formControlName="phone">
@@ -58,11 +42,11 @@
           <mat-hint>Introduce tu teléfono</mat-hint>
         </mat-form-field>
 
+        <mat-divider></mat-divider>
 
+    <!-- </div> -->
 
-    </div>
-
-    <div fxFlex="50" fxLayout="column">
+    <!-- <div fxFlex="50" fxLayout="column"> -->
       <h2>Datos de pedido:</h2>
 
        <p>Seleccione al menos un producto o un menú</p>
@@ -86,39 +70,39 @@
           </mat-select>
         </mat-form-field>
 
+        <mat-form-field appearance="legacy">
+          <mat-label>Elije fecha entrega</mat-label>
+          <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
+          <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+          <mat-hint>DD/MM/YYYY</mat-hint>
+        </mat-form-field>
 
-      <!-- <mat-form-field appearance="legacy" class="example-form-field">
-        <mat-label>Elije una fecha de entrega</mat-label>
-        <input matInput [matDatepicker]="datepicker" formControlName="deliveryDate">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field> -->
+        <mat-form-field appearance="legacy">
+          <mat-label>Elije un rango horario para la entrega</mat-label>
+          <input matInput type="time" formControlName="deliveryTime">
+          <mat-hint>Entre las 12h y 20h</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field appearance="legacy">
-        <mat-label>Elije fecha entrega</mat-label>
-        <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
-        <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
-        <mat-hint>DD/MM/YYYY</mat-hint>
-      </mat-form-field>
 
-      <!-- [matDatepickerFilter]="dateFilter"-->
 
-      <mat-form-field appearance="legacy">
-        <mat-label>Elije un rango horario para la entrega</mat-label>
-        <input matInput type="time" formControlName="deliveryTime">
-        <mat-hint>Entre las 12h y 20h</mat-hint>
-      </mat-form-field>
+        <!-- Dirección -->
+        <mat-form-field appearance="legacy">
+          <!-- <mat-label>Nombre</mat-label> -->
+          <input matInput placeholder="Dirección" formControlName="adress">
+          <!-- <mat-icon matSuffix>add_location</mat-icon> -->
+          <mat-hint>Introduce tu dirección</mat-hint>
+          <button type="button" mat-button (click)="onPress()">
+            <mat-icon matSuffix>add_location</mat-icon>
+          </button>
+        </mat-form-field>
 
-    </div>
+        <div id="map-component" *ngIf="display">
+          <app-map-screen></app-map-screen>
+        </div>
 
+      </div>
     </mat-card-content>
 
     <mat-card-actions>
