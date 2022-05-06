@@ -11,6 +11,12 @@ import { Order } from '../../interfaces/orders.interface';
 
 
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { map } from 'rxjs/operators';
+
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { MapScreenComponent } from '../../../maps/screens/map-screen/map-screen.component';
+
 
 
 @Component({
@@ -59,7 +65,9 @@ export class CreateOrdersComponent implements OnInit {
                private fb: FormBuilder,
                private saveOrderService: CustomersService,
                private vs: ValidatorService,
-               private manageOrder: ProtectedService) { }
+               private manageOrder: ProtectedService,
+               public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
 
@@ -102,11 +110,17 @@ export class CreateOrdersComponent implements OnInit {
     return !myUnavailableDates.find(x=>x.getTime()==time);
   }
 
-   onPress() {
+  /* onPress() {
     //this.display = true;
 
     //To toggle the component
     this.display = !this.display;
+  } */
+
+  showMapDialog() {
+    this.dialog.open(MapScreenComponent, {
+      width: '500px'
+    })
   }
 
 }

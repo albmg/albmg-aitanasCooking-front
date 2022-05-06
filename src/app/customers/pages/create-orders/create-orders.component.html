@@ -29,8 +29,6 @@
           <mat-label>Introduce email</mat-label>
           <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email">
           <mat-hint>Introduce tu correo electrónico</mat-hint>
-            <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
@@ -44,11 +42,7 @@
 
         <mat-divider></mat-divider>
 
-    <!-- </div> -->
-
-    <!-- <div fxFlex="50" fxLayout="column"> -->
       <h2>Datos de pedido:</h2>
-
        <p>Seleccione al menos un producto o un menú</p>
 
         <mat-form-field appearance="legacy">
@@ -59,7 +53,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
 
         <mat-form-field appearance="legacy">
           <mat-label>Selecciona menus</mat-label>
@@ -72,7 +65,6 @@
 
         <mat-form-field appearance="legacy">
           <mat-label>Elije fecha entrega</mat-label>
-          <!-- <input matInput [min]="nextDate" type="datetime-local" formControlName="deliveryDate"> -->
           <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker touchUi #picker></mat-datepicker>
@@ -85,22 +77,14 @@
           <mat-hint>Entre las 12h y 20h</mat-hint>
         </mat-form-field>
 
-
-
         <!-- Dirección -->
         <mat-form-field appearance="legacy">
-          <!-- <mat-label>Nombre</mat-label> -->
           <input matInput placeholder="Dirección" formControlName="adress">
-          <!-- <mat-icon matSuffix>add_location</mat-icon> -->
           <mat-hint>Introduce tu dirección</mat-hint>
-          <button type="button" mat-button (click)="onPress()">
+          <button type="button" mat-button (click)="showMapDialog()">
             <mat-icon matSuffix>add_location</mat-icon>
           </button>
         </mat-form-field>
-
-        <div id="map-component" *ngIf="display">
-          <app-map-screen></app-map-screen>
-        </div>
 
       </div>
     </mat-card-content>
@@ -117,9 +101,3 @@
     </mat-card-actions>
   </form>
 </mat-card>
-
-
-<pre>{{ createOrderForm.valid }}</pre>
-
-
-
