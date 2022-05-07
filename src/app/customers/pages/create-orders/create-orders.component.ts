@@ -8,14 +8,11 @@ import { ProtectedService } from '../../../protected/services/protected.service'
 
 import { Order } from '../../interfaces/orders.interface';
 
-
-
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
-import { map } from 'rxjs/operators';
-
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+
 import { MapScreenComponent } from '../../../maps/screens/map-screen/map-screen.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 
@@ -79,7 +76,7 @@ export class CreateOrdersComponent implements OnInit {
 
     this.manageOrder.viewAllOrders()
       .subscribe(orders => this.orders = orders)
-    //.subscribe(orders => orders.map(m => m.deliveryDate))
+
 
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
     //console.log(this.availableOrderDate)
@@ -106,7 +103,7 @@ export class CreateOrdersComponent implements OnInit {
     // check duplicates dates
     const myUnavailableDates = [...new Set(filterDeliveryDates)]
 
-    //console.log('this.myUnavailableDates', myUnavailableDates)
+    //disable these days on date picker
     return !myUnavailableDates.find(x=>x.getTime()==time);
   }
 

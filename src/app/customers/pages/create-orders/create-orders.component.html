@@ -63,13 +63,19 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="legacy">
-          <mat-label>Elije fecha entrega</mat-label>
-          <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker touchUi #picker></mat-datepicker>
-          <mat-hint>DD/MM/YYYY</mat-hint>
-        </mat-form-field>
+        <!-- <div *ngIf="!orders">
+          <mat-spinner></mat-spinner>
+        </div> -->
+
+        <div *ngIf="orders">
+          <mat-form-field appearance="legacy">
+            <mat-label>Elije fecha entrega</mat-label>
+            <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-hint>DD/MM/YYYY</mat-hint>
+          </mat-form-field>
+        </div>
 
         <mat-form-field appearance="legacy">
           <mat-label>Elije un rango horario para la entrega</mat-label>

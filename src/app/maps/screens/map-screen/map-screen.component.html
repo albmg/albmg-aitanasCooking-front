@@ -1,7 +1,8 @@
 
-<app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading>
+<!-- <app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading> -->
 
-<ng-template #mapReady>
+<!-- <ng-template #mapReady> -->
+  <mat-spinner></mat-spinner>
   <app-map-view></app-map-view>
 
   <button
@@ -11,5 +12,5 @@
     Cerrar Mapa
   </button>
 
-</ng-template>
+<!-- </ng-template> -->
 

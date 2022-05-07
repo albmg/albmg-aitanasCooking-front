@@ -17,13 +17,14 @@ export class MapViewComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    if ( !this.placesService.userLocation ) throw Error('No hay placesService.UserLocation')
+    //if ( !this.placesService.userLocation ) throw Error('No hay placesService.UserLocation')
 
      const map = new Map({
       container: this.mapDivElement.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
-      center: this.placesService.userLocation, // starting position [lng, lat]
-      zoom: 9 // starting zoom
+      //center: this.placesService.userLocation, // starting position [lng, lat]
+      center: [ -15.445, 28],
+      zoom: 12 // starting zoom
      });
 
   }

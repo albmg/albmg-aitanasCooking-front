@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class PlacesService {
           resolve( this.userLocation )
         },
         (err) => {
-          alert('No se pudo obtener la geolocalización')
+          //alert('No se pudo obtener la geolocalización')
           console.log(err)
           reject()
         }
