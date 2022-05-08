@@ -1,9 +1,8 @@
 .map-container {
   height: 100vh;
   position: fixed;
-  right: 10px;
+  right: 0px;
   left: 0px;
-  top: 50px;
+  top: 0px;
   width: 100vw;
-  /* border: 1px solid black; */
 }

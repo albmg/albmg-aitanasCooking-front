@@ -45,12 +45,11 @@ export class CreateOrdersComponent implements OnInit {
 
   days: number = 4
 
-  display = false
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
     email: ['claire@claire.com', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
-    adress: ['Rue', [ Validators.required ]],
+    adress: ['', [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [[]],
     purchasedMenus: [[]],
@@ -79,7 +78,7 @@ export class CreateOrdersComponent implements OnInit {
 
 
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
-    //console.log(this.availableOrderDate)
+
   }
 
   submit() {
@@ -106,13 +105,6 @@ export class CreateOrdersComponent implements OnInit {
     //disable these days on date picker
     return !myUnavailableDates.find(x=>x.getTime()==time);
   }
-
-  /* onPress() {
-    //this.display = true;
-
-    //To toggle the component
-    this.display = !this.display;
-  } */
 
   showMapDialog() {
     this.dialog.open(MapScreenComponent, {

@@ -12,7 +12,7 @@ export class PlacesService {
   }
 
   constructor() {
-    this.getUserLocation()
+    //this.getUserLocation()
   }
 
   getUserLocation(): Promise<[number, number]>{

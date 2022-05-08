@@ -67,26 +67,27 @@
           <mat-spinner></mat-spinner>
         </div> -->
 
-        <div *ngIf="orders">
-          <mat-form-field appearance="legacy">
-            <mat-label>Elije fecha entrega</mat-label>
-            <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Choose a date" [matDatepickerFilter]="myUnavailableDayFilter">
+        <!-- <div *ngIf="orders"> -->
+          <mat-form-field appearance="legacy" *ngIf="orders">
+            <mat-label>Fecha de entrega</mat-label>
+            <input matInput [min]="availableOrderDate" [matDatepicker]="picker" formControlName="deliveryDate" placeholder="Haz click en el icono del calendario" [matDatepickerFilter]="myUnavailableDayFilter" [readonly]="true">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker></mat-datepicker>
-            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-hint>Comprueba las fechas disponibles en el calendario</mat-hint>
           </mat-form-field>
-        </div>
+        <!-- </div> -->
 
         <mat-form-field appearance="legacy">
           <mat-label>Elije un rango horario para la entrega</mat-label>
           <input matInput type="time" formControlName="deliveryTime">
-          <mat-hint>Entre las 12h y 20h</mat-hint>
+          <mat-hint>Horario de entrega entre las 12h y 20h</mat-hint>
         </mat-form-field>
 
         <!-- Dirección -->
         <mat-form-field appearance="legacy">
-          <input matInput placeholder="Dirección" formControlName="adress">
-          <mat-hint>Introduce tu dirección</mat-hint>
+          <mat-label>Introduce la ubicación de entrega</mat-label>
+          <input matInput placeholder="Dirección" formControlName="adress" [readonly]="true">
+          <mat-hint>Añade tu ubicación en el mapa</mat-hint>
           <button type="button" mat-button (click)="showMapDialog()">
             <mat-icon matSuffix>add_location</mat-icon>
           </button>
