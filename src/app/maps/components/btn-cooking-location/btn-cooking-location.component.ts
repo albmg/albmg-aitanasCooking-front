@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MapService, PlacesService } from '../../services';
+
 
 @Component({
   selector: 'app-btn-cooking-location',
@@ -7,9 +9,16 @@ import { Component } from '@angular/core';
 })
 export class BtnCookingLocationComponent {
 
-  constructor() { }
+  constructor(
+    private placesService: PlacesService,
+    private mapService: MapService
+  ) { }
 
   goToCookingLocation() {
+
+    if ( !this.mapService.isMapReady ) throw Error('No hay mapa disponible')
+
+    this.mapService.flyTo( this.placesService.cookingsLocation )
 
   }
 

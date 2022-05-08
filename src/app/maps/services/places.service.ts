@@ -5,17 +5,24 @@ import { Injectable } from '@angular/core';
 })
 export class PlacesService {
 
-  userLocation?: [number, number]
+  //userLocation?: [number, number]
 
-  get isUserLocationReady(): boolean {
+  cookingsLocation: [number, number ] = [  -15.444115686379836, 28.0449734484430 ]
+
+
+  /* get isUserLocationReady(): boolean {
     return !!this.userLocation
+  } */
+
+  get isCookingLocationReady(): boolean {
+    return !!this.cookingsLocation
   }
 
   constructor() {
     //this.getUserLocation()
   }
 
-  getUserLocation(): Promise<[number, number]>{
+ /*  getUserLocation(): Promise<[number, number]>{
 
     return new Promise((resolve, reject) => {
 
@@ -31,5 +38,5 @@ export class PlacesService {
         }
       )
     })
-  }
+  } */
 }

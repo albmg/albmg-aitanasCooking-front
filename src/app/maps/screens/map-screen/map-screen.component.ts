@@ -19,6 +19,10 @@ export class MapScreenComponent {
     return this.placesService.isUserLocationReady;
   } */
 
+  get isCookingLocationReady() {
+    return this.placesService.isCookingLocationReady
+  }
+
   closeDialogMap() {
     this.dialogRef.close()
   }
