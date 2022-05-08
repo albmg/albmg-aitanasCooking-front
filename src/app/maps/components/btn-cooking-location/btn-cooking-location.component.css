@@ -1,0 +1,7 @@
+button {
+  bottom: 20px;
+  position: fixed;
+  right: 20px;
+  z-index: inherit;
+  width: 25%
+}
