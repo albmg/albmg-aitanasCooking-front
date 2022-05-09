@@ -1,1 +1,13 @@
-<p>search-bar works!</p>
+<div class="search-container">
+  <input
+    matInput
+    type="text"
+    class="form-control"
+    placeholder="Buscar lugar..."
+    #txtQuery
+    (keyup)="onQueryChanged(txtQuery.value)"
+  >
+  <mat-divider></mat-divider>
+  <app-search-results></app-search-results>
+
+</div>

@@ -3,9 +3,9 @@
 
 <!-- <ng-template #mapReady> -->
 
-  <div *ngIf="!isCookingLocationReady; else mapReady">
-    <mat-spinner></mat-spinner>
-  </div>
+
+  <mat-spinner *ngIf="!isCookingLocationReady; else mapReady"></mat-spinner>
+
 
   <ng-template #mapReady>
     <app-map-view></app-map-view>
@@ -18,6 +18,8 @@
     </button>
 
     <app-btn-cooking-location></app-btn-cooking-location>
+
+    <app-search-bar></app-search-bar>
   </ng-template>
 
 

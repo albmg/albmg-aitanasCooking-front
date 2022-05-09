@@ -3,5 +3,11 @@ button {
   position: fixed;
   right: 20px;
   z-index: inherit;
-  width: 25%
+ /*  width: 20vw;
+  height: 5vh; */
+  width: 25%;
+}
+
+button img {
+  width: 100%;
 }

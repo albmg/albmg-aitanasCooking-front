@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "aitanas-cooking.appspot.com",
     messagingSenderId: "884488944797",
     appId: "1:884488944797:web:e9105e69c3871e44a22874"
-  }
+  },
+  mapboxApiKey: 'pk.eyJ1IjoiYWxibWciLCJhIjoiY2wyaTl1b3h1MGxtdDNtbDUwZGh3YXM1diJ9.JzZSaMSUvlqNrfFa1AwkSQ'
 };
 
 /*

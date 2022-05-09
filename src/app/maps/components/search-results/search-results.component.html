@@ -1,1 +1,23 @@
-<p>search-results works!</p>
+
+<mat-spinner *ngIf="isLoadingPlaces" [diameter]="30"></mat-spinner>
+
+<ul class="list-group mt-2" *ngIf="places.length > 0">
+
+  <li *ngFor="let place of places"
+      class="list-group-item list-group-item-action pointer"
+      [class.active]="place.id === selectedId"
+      (click)="flyTo(place)">
+
+    <h4>{{ place.text_es }}</h4>
+    <p>{{ place.place_name }}</p>
+    <br>
+    <button
+      mat-raised-button
+      (click)="getDirections( place )"
+      ngClass="place.id === selectedId ? 'btn-outline-light' : 'btn-outline-primary' "
+    >
+    Direcciones
+    </button>
+</li>
+
+</ul>

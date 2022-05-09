@@ -108,7 +108,7 @@ export class CreateOrdersComponent implements OnInit {
 
   showMapDialog() {
     this.dialog.open(MapScreenComponent, {
-      width: '500px'
+      width: '500px',
     })
   }
 
