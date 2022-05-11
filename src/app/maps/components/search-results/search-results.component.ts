@@ -41,7 +41,7 @@ export class SearchResultsComponent {
     const start = this.placesService.cookingsLocation;
     const end = place.center as [number, number];
 
-    this.mapService.nombreUsuario = place.place_name
+    this.mapService.userMarkerLocation = place.place_name
 
     this.mapService.getRouteBetweenPoints(start, end)
 

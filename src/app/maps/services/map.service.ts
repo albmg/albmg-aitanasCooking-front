@@ -13,7 +13,7 @@ export class MapService {
   private map?: Map
   private markers: Marker[] = []
 
-  nombreUsuario:  string = ''
+  userMarkerLocation:  string = ''
 
 
   get isMapReady() {

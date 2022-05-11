@@ -87,7 +87,7 @@ export class CreateOrdersComponent implements OnInit {
   }
 
   okGoogle() {
-      this.createOrderForm.patchValue({ adress: this.mapService.nombreUsuario })
+      this.createOrderForm.patchValue({ adress: this.mapService.userMarkerLocation })
   }
 
   submit() {
