@@ -11,7 +11,9 @@ import { Order } from '../../interfaces/orders.interface';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MapScreenComponent } from '../../../maps/screens/map-screen/map-screen.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { MapService } from '../../../maps/services/map.service';
+
 
 
 
@@ -45,11 +47,13 @@ export class CreateOrdersComponent implements OnInit {
 
   days: number = 4
 
+  nombreUsuarioEnCreateOrder: string = ''
+
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
     email: ['claire@claire.com', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
-    adress: ['', [ Validators.required ]],
+    adress: [ '' , [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [[]],
     purchasedMenus: [[]],
@@ -57,18 +61,20 @@ export class CreateOrdersComponent implements OnInit {
     deliveryTime:['', [Validators.required, Validators.min(12), Validators.max(19)]]
   }, { validators: this.vs.checkPurchasing })
 
-  constructor( private selectProductService: CustomersService,
-               private fb: FormBuilder,
-               private saveOrderService: CustomersService,
-               private vs: ValidatorService,
-               private manageOrder: ProtectedService,
-               public dialog: MatDialog
+  constructor(
+    private selectProductService: CustomersService,
+    private fb: FormBuilder,
+    private saveOrderService: CustomersService,
+    private vs: ValidatorService,
+    private manageOrder: ProtectedService,
+    public dialog: MatDialog,
+    private mapService: MapService
   ) { }
 
   ngOnInit(): void {
 
     this.selectProductService.getProducts()
-    .subscribe( products => this.products = products )
+      .subscribe(products => this.products = products)
 
     this.selectProductService.getMenus()
       .subscribe(menus => this.menus = menus)
@@ -76,9 +82,12 @@ export class CreateOrdersComponent implements OnInit {
     this.manageOrder.viewAllOrders()
       .subscribe(orders => this.orders = orders)
 
-
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
+  }
+
+  okGoogle() {
+      this.createOrderForm.patchValue({ adress: this.mapService.nombreUsuario })
   }
 
   submit() {

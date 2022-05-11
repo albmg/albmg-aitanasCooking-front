@@ -13,6 +13,8 @@ export class MapService {
   private map?: Map
   private markers: Marker[] = []
 
+  nombreUsuario:  string = ''
+
 
   get isMapReady() {
     return !!this.map
@@ -75,13 +77,15 @@ export class MapService {
 
     this.directionsApi.get<DirectionsResponse>(`/${ start.join(',')};${ end.join(',')}`)
       //.subscribe( resp => console.log(resp))
-      .subscribe( resp => this.drawPolyline( resp.routes[0]) )
+      .subscribe(resp => {
+        this.drawPolyline(resp.routes[0]);
+      })
   }
 
   private drawPolyline(route: Route) {
 
     //console.log({ distance: route.distance })
-    console.log({ kms: route.distance / 1000, duration: route.duration / 60 })
+    //console.log({ kms: route.distance / 1000, duration: route.duration / 60 })
 
     if (!this.map) throw Error('Mapa no inicializado')
 
@@ -134,6 +138,7 @@ export class MapService {
         'line-width':3
       }
     })
-
   }
+
+
 }

@@ -10,6 +10,7 @@ import { MapService, PlacesService } from '../../services';
 export class SearchResultsComponent {
 
   public selectedId: string = ''
+  markerLocation: string = ''
 
   constructor(
     private placesService: PlacesService,
@@ -28,18 +29,22 @@ export class SearchResultsComponent {
   flyTo(place: Feature) {
     this.selectedId = place.id
     const [lng, lat] = place.center
+
     this.mapService.flyTo( [lng, lat ])
   }
 
   getDirections(place: Feature) {
-    if (!this.placesService.cookingsLocation) throw Error('No hay cooking location')
+    if ( !this.placesService.cookingsLocation ) throw Error('No hay cooking location')
 
     this.placesService.deletePlaces();
 
     const start = this.placesService.cookingsLocation;
     const end = place.center as [number, number];
 
+    this.mapService.nombreUsuario = place.place_name
+
     this.mapService.getRouteBetweenPoints(start, end)
+
   }
 
 }

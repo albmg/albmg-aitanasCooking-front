@@ -31,7 +31,7 @@ export class MapViewComponent implements AfterViewInit {
 
     const popup = new Popup()
       .setHTML(`
-      <img src="../assets/logo02.png" alt="la-cocina-de-Aitana-logo"/>
+      <img src="../assets/logo02.png" width="95%" alt="la-cocina-de-Aitana-logo"/>
       `)
 
 
