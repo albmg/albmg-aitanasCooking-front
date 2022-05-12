@@ -88,8 +88,8 @@ export class MapService {
 
 
     console.log({ kms: route.distance / 1000, duration: route.duration / 60 })
-    this.userMarkerDistance = route.distance / 1000
-    this.userMarkerDuration = route.duration / 60
+    this.userMarkerDistance = Math.round(route.distance / 1000)
+    this.userMarkerDuration = Math.round(route.duration / 60)
 
     if (!this.map) throw Error('Mapa no inicializado')
 
