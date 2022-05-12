@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Menu } from '../../interfaces/menus.interface';
 import { Product } from '../../interfaces/products.interface';
@@ -35,7 +35,7 @@ import { MapService } from '../../../maps/services/map.service';
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class CreateOrdersComponent implements OnInit {
+export class CreateOrdersComponent implements OnInit, DoCheck  {
 
   products: Product[] = [];
 
@@ -86,8 +86,9 @@ export class CreateOrdersComponent implements OnInit {
 
   }
 
-  okGoogle() {
-      this.createOrderForm.patchValue({ adress: this.mapService.userMarkerLocation })
+  ngDoCheck(): void {
+    this.createOrderForm.patchValue({ adress: this.mapService.userMarkerLocation })
+
   }
 
   submit() {

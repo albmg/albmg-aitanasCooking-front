@@ -13,7 +13,9 @@ export class MapService {
   private map?: Map
   private markers: Marker[] = []
 
-  userMarkerLocation:  string = ''
+  userMarkerLocation: string = ''
+  userMarkerDistance?: number
+  userMarkerDuration?: number
 
 
   get isMapReady() {
@@ -84,8 +86,10 @@ export class MapService {
 
   private drawPolyline(route: Route) {
 
-    //console.log({ distance: route.distance })
-    //console.log({ kms: route.distance / 1000, duration: route.duration / 60 })
+
+    console.log({ kms: route.distance / 1000, duration: route.duration / 60 })
+    this.userMarkerDistance = route.distance / 1000
+    this.userMarkerDuration = route.duration / 60
 
     if (!this.map) throw Error('Mapa no inicializado')
 

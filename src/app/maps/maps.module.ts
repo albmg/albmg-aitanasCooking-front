@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { BtnCookingLocationComponent } from './components/btn-cooking-location/btn-cooking-location.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { InfoRouteComponent } from './components/info-route/info-route.component';
 
 
 
@@ -17,7 +18,8 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     LoadingComponent,
     BtnCookingLocationComponent,
     SearchBarComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    InfoRouteComponent
   ],
   imports: [
     CommonModule,
