@@ -13,6 +13,7 @@ import { ShowSingleMenuComponent } from './pages/show-single-menu/show-single-me
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { MenuCardComponent } from './components/menu-card/menu-card.component';
 import { MapsModule } from '../maps/maps.module';
+import { CustomersComponent } from './pages/customers/customers.component';
 
 
 
@@ -25,6 +26,7 @@ import { MapsModule } from '../maps/maps.module';
     ShowSingleMenuComponent,
     ProductCardComponent,
     MenuCardComponent,
+    CustomersComponent
   ],
   imports: [
     CommonModule,

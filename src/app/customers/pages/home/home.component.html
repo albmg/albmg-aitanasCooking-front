@@ -1,61 +1,28 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav>
+<div fxLayout="row wrap"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px">
 
-    <mat-toolbar color="primary">
-      <span>Menú</span>
-      <span class="spacer"></span>
-
-      <button mat-icon-button
-              (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-nav-list>
-      <a routerLink="./productos"
-         mat-list-item
-         (click)="sidenav.toggle()"
-
-      >
-        <mat-icon mat-list-icon>egg</mat-icon>
-        <span>Ver productos</span>
-      </a>
-
-      <a routerLink="./menus"
-         mat-list-item
-         (click)="sidenav.toggle()"
-      >
-        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
-        <span>Ver menús</span>
-      </a>
+  <div fxFlex="20"
+       fxFlex.lg="15"
+       fxFlex.sm="30"
+       >
+       <mat-card>
+          <mat-card-title>Platos</mat-card-title>
+        </mat-card>
 
 
-      <a routerLink="./pedidos"
-         mat-list-item
-         (click)="sidenav.toggle()"
-      >
-        <mat-icon mat-list-icon>set_meal</mat-icon>
-        <span>Crear pedido</span>
-      </a>
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-  <mat-toolbar>
-    <button mat-icon-button
-            (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <span class="spacer"></span>
-
-    <button mat-button (click)="goToLogin()">
-      Login
-    </button>
-  </mat-toolbar>
-
-  <div class="container">
-    <router-outlet></router-outlet>
   </div>
 
-</mat-sidenav-container>
+  <div fxFlex="20"
+       fxFlex.lg="15"
+       fxFlex.sm="30"
+       >
+      <mat-card>
+        <mat-card-title>Menus</mat-card-title>
+      </mat-card>
+    </div>
+
+</div>
+
+

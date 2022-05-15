@@ -1,3 +1,77 @@
-<!-- <h1>La Cocina de Aitana</h1> -->
+<!-- <router-outlet></router-outlet> -->
 
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav>
+
+    <mat-toolbar color="primary">
+      <img src="../../../../assets/logo.png" width="40%" alt="la-cocina-de-Aitana-logo" >
+      <span class="spacer"></span>
+      <button mat-icon-button
+              (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./clientes"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span>Inicio</span>
+      </a>
+
+      <a routerLink="./clientes/productos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon mat-list-icon>egg</mat-icon>
+        <span>Ver productos</span>
+      </a>
+
+      <a routerLink="./clientes/menus"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+        <span>Ver menús</span>
+      </a>
+
+
+      <a routerLink="./clientes/pedidos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>set_meal</mat-icon>
+        <span>Crear pedido</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+
+    <button mat-icon-button
+            (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <img src="../../../../assets/logoHand.png" width="10%" alt="la-cocina-de-Aitana-logo" >
+
+    <span class="spacer"></span>
+
+    <button mat-button (click)="goToLogin()">
+      Login
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</mat-sidenav-container>
+
