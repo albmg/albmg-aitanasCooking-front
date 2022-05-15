@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,22 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'aitanasCookingFront';
 
-   constructor( private router: Router ) { }
+  constructor(
+    private router: Router,
+    private authservice: AuthService
+  ) { }
 
-   goToLogin() {
+  get usuario(): boolean {
+    return !!this.authservice.usuario
+  }
+
+  goToLogin() {
     this.router.navigateByUrl('/auth/login')
+  }
+
+
+  logout() {
+    this.router.navigateByUrl('/auth')
+    this.authservice.logout()
   }
 }

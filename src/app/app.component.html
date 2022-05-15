@@ -47,6 +47,33 @@
         <mat-icon mat-list-icon>set_meal</mat-icon>
         <span>Crear pedido</span>
       </a>
+
+      <a routerLink="../dashboard/gestionar/productos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon mat-list-icon>egg</mat-icon>
+        <span>Gestionar productos</span>
+      </a>
+
+      <a routerLink="../dashboard/gestionar/menus"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+        <span>Gestionar menús</span>
+      </a>
+
+
+      <a routerLink="../dashboard/gestionar/pedidos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon mat-list-icon>set_meal</mat-icon>
+        <span>Gestionar pedidos</span>
+      </a>
+
     </mat-nav-list>
 
   </mat-sidenav>
@@ -62,9 +89,14 @@
 
     <span class="spacer"></span>
 
-    <button mat-button (click)="goToLogin()">
+    <button *ngIf="!usuario" mat-button (click)="goToLogin()">
       Login
     </button>
+
+   <button *ngIf="usuario" mat-button (click)="logout()">
+      Logout
+    </button>
+
   </mat-toolbar>
 
   <div class="container">

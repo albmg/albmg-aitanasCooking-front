@@ -10,7 +10,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class DashboardComponent {
 
-  get usuario() {
+ /*  get usuario() {
     return this.authservice.usuario
   }
 
@@ -20,6 +20,6 @@ export class DashboardComponent {
   logout() {
     this.router.navigateByUrl('/auth')
     this.authservice.logout()
-  }
+  } */
 
 }
