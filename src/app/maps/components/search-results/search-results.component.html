@@ -1,27 +1,37 @@
 
-<mat-spinner *ngIf="isLoadingPlaces" [diameter]="30"></mat-spinner>
+<mat-spinner *ngIf="isLoadingPlaces; else resultsReady" [diameter]="30"></mat-spinner>
 
-<ul class="list-group mt-2" *ngIf="places.length > 0">
+<ng-template #resultsReady>
 
-  <li *ngFor="let place of places"
-      class="list-group-item list-group-item-action pointer"
-      [class.active]="place.id === selectedId"
-      (click)="flyTo(place)">
 
-    <h4>{{ place.text_es }}</h4>
-    <p>{{ place.place_name }}</p>
-    <br>
-    <button
-      mat-raised-button
-      (click)="getDirections( place )"
-      ngClass="place.id === selectedId ? 'btn-outline-light' : 'btn-outline-primary' "
+  <mat-list
+    *ngIf="places.length > 0"
     >
-    Direcciones
-    </button>
+    <mat-list-item
+      *ngFor="let place of places"
+      class="list-group"
+      (click)="flyTo(place)"
+      >
+
+      <!-- <h3 mat-line>{{ place.text_es }}</h3> -->
+      <mat-icon mat-list-icon matPrefix color="white">location_on</mat-icon>
+      <p mat-line>{{ place.place_name }}</p>
+      <br>
+      <br>
+      <!-- <mat-icon *ngIf="place.id === selectedId" matSuffix (click)="getDirections( place )">add_location</mat-icon> -->
+     <button
+      *ngIf="place.id === selectedId"
+        mat-line
+        mat-raised-button
+        color="primary"
+        (click)="getDirections( place )"
+      >
+      Añadir
+      </button>
+    </mat-list-item>
+  </mat-list>
+</ng-template>
 
 
-  </li>
-
-</ul>
 
 

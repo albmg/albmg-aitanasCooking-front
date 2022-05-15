@@ -1,13 +1,17 @@
 <div class="search-container">
-  <input
+  <mat-form-field class="search-input">
+    <input
     matInput
     type="text"
     class="form-control"
     placeholder="Buscar lugar..."
     #txtQuery
     (keyup)="onQueryChanged(txtQuery.value)"
-  >
-  <mat-divider></mat-divider>
-  <app-search-results></app-search-results>
+    autocomplete="off"
+    >
+    <mat-icon class="search-icon" matSuffix>search</mat-icon>
 
+
+    <app-search-results></app-search-results>
+  </mat-form-field>
 </div>

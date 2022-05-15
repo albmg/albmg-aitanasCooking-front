@@ -21,7 +21,7 @@ export class InfoRouteComponent implements DoCheck {
   ) {}
 
   ngDoCheck(): void {
-    //this.target = this.mapService.userMarkerLocation
+    this.target = this.mapService.userMarkerLocation
     this.kilometers = this.mapService.userMarkerDistance
     this.duration = this.mapService.userMarkerDuration
   }

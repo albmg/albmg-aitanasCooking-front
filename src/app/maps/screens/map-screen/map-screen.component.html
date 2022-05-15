@@ -1,9 +1,4 @@
 
-<!-- <app-loading *ngIf="!isCookingLocationReady; else mapReady"></app-loading> -->
-
-<!-- <ng-template #mapReady> -->
-
-
   <mat-spinner *ngIf="!isCookingLocationReady; else mapReady"></mat-spinner>
 
 
@@ -12,9 +7,9 @@
 
     <button
       mat-raised-button
-      color="accent"
+      color="warn"
       (click)="closeDialogMap()">
-      Cerrar Mapa
+      <mat-icon>close</mat-icon>
     </button>
 
     <app-btn-cooking-location></app-btn-cooking-location>
@@ -23,7 +18,3 @@
 
     <app-search-bar></app-search-bar>
   </ng-template>
-
-
-<!-- </ng-template> -->
-

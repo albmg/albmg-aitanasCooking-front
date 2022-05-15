@@ -1,7 +1,17 @@
-.pointer {
-  cursor: pointer
+p {
+  font-size: 12px !important;
+  width: 100%;
 }
 
-p.mat-line {
-  font-size: 12px;
+.list-group {
+  width: 100%;
+}
+
+.list-group {
+  cursor: pointer;
+}
+
+
+.list-group:hover {
+  background: #eee;
 }

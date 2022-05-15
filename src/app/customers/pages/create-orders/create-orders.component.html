@@ -92,9 +92,11 @@
           <mat-label>Introduce la ubicación de entrega</mat-label>
           <input matInput placeholder="Dirección" formControlName="adress" [readonly]="true">
           <mat-hint>Añade tu ubicación en el mapa</mat-hint>
-          <button type="button" mat-button (click)="showMapDialog()">
-            <mat-icon matSuffix>add_location</mat-icon>
-          </button>
+          <mat-icon matSuffix (click)="showMapDialog()">add_location
+              <button type="button" color="primary" mat-button (click)="showMapDialog()">
+
+              </button>
+            </mat-icon>
         </mat-form-field>
 
       <hr>
