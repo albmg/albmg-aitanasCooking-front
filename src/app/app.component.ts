@@ -15,8 +15,8 @@ export class AppComponent {
     private authservice: AuthService
   ) { }
 
-  get usuario(): boolean {
-    return !!this.authservice.usuario
+  get usuario() {
+    return this.authservice.usuario
   }
 
   goToLogin() {
