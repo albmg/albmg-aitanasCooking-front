@@ -58,25 +58,26 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
     purchasedProducts: [[]],
     purchasedMenus: [[]],
     deliveryDate: ['' , [Validators.required]],
-    deliveryTime:['', [Validators.required, Validators.min(12), Validators.max(19)]]
+    deliveryTime: ['', [Validators.required, Validators.min(12), Validators.max(19)]],
+    distance: [],
+    duration: []
   }, { validators: this.vs.checkPurchasing })
 
   constructor(
-    private selectProductService: CustomersService,
-    private fb: FormBuilder,
-    private saveOrderService: CustomersService,
-    private vs: ValidatorService,
+    private customerService: CustomersService,
     private manageOrder: ProtectedService,
-    public dialog: MatDialog,
-    private mapService: MapService
+    private mapService: MapService,
+    private vs: ValidatorService,
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
 
-    this.selectProductService.getProducts()
+    this.customerService.getProducts()
       .subscribe(products => this.products = products)
 
-    this.selectProductService.getMenus()
+    this.customerService.getMenus()
       .subscribe(menus => this.menus = menus)
 
     this.manageOrder.viewAllOrders()
@@ -92,7 +93,7 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
   }
 
   submit() {
-    this.saveOrderService.saveOrder( this.createOrderForm.value )
+    this.customerService.saveOrder( this.createOrderForm.value )
       .subscribe( resp => {
         console.log('Respuesta', resp)
       })
