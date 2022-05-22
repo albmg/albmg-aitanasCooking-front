@@ -4,18 +4,24 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [
-    `
-    .container {
-      margin: 10px;
-    }
-    `
-  ]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   goToLogin() {
     this.router.navigateByUrl('/auth/login')
+  }
+
+  goToProducts() {
+    this.router.navigateByUrl('/clientes/productos')
+  }
+
+  goToMenus() {
+    this.router.navigateByUrl('/clientes/menus')
+  }
+
+  goToOrders() {
+    this.router.navigateByUrl('/clientes/pedidos')
   }
 
   constructor( private router: Router ) { }
