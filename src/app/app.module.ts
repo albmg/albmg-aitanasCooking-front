@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { MaterialModule } from './material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
@@ -24,6 +25,7 @@ import { MapsModule } from './maps/maps.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
     MapsModule

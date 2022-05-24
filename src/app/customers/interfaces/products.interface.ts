@@ -4,8 +4,9 @@ export interface Product {
   image:       string;
   description: string;
   ingredients: string[];
-  units?: number;
-  weight?: number;
+  units?:      number;
+  weight?:     number;
   createdDate: Date;
+  price:       number;
   __v?:        number;
 }

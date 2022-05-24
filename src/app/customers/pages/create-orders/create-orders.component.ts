@@ -87,8 +87,17 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
 
   }
 
+  get userLocation(): boolean {
+    return !!this.mapService.userMarkerLocation
+  }
+
   ngDoCheck(): void {
-    this.createOrderForm.patchValue({ adress: this.mapService.userMarkerLocation })
+    this.createOrderForm.patchValue(
+      {
+        adress: this.mapService.userMarkerLocation,
+        distance: this.mapService.userMarkerDistance,
+        duration: this.mapService.userMarkerDuration
+      })
 
   }
 
