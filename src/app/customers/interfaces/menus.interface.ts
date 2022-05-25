@@ -7,6 +7,7 @@ export interface Menu {
   dishes:      Dish[];
   image:       string;
   number:      number;
+  price:       number;
   __v?:        number;
 }
 

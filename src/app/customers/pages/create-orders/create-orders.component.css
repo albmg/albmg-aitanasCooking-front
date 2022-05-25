@@ -1,8 +1,14 @@
- .mat-form-field {
+.mat-form-field {
       margin: 5px;
-    }
+}
 
-    .example-custom-date-class {
+.example-custom-date-class {
       background-color: orange;
       border-radius: 100%;
-    }
+}
+
+.form-class {
+  margin-top: 30px;
+}
+
+

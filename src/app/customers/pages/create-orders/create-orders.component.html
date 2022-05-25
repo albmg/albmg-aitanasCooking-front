@@ -6,24 +6,31 @@
   fxLayout="column"
   fxLayoutAlign="center"
   fxLayoutGap="30px"> -->
-<div
+<!-- <div
   fxFlex="50"
   fxFlex.xs="100"
   fxFlex.sm="80"
   fxFlex.md="50"
-  fxLayout="column"
+  > -->
+  <h1>Crear pedido</h1>
 
+  <form
+    class="form-class"
+    autocomplete="off"
+    [formGroup]="createOrderForm"
+    (ngSubmit)="submit()"
+    fxLayoutAlign="center center"
+    >
+
+  <mat-card
+    fxFlex="50"
+    fxFlex.xs="100"
+    fxFlex.sm="80"
+    fxFlex.md="80"
   >
-
-
-  <mat-card >
     <mat-card-header>
-      <h1>Crear pedido</h1>
     </mat-card-header>
     <mat-card-content >
-      <form autocomplete="off"
-            [formGroup]="createOrderForm"
-            (ngSubmit)="submit()" >
 
           <!-- <div fxFlex="30"
               fxFlex.xs="80"
@@ -61,10 +68,14 @@
         <hr>
 
         <h2>Datos de pedido:</h2>
-        <p>Seleccione al menos un producto o un menú</p>
+        <p>¿Qué deseas pedir?</p>
 
-        <!-- Product Selection -->
-        <div>
+        <button type="button">Plato simple</button>
+        <button type="button">Menú de cumpleaños</button>
+        <!-- <p>Seleccione al menos un producto o un menú</p> -->
+
+        <!-- Product & Menu Selection -->
+        <!-- <div>
               <mat-form-field appearance="legacy">
                 <mat-label>Selecciona productos</mat-label>
                 <mat-select multiple formControlName="purchasedProducts">
@@ -80,7 +91,6 @@
 
 
               </mat-form-field>
-
         </div>
 
         <mat-form-field appearance="legacy">
@@ -90,7 +100,11 @@
                   {{ menu.name }}
                 </mat-option>
               </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
+
+        <hr>
+        <h5>hey</h5>
+        <hr>
 
         <!-- Datepicker -->
         <mat-form-field appearance="legacy" *ngIf="orders">
@@ -146,17 +160,17 @@
 
         <!-- </div> -->
 
-      </form>
-    </mat-card-content>
+      </mat-card-content>
 
-    <mat-card-actions>
-      <button mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="createOrderForm.invalid"
-              >
-          Enviar
+      <mat-card-actions>
+        <button mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="createOrderForm.invalid"
+        >
+        Enviar
       </button>
     </mat-card-actions>
   </mat-card>
-</div>
+</form>
+<!-- </div> -->

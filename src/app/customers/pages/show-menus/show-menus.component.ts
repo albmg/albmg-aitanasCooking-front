@@ -5,8 +5,7 @@ import { CustomersService } from '../../services/customers.service';
 @Component({
   selector: 'app-show-menus',
   templateUrl: './show-menus.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class ShowMenusComponent implements OnInit {
 
