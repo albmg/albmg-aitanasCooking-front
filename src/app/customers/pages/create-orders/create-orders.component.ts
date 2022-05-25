@@ -21,18 +21,7 @@ import { MapService } from '../../../maps/services/map.service';
 @Component({
   selector: 'app-create-orders',
   templateUrl: './create-orders.component.html',
-  styles: [
-    `
-    .mat-form-field {
-      margin: 5px;
-    }
-
-    .example-custom-date-class {
-      background-color: orange;
-      border-radius: 100%;
-    }
-    `
-  ],
+  styleUrls: ['./create-orders.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class CreateOrdersComponent implements OnInit, DoCheck  {
