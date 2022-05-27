@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Menu } from '../../interfaces/menus.interface';
+import { CustomersService } from '../../services/customers.service';
 
 @Component({
   selector: 'app-menu-card',
@@ -9,5 +10,14 @@ import { Menu } from '../../interfaces/menus.interface';
 export class MenuCardComponent {
 
   @Input() menu!: Menu
+
+  constructor(
+    private customerService: CustomersService
+  ) { }
+
+  sendIdToCart(id: string ) {
+    console.log(this.menu._id)
+    this.customerService.addItemToCart(id)
+  }
 
 }

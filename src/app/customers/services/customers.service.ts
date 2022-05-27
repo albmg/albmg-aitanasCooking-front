@@ -14,6 +14,8 @@ export class CustomersService {
 
   private baseUrl: string = environment.baseUrl
 
+  menuCart: string[] = []
+
   constructor( private http: HttpClient ) { }
 
 
@@ -31,5 +33,9 @@ export class CustomersService {
 
   saveOrder( order: Order ): Observable<Order> {
     return this.http.post<Order>(`${ this.baseUrl }/orders`, order)
+  }
+
+  addItemToCart(id: string ) {
+    this.menuCart.push(id)
   }
 }

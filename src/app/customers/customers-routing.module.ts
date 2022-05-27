@@ -7,6 +7,7 @@ import { ShowMenusComponent } from './pages/show-menus/show-menus.component';
 import { ShowSingleMenuComponent } from './pages/show-single-menu/show-single-menu.component';
 import { ShowProductsComponent } from './pages/show-products/show-products.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'productos',
         component: ShowProductsComponent
+      },
+      {
+        path: 'cart',
+        component: CartComponent
       },
       {
         path:'**',

@@ -14,6 +14,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { MenuCardComponent } from './components/menu-card/menu-card.component';
 import { MapsModule } from '../maps/maps.module';
 import { CustomersComponent } from './pages/customers/customers.component';
+import { CartComponent } from './pages/cart/cart.component';
+
 
 
 
@@ -26,7 +28,8 @@ import { CustomersComponent } from './pages/customers/customers.component';
     ShowSingleMenuComponent,
     ProductCardComponent,
     MenuCardComponent,
-    CustomersComponent
+    CustomersComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

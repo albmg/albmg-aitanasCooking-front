@@ -11,4 +11,14 @@
     <hr> -->
     <h3>Ingredientes:</h3> {{ product.ingredients }}
   </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      class="add-to-cart"
+      mat-button
+      (click)="sendIdToCart(product._id)"
+    >
+      Añadir al carrito
+    </button>
+  </mat-card-actions>
 </mat-card>
