@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { MapsModule } from './maps/maps.module';
+import { CartDialogComponent } from './shared/components/cart-dialog/cart-dialog.component';
 
 
 
@@ -19,7 +20,8 @@ import { MapsModule } from './maps/maps.module';
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CartDialogComponent
   ],
   imports: [
     BrowserModule,

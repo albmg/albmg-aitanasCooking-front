@@ -15,9 +15,10 @@ export class MenuCardComponent {
     private customerService: CustomersService
   ) { }
 
-  sendIdToCart(id: string ) {
+  sendIdMenuToCart(id: string ) {
     console.log(this.menu._id)
     this.customerService.addItemToCart(id)
+
   }
 
 }

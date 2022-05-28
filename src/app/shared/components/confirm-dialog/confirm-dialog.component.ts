@@ -10,8 +10,10 @@ import { Product } from '../../../customers/interfaces/products.interface';
 })
 export class ConfirmDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<ConfirmDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Product) { }
+  constructor(
+    private dialogRef: MatDialogRef<ConfirmDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Product
+  ) { }
 
   ngOnInit(): void {
     console.log(this.data)

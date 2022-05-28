@@ -2,6 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
 import { CustomersService } from '../../services/customers.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { CartDialogComponent } from '../../../shared/components/cart-dialog/cart-dialog.component';
+
+
+
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -13,12 +19,18 @@ export class ProductCardComponent {
   @Input() product!: Product
 
   constructor(
-    private customerService: CustomersService
+    private customerService: CustomersService,
+
+    public dialog: MatDialog
+
   ) { }
 
    sendIdToCart(id: string ) {
-    console.log(this.product._id)
-    this.customerService.addItemToCart(id)
+     console.log(this.product._id)
+     this.customerService.addItemToCart(id)
+     this.dialog.open(CartDialogComponent, {
+       width: '600px',
+       data: this.product
+     })
   }
-
 }

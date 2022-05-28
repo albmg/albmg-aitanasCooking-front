@@ -1,0 +1,17 @@
+<h1>
+  {{ data.name }} añadido a la cesta
+</h1>
+
+<img width="35%" src="{{ data.image }}" alt="">
+
+<p>{{ data.price }}
+  <mat-icon>euro_symbol</mat-icon>
+</p>
+
+<hr>
+
+<div>
+  <button mat-button (click)="close()">Seguir comprando</button>
+  <span class="spacer"></span>
+  <button type="button" mat-button [routerLink]="['./clientes/cart']" (click)="close()">Ver cesta</button>
+</div>
