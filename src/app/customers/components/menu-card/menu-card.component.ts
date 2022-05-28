@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Menu } from '../../interfaces/menus.interface';
-import { CustomersService } from '../../services/customers.service';
+
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-menu-card',
@@ -12,12 +13,12 @@ export class MenuCardComponent {
   @Input() menu!: Menu
 
   constructor(
-    private customerService: CustomersService
+    private cartService: CartService
   ) { }
 
   sendIdMenuToCart(id: string ) {
     console.log(this.menu._id)
-    this.customerService.addItemToCart(id)
+    this.cartService.addItemToCart(id)
 
   }
 

@@ -1,17 +1,50 @@
-<h1>
-  {{ data.name }} añadido a la cesta
-</h1>
+<div
+  fxLayout="column"
+  fxLayoutGap="20"
+  >
 
-<img width="35%" src="{{ data.image }}" alt="">
+  <div fxFlex="100">
+    Producto añadido a la cesta
+  </div>
+  <hr>
 
-<p>{{ data.price }}
-  <mat-icon>euro_symbol</mat-icon>
-</p>
+  <div fxLayoutGap="50">
+    <div
+      fxFlex="40"
+      fxLayoutAlign="center center"
+      >
+      <img width="100%" src="{{ data.image }}" alt="">
+    </div>
 
-<hr>
+    <div
+      fxFlex="60"
+      fxLayout="column"
 
-<div>
-  <button mat-button (click)="close()">Seguir comprando</button>
-  <span class="spacer"></span>
-  <button type="button" mat-button [routerLink]="['./clientes/cart']" (click)="close()">Ver cesta</button>
+      >
+      <p>
+        {{ data.name }}
+      </p>
+
+      <p>
+        {{ data.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+      </p>
+
+      <p>
+        {{ data.units }} uds
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <button mat-button (click)="close()">Seguir comprando</button>
+    <span class="spacer"></span>
+    <button type="button" mat-button [routerLink]="['./clientes/cart']" (click)="close()">Ver cesta</button>
+  </div>
+
 </div>
+
+
+
+
