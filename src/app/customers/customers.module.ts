@@ -15,6 +15,7 @@ import { MenuCardComponent } from './components/menu-card/menu-card.component';
 import { MapsModule } from '../maps/maps.module';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ProductCartItemComponent } from './components/product-cart-item/product-cart-item.component';
 
 
 
@@ -29,7 +30,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ProductCardComponent,
     MenuCardComponent,
     CustomersComponent,
-    CartComponent
+    CartComponent,
+    ProductCartItemComponent
   ],
   imports: [
     CommonModule,

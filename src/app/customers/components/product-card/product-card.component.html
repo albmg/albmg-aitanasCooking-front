@@ -13,12 +13,17 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button
+    <button *ngIf="buttonStatusChanged === false"
       class="add-to-cart"
       mat-button
-      (click)="sendIdToCart(product._id)"
+      type="button"
+      (click)="handleAddProductToCart()"
     >
-      Añadir al carrito
+      Añadir a la cesta
+    </button>
+
+    <button *ngIf="buttonStatusChanged === true" readonly="true">
+      Añadido
     </button>
   </mat-card-actions>
 </mat-card>

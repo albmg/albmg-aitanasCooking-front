@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
-import { CustomersService } from '../../services/customers.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../../../shared/components/cart-dialog/cart-dialog.component';
@@ -17,19 +16,35 @@ export class ProductCardComponent {
 
   @Input() product!: Product
 
+  buttonStatusChanged!: boolean
+
   constructor(
     private cartService: CartService,
-
     public dialog: MatDialog
 
   ) { }
 
-   sendIdToCart(id: string ) {
+  ngOnInit(): void {
+
+    this.buttonStatusChanged = this.cartService.buttonStatusChanged
+
+  }
+
+  handleAddProductToCart() {
+    this.buttonStatusChanged = true
+    this.cartService.sendProductToCard(this.product)
+    this.dialog.open(CartDialogComponent, {
+      width: '600px',
+      data: this.product
+    })
+  }
+
+  /*  sendIdToCart(id: string ) {
      console.log(this.product._id)
      this.cartService.addItemToCart(id)
      this.dialog.open(CartDialogComponent, {
        width: '600px',
        data: this.product
      })
-  }
+   } */
 }

@@ -18,8 +18,7 @@ export class MenuCardComponent {
 
   sendIdMenuToCart(id: string ) {
     console.log(this.menu._id)
-    this.cartService.addItemToCart(id)
-
+    //this.cartService.addItemToCart(id)
   }
 
 }
