@@ -4,6 +4,7 @@
   Tu cesta está vacía
 </div>
 
+
 <div *ngIf="cartProductList.length > 0">
   <div *ngFor="let product of cartProductList">
     <app-product-cart-item [product]="product"></app-product-cart-item>

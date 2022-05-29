@@ -13,7 +13,8 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button *ngIf="buttonStatusChanged === false"
+    <button
+      *ngIf="buttonStatusChanged === false"
       class="add-to-cart"
       mat-button
       type="button"
@@ -22,7 +23,12 @@
       Añadir a la cesta
     </button>
 
-    <button *ngIf="buttonStatusChanged === true" readonly="true">
+    <button
+      *ngIf="buttonStatusChanged === true"
+      readonly="true"
+      mat-button
+      type="button"
+      >
       Añadido
     </button>
   </mat-card-actions>

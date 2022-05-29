@@ -16,7 +16,9 @@ export class ProductCardComponent {
 
   @Input() product!: Product
 
-  buttonStatusChanged!: boolean
+  buttonStatusChanged: boolean = false
+
+  cart!: Product[]
 
   constructor(
     private cartService: CartService,
@@ -24,27 +26,26 @@ export class ProductCardComponent {
 
   ) { }
 
+
   ngOnInit(): void {
 
-    this.buttonStatusChanged = this.cartService.buttonStatusChanged
+    this.cart = this.cartService.menuCart
+
+    if (this.cart.map(m => m._id).includes(this.product._id)) {
+      this.buttonStatusChanged = true
+    }
 
   }
 
   handleAddProductToCart() {
-    this.buttonStatusChanged = true
-    this.cartService.sendProductToCard(this.product)
-    this.dialog.open(CartDialogComponent, {
-      width: '600px',
-      data: this.product
-    })
-  }
+    if (!this.cart.map(m => m._id).includes(this.product._id)) {
+      this.buttonStatusChanged = true
+      this.cartService.sendProductToCard(this.product)
 
-  /*  sendIdToCart(id: string ) {
-     console.log(this.product._id)
-     this.cartService.addItemToCart(id)
-     this.dialog.open(CartDialogComponent, {
-       width: '600px',
-       data: this.product
-     })
-   } */
+      this.dialog.open(CartDialogComponent, {
+        width: '600px',
+        data: this.product
+      })
+    }
+  }
 }
