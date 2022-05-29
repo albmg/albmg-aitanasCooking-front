@@ -2,8 +2,13 @@
   border: 3px solid white
 }
 
-.avel {
-  margin-right: 10px;
+.cart-toolbar {
+  margin-right: 20px;
   background: orange;
+  color: white;
+}
+
+
+.cart-toolbar .mat-icon {
   color: white;
 }

@@ -41,6 +41,8 @@ export class ProductCardComponent {
     if (!this.cart.map(m => m._id).includes(this.product._id)) {
       this.buttonStatusChanged = true
       this.cartService.sendProductToCard(this.product)
+      this.cartService.badgeOnCart = this.cart.length
+      console.log(this.cartService.badgeOnCart)
 
       this.dialog.open(CartDialogComponent, {
         width: '600px',

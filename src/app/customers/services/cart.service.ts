@@ -9,9 +9,12 @@ export class CartService {
 
   menuCart: Product[] = []
 
+  badgeOnCart: number = 0
+
   constructor() { }
 
   sendProductToCard(product: Product) {
     this.menuCart.push(product)
   }
+
 }

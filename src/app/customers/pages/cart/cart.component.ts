@@ -14,13 +14,8 @@ export class CartComponent implements OnInit {
 
   cartProductList: Product[] = []
 
-  productExists = false
-
-  productId: string = ''
-
   constructor(
-    private cartService: CartService,
-    private cs: CustomersService
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {

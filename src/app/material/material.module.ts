@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -22,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   exports: [
+    MatBadgeModule,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,

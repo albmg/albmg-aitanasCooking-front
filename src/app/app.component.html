@@ -94,19 +94,19 @@
     <span class="spacer"></span>
 
 
-    <button class="avel" type="button" mat-mini-fab color="warn">
-        <!-- <mat-icon>
+    <button class="cart-toolbar" type="button" mat-mini-fab color="warn">
+
+      <a routerLink="./clientes/cart"
+      >
+        <mat-icon
+          mat-list-icon
+          [matBadge]="badges"
+          matBadgeColor="warn"
+          matBadgePosition="before"
+          >
           shopping_cart
-        </mat-icon> -->
-
-         <a routerLink="./clientes/cart"
-        >
-          <mat-icon mat-list-icon>
-          shopping_cart
-          </mat-icon>
-
-        </a>
-
+        </mat-icon>
+      </a>
     </button>
 
 
