@@ -11,8 +11,6 @@ import { CartService } from './customers/services/cart.service';
 export class AppComponent {
   title = 'aitanasCookingFront';
 
-  //badges!: number
-
   constructor(
     private router: Router,
     private authservice: AuthService,

@@ -18,13 +18,11 @@ export class CartComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.cartService.menuCart)
     this.cartProductList = this.cartService.menuCart
   }
 
   ngDoCheck(): void {
     this.cartProductList = this.cartService.menuCart
-    //this.cartService.badgeOnCart
   }
 
 }

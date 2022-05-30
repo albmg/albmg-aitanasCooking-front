@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, DoCheck } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
 import { CartService } from '../../services/cart.service';
 
@@ -18,9 +18,7 @@ export class ProductCartItemComponent {
   ) { }
 
   removeCartItem(id: string) {
-
     this.cartService.removeProductOnCart(id)
-
+    this.cartService.badgeOnCart = this.cartService.menuCart.length
   }
-
 }
