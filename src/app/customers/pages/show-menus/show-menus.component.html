@@ -1,15 +1,19 @@
 <h1>Menus</h1>
 
-<div fxLayout="row wrap"
-     fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="40px">
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="40px">
 
-  <div fxFlex="20"
-       fxFlex.lg="15"
-       fxFlex.sm="30"
-       *ngFor="let menu of menus">
+  <div
+    fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.sm="30"
+    *ngFor="let menu of menus">
 
     <app-menu-card [menu]="menu"></app-menu-card>
+
   </div>
+
 </div>

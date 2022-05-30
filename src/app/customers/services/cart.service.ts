@@ -13,8 +13,12 @@ export class CartService {
 
   constructor() { }
 
-  sendProductToCard(product: Product) {
+  sendProductToCart(product: Product) {
     this.menuCart.push(product)
+  }
+
+  removeProductOnCart(id: string) {
+    this.menuCart = this.menuCart.filter((prod) => prod._id !== id)
   }
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../interfaces/products.interface';
-import { CustomersService } from '../../services/customers.service';
 
 
 @Component({
@@ -10,7 +9,7 @@ import { CustomersService } from '../../services/customers.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, DoCheck {
 
   cartProductList: Product[] = []
 
@@ -19,7 +18,13 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.cartService.menuCart)
     this.cartProductList = this.cartService.menuCart
+  }
+
+  ngDoCheck(): void {
+    this.cartProductList = this.cartService.menuCart
+    //this.cartService.badgeOnCart
   }
 
 }

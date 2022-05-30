@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./product-card.component.css']
 })
 
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
 
   @Input() product!: Product
 
@@ -37,12 +37,12 @@ export class ProductCardComponent {
 
   }
 
+
   handleAddProductToCart() {
     if (!this.cart.map(m => m._id).includes(this.product._id)) {
       this.buttonStatusChanged = true
-      this.cartService.sendProductToCard(this.product)
+      this.cartService.sendProductToCart(this.product)
       this.cartService.badgeOnCart = this.cart.length
-      console.log(this.cartService.badgeOnCart)
 
       this.dialog.open(CartDialogComponent, {
         width: '600px',

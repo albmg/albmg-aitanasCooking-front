@@ -1,13 +1,19 @@
-<div fxLayout="row wrap"
-     fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="20px">
+<h1>Platos</h1>
 
-  <div fxFlex="20"
-       fxFlex.lg="15"
-       fxFlex.sm="30"
-       *ngFor="let product of products">
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="40px">
+
+  <div
+    fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.sm="30"
+    *ngFor="let product of products">
 
     <app-product-card [product]="product"></app-product-card>
+
   </div>
+
 </div>

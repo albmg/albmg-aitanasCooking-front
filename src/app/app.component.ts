@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/services/auth.service';
 import { CartService } from './customers/services/cart.service';
@@ -18,6 +18,7 @@ export class AppComponent {
     private authservice: AuthService,
     private cartService: CartService
   ) { }
+
 
   get usuario() {
     return this.authservice.usuario

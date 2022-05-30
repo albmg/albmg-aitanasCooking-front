@@ -1,10 +1,39 @@
-<mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          {{ product.name }}
-        </mat-card-title>
-      </mat-card-header>
-      <img width="25%" src="{{ product.image }}" alt="">
-      <mat-card-content>
-      </mat-card-content>
+<mat-card
+  fxLayout="row"
+  fxLayoutGap="20">
+
+  <div
+    fxFlex="40"
+    fxLayoutAlign="center center"
+    >
+    <img width="40%" src="{{ product.image }}" alt="foto-{{ product.name }}-la-cocina-de-Aitana ">
+  </div>
+
+  <mat-card-content
+    fxFlex="40"
+    >
+    <h1>
+      {{ product.name }}
+    </h1>
+    <p>
+      {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+    </p>
+    <p>
+      {{ product.units }}
+    </p>
+  </mat-card-content>
+
+  <!-- <mat-divider [vertical]="true"></mat-divider> -->
+
+  <mat-card-actions
+    fxFlex="20"
+    >
+    <button
+      mat-button
+      (click)="removeCartItem(product._id)"
+      >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+  </mat-card-actions>
 </mat-card>

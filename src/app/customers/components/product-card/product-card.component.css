@@ -19,7 +19,9 @@
 
 .mat-card-image {
   cursor: pointer;
-  max-height: 200px;;
 }
 
+.mat-card {
+  margin-top: 20px;
+}
 
