@@ -4,11 +4,12 @@
 
 .cart-toolbar {
   margin-right: 20px;
-  background: orange;
-  color: white;
+  /* background: orange; */
+  background: teal;
 }
-
 
 .cart-toolbar .mat-icon {
   color: white;
+  width: 50px;
+  height: 50px;
 }
