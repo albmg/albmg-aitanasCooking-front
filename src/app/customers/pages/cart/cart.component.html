@@ -1,12 +1,27 @@
-<h1>Mi cesta</h1>
+<h1>
+  Mi cesta
+</h1>
 
 <div *ngIf="cartProductList.length === 0">
-  Tu cesta está vacía
+  <p>
+    Tu cesta está vacía
+  </p>
 </div>
 
 
-<div *ngIf="cartProductList.length > 0">
+<div
+  *ngIf="cartProductList.length > 0"
+  fxLayout="column"
+  fxFlex="80"
+  fxLayoutGap="20px"
+  fxLayoutAlign="center center"
+  >
   <div *ngFor="let product of cartProductList">
-    <app-product-cart-item [product]="product"></app-product-cart-item>
+    <app-product-cart-item [product]="product" [totalPrice]="totalPrice"></app-product-cart-item>
   </div>
+</div>
+
+<div *ngIf="cartProductList.length > 0">
+  <h3>Precio</h3>
+  {{ totalPrice }}
 </div>

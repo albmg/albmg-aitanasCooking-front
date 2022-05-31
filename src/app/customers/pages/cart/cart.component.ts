@@ -13,16 +13,19 @@ export class CartComponent implements OnInit, DoCheck {
 
   cartProductList: Product[] = []
 
+  totalPrice: number = 0
+
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.cartProductList = this.cartService.menuCart
+    //this.cartProductList = this.cartService.menuCart
   }
 
   ngDoCheck(): void {
     this.cartProductList = this.cartService.menuCart
+    this.totalPrice = this.cartService.totalPrice
   }
 
 }

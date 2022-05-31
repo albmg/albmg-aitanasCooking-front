@@ -1,12 +1,12 @@
 <mat-card
   fxLayout="row"
-  fxLayoutGap="20">
-
+  fxLayoutGap="20"
+  >
   <div
     fxFlex="40"
     fxLayoutAlign="center center"
     >
-    <img width="40%" src="{{ product.image }}" alt="foto-{{ product.name }}-la-cocina-de-Aitana ">
+    <img width="200vw" src="{{ product.image }}" alt="foto-{{ product.name }}-la-cocina-de-Aitana ">
   </div>
 
   <mat-card-content
@@ -18,15 +18,33 @@
     <p>
       {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
     </p>
-    <p>
+    <!-- <p>
       {{ product.units }}
-    </p>
+    </p> -->
+
+    <mat-form-field>
+      <mat-label for="units"></mat-label>
+      <input
+        autocomplete="off"
+        class="form-control"
+        type="number"
+        matInput
+        [min]="1"
+        [max]="3"
+        [formControl]="units"
+        (click)="caculcatePrice()"
+        >
+    </mat-form-field>
+
+    {{ valueInput }}
+
   </mat-card-content>
 
   <!-- <mat-divider [vertical]="true"></mat-divider> -->
 
   <mat-card-actions
     fxFlex="20"
+    fxLayoutAlign="center center"
     >
     <button
       mat-button

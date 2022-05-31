@@ -11,6 +11,11 @@ export class CartService {
 
   badgeOnCart: number = 0
 
+  totalPrice: number = 0
+
+  quantity: number = 0
+
+
   constructor() { }
 
   sendProductToCart(product: Product) {
