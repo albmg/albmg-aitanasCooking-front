@@ -1,5 +1,6 @@
-import { Component, Input, DoCheck, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { ComplexOuterSubscriber } from 'rxjs/internal/innerSubscribe';
 import { Product } from '../../interfaces/products.interface';
 import { CartService } from '../../services/cart.service';
 
@@ -10,47 +11,53 @@ import { CartService } from '../../services/cart.service';
 })
 
 
-export class ProductCartItemComponent implements OnInit{
+export class ProductCartItemComponent implements OnInit {
 
   @Input() product!: Product
-  @Input() totalPrice: number = 0
 
-  value: number = this.quantity;
-
-  /* addQuantityForm: FormGroup = this.fb.group({
-    units: ['']
-  }) */
+  value: number = 0;
 
   units = new FormControl(0);
+
+
+  productQuantity: any = ''
 
   constructor(
     private cartService: CartService,
     private fb: FormBuilder
   ) { }
 
+
   ngOnInit(): void {
-    this.units.setValue(this.cartService.quantity)
+
+    this.cartService.quantity.map(product => {
+      if (product.id === this.product._id) {
+        this.units.setValue(product.qty)
+      }
+    })
+
   }
 
-  get quantity() {
-    return this.cartService.quantity
-  }
-
-  get valueInput() {
-    return this.units.value
-  }
 
   removeCartItem(id: string) {
     this.cartService.removeProductOnCart(id)
     this.cartService.badgeOnCart = this.cartService.menuCart.length
   }
 
-  caculcatePrice() {
 
-    this.cartService.quantity = this.valueInput
-    console.log(this.valueInput)
-    console.log(this.quantity)
+  setQuantity(id: string) {
 
-    this.cartService.totalPrice = this.valueInput * this.product.price
+    this.productQuantity = { qty: this.units.value, id: this.product._id }
+
+    this.cartService.quantity.push(this.productQuantity)
+
+  }
+
+  caculcatePrice(id: string) {
+
+    console.log(this.cartService.menuCart = this.cartService.menuCart.filter((prod) => prod._id === id))
+
+    this.cartService.totalPrice = this.units.value * this.product.price
+    console.log(this.product._id)
   }
 }

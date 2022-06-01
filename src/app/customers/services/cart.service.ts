@@ -13,7 +13,11 @@ export class CartService {
 
   totalPrice: number = 0
 
-  quantity: number = 0
+  quantity: any[] = [
+    /* { qty: 1, id: '6220e9bed35877c20787b90f' },
+    { qty: 3, id: '6224bc2e1e737c87a92836f4' },
+    { qty: 2, id: '6224bc481e737c87a92836f6' } */
+  ]
 
 
   constructor() { }
