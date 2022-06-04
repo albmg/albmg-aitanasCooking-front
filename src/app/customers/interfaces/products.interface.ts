@@ -4,7 +4,7 @@ export interface Product {
   image:       string;
   description: string;
   ingredients: string[];
-  units?:      number;
+  units:      number;
   weight?:     number;
   createdDate: Date;
   price:       number;

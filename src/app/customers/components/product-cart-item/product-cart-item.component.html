@@ -18,10 +18,9 @@
     <p>
       {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
     </p>
-    <!-- <p>
-      {{ product.units }}
-    </p> -->
 
+
+    <!-- Select product quantity -->
     <mat-form-field>
       <mat-label for="units"></mat-label>
       <input
@@ -36,15 +35,8 @@
         >
     </mat-form-field>
 
-    {{ units.value }}
+    <div>{{ product.price * this.units.value }} <mat-icon [inline]="true">euro_symbol</mat-icon></div>
 
-   <!--  <mat-icon>remove_circle_outline</mat-icon>
-
-    {{ valueInput }}
-
-    <button (click)="addQuantity()">
-      <mat-icon>add_circle_outline</mat-icon>
-    </button> -->
 
   </mat-card-content>
 

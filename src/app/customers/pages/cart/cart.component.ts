@@ -9,23 +9,26 @@ import { Product } from '../../interfaces/products.interface';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, DoCheck {
+export class CartComponent implements DoCheck {
 
   cartProductList: Product[] = []
 
-  totalPrice: number = 0
+  quantity: number = 0
+
+  get totalPrice() {
+    return this.cartService.totalPrice
+  }
+
+  get menuCart() {
+    return this.cartService.menuCart.map(m => m.units)
+  }
 
   constructor(
     private cartService: CartService
   ) { }
 
-  ngOnInit(): void {
-    //this.cartProductList = this.cartService.menuCart
-  }
-
   ngDoCheck(): void {
     this.cartProductList = this.cartService.menuCart
-    this.totalPrice = this.cartService.totalPrice
   }
 
 }
