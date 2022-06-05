@@ -32,8 +32,17 @@
         [max]="3"
         [formControl]="units"
         (click)="setQuantity(product._id)"
+        (keyup)="setQuantity(product._id)"
         >
-    </mat-form-field>
+
+      </mat-form-field>
+
+      <div>
+        <!-- <button class="pepito" mat-mini-fab (click)="decQ(product._id)"><mat-icon [inline]="true">remove</mat-icon></button> -->
+        <mat-icon (click)="decQ(product._id)" [inline]="true">remove</mat-icon>
+        <mat-icon (click)="incQ(product._id)" [inline]="true">add</mat-icon>
+        <!-- <button mat-raised-button mat-mini-fab class="pepito" (click)="incQ(product._id)"><mat-icon [inline]="true">add</mat-icon></button> -->
+      </div>
 
     <div>{{ product.price * this.units.value }} <mat-icon [inline]="true">euro_symbol</mat-icon></div>
 

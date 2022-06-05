@@ -17,8 +17,6 @@ export class ProductCartItemComponent implements OnInit {
 
   @Input() product!: Product
 
-  //value: number = 0;
-
   units = new FormControl(1);
 
   productQuantity: any = ''
@@ -52,6 +50,27 @@ export class ProductCartItemComponent implements OnInit {
     this.cartService.menuCart.map(product => {
       if (id === product._id) {
         this.product.units = this.units.value
+      }
+    })
+
+    console.log(this.units.value)
+  }
+
+  incQ(id: string) {
+    //this.units.value + 1
+    this.cartService.menuCart.map(product => {
+      if (id === product._id && this.product.units <= 3 ) {
+        this.units.setValue( this.product.units + 1 )
+        //this.units.value + 1
+      }
+    })
+  }
+
+  decQ(id: string) {
+    this.cartService.menuCart.map(product => {
+      if (id === product._id && (this.product.units <= 3 || this.product.units >= 1 )) {
+        this.units.setValue( this.product.units - 1 )
+
       }
     })
   }
