@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, DoCheck } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 
 import { Product } from '../../interfaces/products.interface';
@@ -25,7 +25,6 @@ export class ProductCartItemComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private fb: FormBuilder
   ) { }
 
 
@@ -57,11 +56,10 @@ export class ProductCartItemComponent implements OnInit {
   }
 
   incQ(id: string) {
-    //this.units.value + 1
+
     this.cartService.menuCart.map(product => {
       if (id === product._id && this.product.units <= 3 ) {
         this.units.setValue( this.product.units + 1 )
-        //this.units.value + 1
       }
     })
   }

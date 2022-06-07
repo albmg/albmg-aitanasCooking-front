@@ -1,31 +1,71 @@
-<h1>
-  Mi cesta
-</h1>
-
-<div *ngIf="cartProductList.length === 0">
-  <p>
-    Tu cesta está vacía
-  </p>
-</div>
-
-
 <div
-  *ngIf="cartProductList.length > 0"
   fxLayout="column"
-  fxFlex="80"
-  fxLayoutGap="20px"
-  fxLayoutAlign="center center"
+>
+  <div
+    class="div-title"
+    fxFlex="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    >
+    <h1>
+      Mi cesta
+    </h1>
+
+    <div *ngIf="cartProductList.length === 0">
+      <p>
+        Tu cesta está vacía
+      </p>
+    </div>
+  </div>
+
+  <!-- fxFlex="80%"
+    fxLayout="column"
+    fxLayoutGap="20px"
+    fxLayoutAlign="center center" -->
+
+  <div
+    *ngIf="cartProductList.length > 0"
+    fxLayout="row"
+    fxLayoutGap
+    fxLayoutAlign="center none"
   >
-  <div *ngFor="let product of cartProductList">
-    <app-product-cart-item [product]="product"></app-product-cart-item>
+
+    <!-- CartList-->
+    <div
+      fxFlex="50"
+      >
+      <div class="cart-list" *ngFor="let product of cartProductList"
+      >
+        <app-product-cart-item [product]="product"></app-product-cart-item>
+      </div>
+    </div>
+
+    <!-- Show total price -->
+    <div
+      class="total-price-card"
+      fxFlex="30"
+      >
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Resumen del pedido</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <h3>
+            Importe total: {{ totalPrice }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+          </h3>
+          <p>
+            IGIC:
+          </p>
+          <mat-card-actions>
+            <button class="purchase-order-button" mat-raised-button>Tramitar pedido</button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
   </div>
 </div>
 
-<div *ngIf="cartProductList.length > 0">
-  <h3>Precio total</h3>
-  {{ totalPrice }}
 
-  <p>
-    Menucart -- {{ menuCart }}
-  </p>
-</div>

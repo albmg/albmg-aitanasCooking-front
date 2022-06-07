@@ -1,0 +1,19 @@
+.div-title {
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.cart-list {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.total-price-card {
+  padding: 10px;
+}
+
+.purchase-order-button {
+  width: 100%;
+  background: orangered;
+  color: white;
+}
