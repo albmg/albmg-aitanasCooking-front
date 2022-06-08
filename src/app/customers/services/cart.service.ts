@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs'
+import { Injectable, OnInit } from '@angular/core';
+
 import { Product } from '../interfaces/products.interface';
+import { CustomersService } from './customers.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class CartService {
 
   badgeOnCart: number = 0
 
-  constructor() { }
+  constructor(
+    private custormerService: CustomersService
+  ) { }
 
   sendProductToCart(product: Product) {
     this.menuCart.push(product)

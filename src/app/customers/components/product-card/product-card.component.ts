@@ -6,6 +6,7 @@ import { CartDialogComponent } from '../../../shared/components/cart-dialog/cart
 import { CartService } from '../../services/cart.service';
 
 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -22,8 +23,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    public dialog: MatDialog
-
+    public dialog: MatDialog,
   ) { }
 
 
@@ -34,9 +34,7 @@ export class ProductCardComponent implements OnInit {
     if (this.cart.map(m => m._id).includes(this.product._id)) {
       this.buttonStatusChanged = true
     }
-
   }
-
 
   handleAddProductToCart() {
     if (!this.cart.map(m => m._id).includes(this.product._id)) {

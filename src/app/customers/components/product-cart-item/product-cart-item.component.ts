@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { Product } from '../../interfaces/products.interface';
 import { CartService } from '../../services/cart.service';

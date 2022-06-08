@@ -20,6 +20,10 @@ export class CustomersService {
     return this.http.get<Product[]>(`${ this.baseUrl }/products`)
   }
 
+  getProductById( id: string ): Observable<Product>{
+    return this.http.get<Product>(`${ this.baseUrl }/products/${ id }`)
+  }
+
   getMenus(): Observable<Menu[]> {
     return this.http.get<Menu[]>(`${ this.baseUrl }/menus`)
   }
