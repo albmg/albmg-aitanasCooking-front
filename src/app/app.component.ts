@@ -17,7 +17,6 @@ export class AppComponent {
     private cartService: CartService
   ) { }
 
-
   get usuario() {
     return this.authservice.usuario
   }
@@ -34,6 +33,4 @@ export class AppComponent {
     this.router.navigateByUrl('/auth')
     this.authservice.logout()
   }
-
-
 }

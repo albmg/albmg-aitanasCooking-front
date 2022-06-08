@@ -21,15 +21,24 @@ export class CartComponent implements DoCheck {
   constructor(
     private cartService: CartService,
     private custormerService: CustomersService
-  ) { }
+  )
+  {
+    if (this.cartService.menuCart.length > 0) {
+      window.addEventListener("beforeunload", (event) => {
+        event.preventDefault();
+        event.returnValue = "Unsaved modifications";
+        return event;
+      });
+    }
+  }
 
   get totalPrice() {
     return this.cartService.totalPrice
   }
 
-  get menuCart() {
+  /* get menuCart() {
     return this.cartService.menuCart.map(m => m.units)
-  }
+  } */
 
 
   ngDoCheck(): void {
