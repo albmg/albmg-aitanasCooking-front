@@ -1,5 +1,6 @@
 .add-to-cart {
   background: orange;
+  border: 3px solid;
   color: white;
   width: 100%;
 }
@@ -14,7 +15,7 @@
 .add-to-cart:hover {
   background: white;
   color: orange;
-  border: 3px solid orange;
+  border-color: orange;
 }
 
 .mat-card-image {

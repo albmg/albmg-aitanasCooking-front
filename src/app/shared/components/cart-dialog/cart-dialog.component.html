@@ -37,10 +37,23 @@
 
   <hr>
 
-  <div>
-    <button mat-button (click)="close()">Seguir comprando</button>
-    <span class="spacer"></span>
-    <button type="button" mat-button [routerLink]="['./clientes/cart']" (click)="close()">Ver cesta</button>
+  <div fxLayout="row" fxLayoutAlign="space-between center" >
+    <button
+      class="still-buying-button"
+      mat-raised-button
+      type="button"
+      (click)="close()">
+      Seguir comprando
+    </button>
+
+    <button
+      class="go-to-cart-button"
+      mat-raised-button
+      type="button"
+      [routerLink]="['./clientes/cart']"
+      (click)="close()">
+      Ver cesta
+    </button>
   </div>
 
 </div>
