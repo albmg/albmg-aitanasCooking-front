@@ -1,20 +1,14 @@
-.div-title {
-  margin-left: 10px;
-  padding: 10px;
-}
-
 .cart-list {
   margin-bottom: 10px;
   padding: 10px;
 }
 
-.total-price-card {
+.div-title {
+  margin-left: 10px;
   padding: 10px;
 }
 
-.purchase-order-button {
-  width: 100%;
-  /* background: orangered; */
-  background: rgb(253, 128, 36);
-  /*  font-size: 18px; */
+
+.total-price-card {
+  padding: 10px;
 }

@@ -1,0 +1,17 @@
+<mat-card>
+        <mat-card-header>
+          <mat-card-title>Resumen del pedido</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <h3>
+            Importe total: {{ totalPrice }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+          </h3>
+          <p>
+            IGIC:
+          </p>
+          <mat-card-actions>
+            <button class="purchase-order-button" mat-raised-button>Tramitar pedido</button>
+          </mat-card-actions>
+        </mat-card-content>
+</mat-card>
