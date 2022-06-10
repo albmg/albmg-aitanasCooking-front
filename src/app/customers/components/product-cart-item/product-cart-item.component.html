@@ -1,27 +1,31 @@
 <mat-card
   fxLayout="row"
-  fxLayoutGap="20"
   >
   <div
     fxFlex="40"
-    fxLayoutAlign="center center"
+    fxFlex.xs="40"
+    fxLayoutAlign="start center"
+    fxLayoutAlign.xs="start start"
     >
-    <img width="250vw" src="{{ product.image }}" alt="foto-{{ product.name }}-la-cocina-de-Aitana ">
+    <img class="cart-item-image" src="{{ product.image }}" alt="{{ product.name }}-la-cocina-de-Aitana ">
   </div>
 
   <mat-card-content
     fxFlex="40"
+    fxFlex.xs="40"
+    fxLayout="column"
+    fxLayoutAlign.xs="start start"
     >
-    <h1>
+    <h3>
       {{ product.name }}
-    </h1>
+    </h3>
     <p>
       {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
     </p>
 
 
     <!-- Select product quantity -->
-    <mat-form-field>
+    <mat-form-field style="width:5vw">
       <mat-label for="units"></mat-label>
       <input
         autocomplete="off"
@@ -34,32 +38,41 @@
         (click)="setQuantity(product._id)"
         (keyup)="setQuantity(product._id)"
         >
-
       </mat-form-field>
 
-      <div>
+      <!-- <div> -->
         <!-- <button class="pepito" mat-mini-fab (click)="decQ(product._id)"><mat-icon [inline]="true">remove</mat-icon></button> -->
         <!-- <mat-icon (click)="decQ(product._id)" [inline]="true">remove</mat-icon> -->
         <!-- <mat-icon (click)="incQ(product._id)" [inline]="true">add</mat-icon> -->
         <!-- <button mat-raised-button mat-mini-fab class="pepito" (click)="incQ(product._id)"><mat-icon [inline]="true">add</mat-icon></button> -->
-      </div>
+      <!-- </div> -->
 
-    <div>{{ product.price * this.units.value }} <mat-icon [inline]="true">euro_symbol</mat-icon></div>
 
   </mat-card-content>
 
+ <!--  <div
+    fxFlex="10"
+  >
+    <p>
+      {{ product.price * this.units.value }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+    </p>
+  </div> -->
 
   <mat-card-actions
     fxFlex="20"
-    fxLayoutAlign="center start"
+    fxLayoutAlign="end start"
     >
     <button
       mat-button
       (click)="removeCartItem(product._id)"
       class="remove-cart-item-button"
       >
-      <mat-icon>delete</mat-icon>
+      <p>
+        <mat-icon>delete</mat-icon>
+      </p>
     </button>
 
   </mat-card-actions>
 </mat-card>
+
+

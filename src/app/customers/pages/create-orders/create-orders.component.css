@@ -12,3 +12,10 @@
 }
 
 
+mat-card {
+  margin-top: 10px;
+}
+
+.mat-card-content>:first-child {
+  margin-top: 10px!important;
+}

@@ -11,10 +11,10 @@
 
   <mat-card-content>
     <p>
-      <mat-icon> restaurant</mat-icon>: {{ menu.diners }}
+      {{ menu.diners }} <mat-icon [inline]="true">restaurant</mat-icon>
     </p>
     <p>
-      <mat-icon>euro_symbol</mat-icon>: {{ menu.price }}
+      {{ menu.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
     </p>
   </mat-card-content>
 

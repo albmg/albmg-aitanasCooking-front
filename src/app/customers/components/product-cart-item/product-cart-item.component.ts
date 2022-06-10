@@ -55,7 +55,7 @@ export class ProductCartItemComponent implements OnInit {
     console.log(this.units.value)
   }
 
-  incQ(id: string) {
+  /* incQ(id: string) {
 
     this.cartService.menuCart.map(product => {
       if (id === product._id && this.product.units <= 3 ) {
@@ -71,6 +71,6 @@ export class ProductCartItemComponent implements OnInit {
 
       }
     })
-  }
+  } */
 
 }

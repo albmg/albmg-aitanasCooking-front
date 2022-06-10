@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MapScreenComponent } from '../../../maps/screens/map-screen/map-screen.component';
 
 import { MapService } from '../../../maps/services/map.service';
+import { CartService } from '../../services/cart.service';
 
 
 
@@ -58,7 +59,8 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
     private mapService: MapService,
     private vs: ValidatorService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -74,10 +76,22 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
 
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
+    this.createOrderForm.patchValue({
+      purchasedProducts: this.cartService.menuCart
+    })
+
   }
 
   get userLocation(): boolean {
     return !!this.mapService.userMarkerLocation
+  }
+
+  get totalPriceFromCart() {
+    return this.cartService.totalPrice
+  }
+
+  get productsFromCart() {
+    return this.cartService.menuCart
   }
 
   ngDoCheck(): void {
