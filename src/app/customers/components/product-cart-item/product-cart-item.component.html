@@ -2,43 +2,73 @@
   fxLayout="row"
   >
   <div
-    fxFlex="40"
-    fxFlex.xs="40"
+    fxFlex="20"
+    fxFlex.xs="30"
     fxLayoutAlign="start center"
-    fxLayoutAlign.xs="start start"
+    fxLayoutAlign.xs="center center"
     >
     <img class="cart-item-image" src="{{ product.image }}" alt="{{ product.name }}-la-cocina-de-Aitana ">
   </div>
 
   <mat-card-content
-    fxFlex="40"
-    fxFlex.xs="40"
+    fxFlex="60"
+    fxFlex.xs="50"
     fxLayout="column"
-    fxLayoutAlign.xs="start start"
+
     >
     <h3>
       {{ product.name }}
     </h3>
-    <p>
-      {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
-    </p>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutAlign.xs="space-around center"
+    >
+      <div>
+        {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+      </div>
+
+      <div>
+        <!-- Select product quantity -->
+        <!-- style="width:5vw"-->
+        <mat-form-field style="width:10vw">
+          <mat-label for="units">unidades</mat-label>
+          <input
+            autocomplete="off"
+            class="form-control"
+            type="number"
+            matInput
+            [min]="1"
+            [max]="3"
+            [formControl]="units"
+            (click)="setQuantity(product._id)"
+            (keyup)="setQuantity(product._id)"
+            >
+        </mat-form-field>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions
+    fxFlex="20"
+    fxFlex.xs="20"
+    fxLayoutAlign="end start"
+    fxLayoutAlign.xs="end start"
+    >
+    <button
+      mat-button
+      (click)="removeCartItem(product._id)"
+      class="remove-cart-item-button"
+      >
+        <mat-icon>delete</mat-icon>
+    </button>
+
+  </mat-card-actions>
+</mat-card>
 
 
-    <!-- Select product quantity -->
-    <mat-form-field style="width:5vw">
-      <mat-label for="units"></mat-label>
-      <input
-        autocomplete="off"
-        class="form-control"
-        type="number"
-        matInput
-        [min]="1"
-        [max]="3"
-        [formControl]="units"
-        (click)="setQuantity(product._id)"
-        (keyup)="setQuantity(product._id)"
-        >
-      </mat-form-field>
 
       <!-- <div> -->
         <!-- <button class="pepito" mat-mini-fab (click)="decQ(product._id)"><mat-icon [inline]="true">remove</mat-icon></button> -->
@@ -48,7 +78,7 @@
       <!-- </div> -->
 
 
-  </mat-card-content>
+
 
  <!--  <div
     fxFlex="10"
@@ -58,21 +88,5 @@
     </p>
   </div> -->
 
-  <mat-card-actions
-    fxFlex="20"
-    fxLayoutAlign="end start"
-    >
-    <button
-      mat-button
-      (click)="removeCartItem(product._id)"
-      class="remove-cart-item-button"
-      >
-      <p>
-        <mat-icon>delete</mat-icon>
-      </p>
-    </button>
-
-  </mat-card-actions>
-</mat-card>
 
 
