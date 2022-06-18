@@ -21,7 +21,6 @@ export class ProductCartItemComponent implements OnInit {
 
   productQuantity: any = ''
 
-  preArra: any[] = []
 
   constructor(
     private cartService: CartService,
@@ -51,26 +50,6 @@ export class ProductCartItemComponent implements OnInit {
         this.product.defaultUnits = this.units.value
       }
     })
-
-    console.log(this.units.value)
   }
-
-  /* incQ(id: string) {
-
-    this.cartService.menuCart.map(product => {
-      if (id === product._id && this.product.units <= 3 ) {
-        this.units.setValue( this.product.units + 1 )
-      }
-    })
-  }
-
-  decQ(id: string) {
-    this.cartService.menuCart.map(product => {
-      if (id === product._id && (this.product.units <= 3 || this.product.units >= 1 )) {
-        this.units.setValue( this.product.units - 1 )
-
-      }
-    })
-  } */
 
 }

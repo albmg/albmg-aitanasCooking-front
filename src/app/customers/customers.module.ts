@@ -17,6 +17,7 @@ import { CustomersComponent } from './pages/customers/customers.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductCartItemComponent } from './components/product-cart-item/product-cart-item.component';
 import { ShowTotalPriceComponent } from './components/show-total-price/show-total-price.component';
+import { MenuCartItemComponent } from './components/menu-cart-item/menu-cart-item.component';
 
 
 
@@ -33,7 +34,8 @@ import { ShowTotalPriceComponent } from './components/show-total-price/show-tota
     CustomersComponent,
     CartComponent,
     ProductCartItemComponent,
-    ShowTotalPriceComponent
+    ShowTotalPriceComponent,
+    MenuCartItemComponent
   ],
   imports: [
     CommonModule,
