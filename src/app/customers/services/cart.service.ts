@@ -8,7 +8,7 @@ import { CustomersService } from './customers.service';
 })
 export class CartService {
 
-  menuCart: Product[] = []
+  productCart: Product[] = []
 
   badgeOnCart: number = 0
 
@@ -17,15 +17,15 @@ export class CartService {
   ) { }
 
   sendProductToCart(product: Product) {
-    this.menuCart.push(product)
+    this.productCart.push(product)
   }
 
   removeProductOnCart(id: string) {
-    this.menuCart = this.menuCart.filter((prod) => prod._id !== id)
+    this.productCart = this.productCart.filter((prod) => prod._id !== id)
   }
 
   get totalPrice() {
-    return this.menuCart.reduce(function (accumulator, item) {
+    return this.productCart.reduce(function (accumulator, item) {
         return accumulator + item.defaultUnits * item.price;
     }, 0);
   }

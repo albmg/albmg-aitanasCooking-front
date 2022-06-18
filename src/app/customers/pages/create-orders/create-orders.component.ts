@@ -63,7 +63,7 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
     //save products with quantity
-    this.cartService.menuCart.forEach(m => {
+    this.cartService.productCart.forEach(m => {
       this.purchasedProductsWithQty.push(
         {
           productId: m._id,
@@ -82,7 +82,7 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
   }
 
   get productsFromCart() {
-    return this.cartService.menuCart
+    return this.cartService.productCart
   }
 
   ngDoCheck(): void {

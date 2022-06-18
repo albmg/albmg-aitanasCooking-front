@@ -29,7 +29,7 @@ export class ProductCartItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cartService.menuCart.map(product => {
+    this.cartService.productCart.map(product => {
       if (product._id === this.product._id) {
         this.units.setValue(product.defaultUnits)
       }
@@ -39,13 +39,13 @@ export class ProductCartItemComponent implements OnInit {
 
   removeCartItem(id: string) {
     this.cartService.removeProductOnCart(id)
-    this.cartService.badgeOnCart = this.cartService.menuCart.length
+    this.cartService.badgeOnCart = this.cartService.productCart.length
   }
 
 
   setQuantity(id: string) {
 
-    this.cartService.menuCart.map(product => {
+    this.cartService.productCart.map(product => {
       if (id === product._id) {
         this.product.defaultUnits = this.units.value
       }

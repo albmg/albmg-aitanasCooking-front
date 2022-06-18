@@ -29,7 +29,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cart = this.cartService.menuCart
+    this.cart = this.cartService.productCart
 
     if (this.cart.map(m => m._id).includes(this.product._id)) {
       this.buttonStatusChanged = true

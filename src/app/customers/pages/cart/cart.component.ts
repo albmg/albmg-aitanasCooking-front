@@ -20,7 +20,7 @@ export class CartComponent implements DoCheck {
     private cartService: CartService
   )
   {
-    if (this.cartService.menuCart.length > 0) {
+    if (this.cartService.productCart.length > 0) {
       window.addEventListener("beforeunload", (event) => {
         event.preventDefault();
         event.returnValue = "Unsaved modifications";
@@ -39,7 +39,7 @@ export class CartComponent implements DoCheck {
 
 
   ngDoCheck(): void {
-    this.cartProductList = this.cartService.menuCart
+    this.cartProductList = this.cartService.productCart
   }
 
 }
