@@ -37,7 +37,7 @@ export class CreateMenusComponent implements OnInit {
     name: ['', [ Validators.required ]],
     description: ['', [ Validators.required ]],
     dishes: this.fb.array([], Validators.required ),
-    image: ['a', [ Validators.required ]],
+    image: ['https://assets.unileversolutions.com/recipes-v2/209717.jpg', [ Validators.required ]],
     number: [''],
     diners: ['',],
   })
