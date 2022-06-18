@@ -26,7 +26,7 @@ export class CartService {
 
   get totalPrice() {
     return this.menuCart.reduce(function (accumulator, item) {
-        return accumulator + item.units * item.price;
+        return accumulator + item.defaultUnits * item.price;
     }, 0);
   }
 

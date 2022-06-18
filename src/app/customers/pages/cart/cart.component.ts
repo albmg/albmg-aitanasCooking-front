@@ -1,10 +1,8 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 
-import { switchMap } from 'rxjs/operators'
-
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../interfaces/products.interface';
-import { CustomersService } from '../../services/customers.service';
+
 
 
 @Component({
@@ -19,8 +17,7 @@ export class CartComponent implements DoCheck {
   quantity: number = 0
 
   constructor(
-    private cartService: CartService,
-    private custormerService: CustomersService
+    private cartService: CartService
   )
   {
     if (this.cartService.menuCart.length > 0) {

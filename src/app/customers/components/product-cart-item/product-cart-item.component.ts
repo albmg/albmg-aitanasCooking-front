@@ -32,7 +32,7 @@ export class ProductCartItemComponent implements OnInit {
 
     this.cartService.menuCart.map(product => {
       if (product._id === this.product._id) {
-        this.units.setValue(product.units)
+        this.units.setValue(product.defaultUnits)
       }
     })
   }
@@ -48,7 +48,7 @@ export class ProductCartItemComponent implements OnInit {
 
     this.cartService.menuCart.map(product => {
       if (id === product._id) {
-        this.product.units = this.units.value
+        this.product.defaultUnits = this.units.value
       }
     })
 

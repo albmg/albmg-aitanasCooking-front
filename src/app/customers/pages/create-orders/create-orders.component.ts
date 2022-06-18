@@ -1,7 +1,6 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Menu } from '../../interfaces/menus.interface';
-import { Product } from '../../interfaces/products.interface';
+
 import { CustomersService } from '../../services/customers.service';
 import { ValidatorService } from '../../../shared/validator/validator.service';
 import { ProtectedService } from '../../../protected/services/protected.service';
@@ -15,10 +14,6 @@ import { MapScreenComponent } from '../../../maps/screens/map-screen/map-screen.
 import { MapService } from '../../../maps/services/map.service';
 import { CartService } from '../../services/cart.service';
 
-
-
-
-
 @Component({
   selector: 'app-create-orders',
   templateUrl: './create-orders.component.html',
@@ -27,17 +22,13 @@ import { CartService } from '../../services/cart.service';
 })
 export class CreateOrdersComponent implements OnInit, DoCheck  {
 
-  products: Product[] = [];
-
-  menus: Menu[] = []
-
   orders!: Order[]
 
   availableOrderDate!: Date
 
   days: number = 4
 
-  nombreUsuarioEnCreateOrder: string = ''
+  purchasedProductsWithQty: any[] = []
 
 
   createOrderForm: FormGroup = this.fb.group({
@@ -45,7 +36,7 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
     email: ['claire@claire.com', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
     adress: [ '' , [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
-    purchasedProducts: [[]],
+    purchasedProducts: [this.purchasedProductsWithQty],
     purchasedMenus: [[]],
     deliveryDate: ['' , [Validators.required]],
     deliveryTime: ['', [Validators.required, Validators.min(12), Validators.max(19)]],
@@ -65,19 +56,19 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
 
   ngOnInit(): void {
 
-    this.customerService.getProducts()
-      .subscribe(products => this.products = products)
-
-    this.customerService.getMenus()
-      .subscribe(menus => this.menus = menus)
-
     this.manageOrder.viewAllOrders()
       .subscribe(orders => this.orders = orders)
 
+    // calculate initial date
     this.availableOrderDate = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000)
 
-    this.createOrderForm.patchValue({
-      purchasedProducts: this.cartService.menuCart
+    //save products with quantity
+    this.cartService.menuCart.forEach(m => {
+      this.purchasedProductsWithQty.push(
+        {
+          productId: m._id,
+          quantity: m.defaultUnits
+        })
     })
 
   }
