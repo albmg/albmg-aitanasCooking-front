@@ -20,11 +20,24 @@
 
   <mat-card-actions>
     <button
+      *ngIf="buttonStatusChanged === false"
       class="add-to-cart"
       mat-button
-      (click)="sendIdMenuToCart(menu._id)"
+      type="button"
+      (click)="handleAddMenuToCart()"
     >
-      Añadir al carrito
+       Añadir a la cesta
+    </button>
+
+     <button
+      *ngIf="buttonStatusChanged === true"
+      class="added-to-cart"
+      readonly="true"
+      mat-button
+      type="button"
+      disabled="true"
+      >
+      Añadido
     </button>
   </mat-card-actions>
 </mat-card>

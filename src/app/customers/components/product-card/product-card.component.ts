@@ -40,7 +40,7 @@ export class ProductCardComponent implements OnInit {
     if (!this.cart.map(m => m._id).includes(this.product._id)) {
       this.buttonStatusChanged = true
       this.cartService.sendProductToCart(this.product)
-      this.cartService.badgeOnCart = this.cart.length
+      this.cartService.badgeProduct = this.cart.length
 
       this.dialog.open(CartDialogComponent, {
         width: '600px',

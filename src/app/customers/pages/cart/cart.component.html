@@ -11,43 +11,65 @@
       Mi cesta
     </h1>
 
-    <div *ngIf="cartProductList.length === 0">
+    <div *ngIf="cartProductList.length === 0 && cartMenuList.length === 0">
       <p>
         Tu cesta está vacía
       </p>
     </div>
   </div>
 
-  <!-- fxFlex="80%"
-    fxLayout="column"
-    fxLayoutGap="20px"
-    fxLayoutAlign="center center" -->
-
   <div
-    *ngIf="cartProductList.length > 0"
     fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutGap
     fxLayoutAlign="center none"
   >
-    <!-- CartList-->
+
+    <!-- cart items -->
     <div
+      fxLayout="column"
+      fxLayout.xs="column"
+      fxLayoutGap
+      fxLayoutAlign="center none"
       fxFlex="50"
       >
-      <div class="cart-list" *ngFor="let product of cartProductList"
+      <div
+        *ngIf="cartProductList.length > 0"
       >
-        <app-product-cart-item [product]="product"></app-product-cart-item>
+        <!-- Cart Product List-->
+
+          <h3>Lista de platos</h3>
+          <div class="cart-list" *ngFor="let product of cartProductList"
+          >
+            <app-product-cart-item [product]="product"></app-product-cart-item>
+          </div>
+
       </div>
+
+      <div
+        *ngIf="cartMenuList.length > 0"
+      >
+        <!-- Cart Menu List-->
+          <h3>Lista de menus</h3>
+          <div class="cart-list" *ngFor="let menu of cartMenuList"
+          >
+            <app-menu-cart-item [menu]="menu"></app-menu-cart-item>
+          </div>
+      </div>
+
+
     </div>
 
     <!-- Show total price -->
     <div
+      *ngIf="cartProductList.length > 0 || cartMenuList.length > 0"
       class="total-price-card"
       fxFlex="30"
       >
       <app-show-total-price></app-show-total-price>
     </div>
+
+
   </div>
+
 </div>
 
 

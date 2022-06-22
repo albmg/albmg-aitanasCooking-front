@@ -16,6 +16,6 @@ export class ShowTotalPriceComponent implements OnInit {
   }
 
   get totalPrice() {
-    return this.cartService.totalPrice
+     return this.cartService.totalProductPrice + this.cartService.totalMenuPrice
   }
 }

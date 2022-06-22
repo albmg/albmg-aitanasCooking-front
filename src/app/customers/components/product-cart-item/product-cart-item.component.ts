@@ -39,7 +39,8 @@ export class ProductCartItemComponent implements OnInit {
 
   removeCartItem(id: string) {
     this.cartService.removeProductOnCart(id)
-    this.cartService.badgeOnCart = this.cartService.productCart.length
+    //this.cartService.badgeOnCart = this.cartService.productCart.length
+    this.cartService.badgeProduct = this.cartService.productCart.length
   }
 
 

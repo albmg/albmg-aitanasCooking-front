@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   get badges() {
-    return this.cartService.badgeOnCart
+    return this.cartService.badgeMenu + this.cartService.badgeProduct
   }
 
   goToLogin() {

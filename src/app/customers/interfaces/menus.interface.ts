@@ -1,14 +1,15 @@
 export interface Menu {
-  _id:         string;
-  name:        string;
-  createdDate: null;
-  description: string;
-  diners:      number;
-  dishes:      Dish[];
-  image:       string;
-  number:      number;
-  price:       number;
-  __v?:        number;
+  _id:          string;
+  name:         string;
+  createdDate:  null;
+  description:  string;
+  diners:       number;
+  dishes:       Dish[];
+  image:        string;
+  number:       number;
+  price:        number;
+  defaultUnits: number;
+  __v?:         number;
 }
 
 export interface Dish {

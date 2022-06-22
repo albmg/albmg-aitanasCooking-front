@@ -12,7 +12,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class MenuCartItemComponent implements OnInit {
 
-  @Input() product!: Menu
+  @Input() menu!: Menu
 
   units = new FormControl(1);
 
@@ -23,6 +23,29 @@ export class MenuCartItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.cartService.menuCart.map(menu => {
+      if (menu._id === this.menu._id) {
+        this.units.setValue(menu.defaultUnits)
+      }
+    })
+  }
+
+  removeCartItem(id: string) {
+    this.cartService.removeMenuOnCart(id)
+    //this.cartService.badgeOnCart = this.cartService.menuCart.length
+    this.cartService.badgeMenu = this.cartService.menuCart.length
+
+  }
+
+
+  setQuantity(id: string) {
+
+    this.cartService.menuCart.map(menu => {
+      if (id === menu._id) {
+        this.menu.defaultUnits = this.units.value
+      }
+    })
   }
 
 }

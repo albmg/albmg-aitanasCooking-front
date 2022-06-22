@@ -30,6 +30,8 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
 
   purchasedProductsWithQty: any[] = []
 
+  purchasedMenusWithQty: any[] = []
+
 
   createOrderForm: FormGroup = this.fb.group({
     clientName: ['Claire', [ Validators.required ]],
@@ -37,7 +39,7 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
     adress: [ '' , [ Validators.required ]],
     phone: ['286', [ Validators.required ]],
     purchasedProducts: [this.purchasedProductsWithQty],
-    purchasedMenus: [[]],
+    purchasedMenus: [this.purchasedMenusWithQty],
     deliveryDate: ['' , [Validators.required]],
     deliveryTime: ['', [Validators.required, Validators.min(12), Validators.max(19)]],
     distance: [],
@@ -71,6 +73,15 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
         })
     })
 
+    //save menus with quantity
+    this.cartService.menuCart.forEach(m => {
+      this.purchasedMenusWithQty.push(
+        {
+          menuId: m._id,
+          quantity: m.defaultUnits
+        })
+    })
+
   }
 
   get userLocation(): boolean {
@@ -78,11 +89,15 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
   }
 
   get totalPriceFromCart() {
-    return this.cartService.totalPrice
+     return this.cartService.totalProductPrice + this.cartService.totalMenuPrice
   }
 
   get productsFromCart() {
     return this.cartService.productCart
+  }
+
+  get menusFromCart() {
+    return this.cartService.menuCart
   }
 
   ngDoCheck(): void {

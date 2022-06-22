@@ -1,19 +1,40 @@
-.mat-card {
-  margin-top: 30px
+.add-to-cart {
+  background-color: orange;
+  border: 3px solid;
+  color: white;
+  width: 100%;
+}
+
+.added-to-cart:disabled  {
+  background-color: rgb(224, 224, 224);
+  border: 1px solid;
+  border-color: rgb(224, 224, 224);
+  color: rgb(0, 0, 0);
+  cursor: not-allowed;
+  width: 100%;
+}
+
+.added-to-cart:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+
+.add-to-cart:hover {
+  background-color: white;
+  border-color: orange;
+  color: orange;
 }
 
 .mat-card-image {
   cursor: pointer;
 }
 
-.add-to-cart {
-  background: orange;
-  color: white;
-  width: 100%;
+.mat-card {
+  margin-top: 20px;
 }
 
-.add-to-cart:hover {
-  background: white;
-  color: orange;
-  border: 3px solid orange;
+.mat-card-content {
+  font-size: 18px;
+  /* font-weight: bold; */
 }
+
