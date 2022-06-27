@@ -13,7 +13,8 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { MapsModule } from './maps/maps.module';
 import { CartDialogComponent } from './shared/components/cart-dialog/cart-dialog.component';
-
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CartDialogComponent } from './shared/components/cart-dialog/cart-dialog
     AppComponent,
     ErrorPageComponent,
     ConfirmDialogComponent,
-    CartDialogComponent
+    CartDialogComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { CartDialogComponent } from './shared/components/cart-dialog/cart-dialog
     FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
-    MapsModule
+    MapsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
