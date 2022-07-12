@@ -4,7 +4,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-show-total-price',
   templateUrl: './show-total-price.component.html',
-  styleUrls: ['./show-total-price.component.css']
+  styles: []
 })
 export class ShowTotalPriceComponent implements OnInit {
 

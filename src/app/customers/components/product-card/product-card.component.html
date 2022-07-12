@@ -1,5 +1,4 @@
-<!-- <div class="h-screen w-screen flex items-center justify-center"> -->
-   <div class="rounded-xl shadow-xl">
+<div class="rounded-xl shadow-xl">
      <img class="rounded-t-xl w-full h-36 object-cover" src="{{ product.image }}" alt="">
      <div class="flex flex-col p-7">
        <h2 class="text-xl font-bold truncate mt-1">
@@ -9,51 +8,25 @@
          {{ product.description }}
        </p>
        <div class="flex flex-row mt-4">
-         <button class="bg-orange-400 p-2 rounded-md text-white hover:bg-white hover:text-orange-500 w-80 border-2 border-orange-400">
+         <button
+           *ngIf="buttonStatusChanged === false"
+            class="bg-orange-500 p-2 rounded-md text-white hover:bg-white hover:text-orange-500 w-80 border-2 border-orange-400"
+            (click)="handleAddProductToCart()"
+            >
            Añadir a la cesta
          </button>
+
+         <button
+           *ngIf="buttonStatusChanged === true"
+            class="bg-white p-2 rounded-md text-orange-500 hover:bg-white hover:text-orange-500 w-80 border-2 border-orange-400"
+            (click)="handleAddProductToCart()"
+            type="button"
+            readonly="true"
+            disabled="true"
+            >
+           Añadido
+         </button>
+
        </div>
      </div>
    </div>
-<!-- </div> -->
-
-
-<!-- <mat-card >
-  <mat-card-header>
-    <mat-card-title> {{ product.name }}</mat-card-title>
-    <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
-  </mat-card-header>
-
-  <img
-    mat-card-image src="{{ product.image }}"
-    >
-
-  <mat-card-content>
-    {{ product.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
-  </mat-card-content>
-
-  <mat-card-actions>
-    <button
-      *ngIf="buttonStatusChanged === false"
-      class="add-to-cart"
-      mat-button
-      type="button"
-      (click)="handleAddProductToCart()"
-    >
-      Añadir a la cesta
-    </button>
-
-    <button
-      *ngIf="buttonStatusChanged === true"
-      class="added-to-cart"
-      readonly="true"
-      mat-button
-      type="button"
-      disabled="true"
-      >
-      Añadido
-    </button>
-  </mat-card-actions>
-</mat-card> -->
-
-

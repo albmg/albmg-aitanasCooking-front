@@ -1,43 +1,32 @@
-<mat-card >
-  <mat-card-header>
-    <mat-card-title> {{ menu.name }}</mat-card-title>
-    <mat-card-subtitle>{{ menu.description }}</mat-card-subtitle>
-  </mat-card-header>
+  <div class="rounded-xl shadow-xl">
+     <img class="rounded-t-xl w-full h-36 object-cover" src="{{ menu.image }}" alt="">
+     <div class="flex flex-col p-7">
+       <h2 class="text-xl font-bold truncate mt-1">
+         {{ menu.name }}
+       </h2>
+       <p class="text-base text-gray-600 mt-1">
+         {{ menu.description }}
+       </p>
+       <div class="flex flex-row mt-4">
+         <button
+           *ngIf="buttonStatusChanged === false"
+            class="bg-orange-500 p-2 rounded-md text-white hover:bg-white hover:text-orange-500 w-80 border-2 border-orange-400"
+            (click)="handleAddMenuToCart()"
+            >
+           Añadir a la cesta
+         </button>
 
-  <img
-    mat-card-image src="{{ menu.image }}"
-    [routerLink]="['../menus', menu._id]"
-  >
+         <button
+           *ngIf="buttonStatusChanged === true"
+            class="bg-white p-2 rounded-md text-orange-500 hover:bg-white hover:text-orange-500 w-80 border-2 border-orange-400"
+            (click)="handleAddMenuToCart()"
+            type="button"
+            readonly="true"
+            disabled="true"
+            >
+           Añadido
+         </button>
 
-  <mat-card-content>
-    <p>
-      {{ menu.diners }} <mat-icon [inline]="true">restaurant</mat-icon>
-    </p>
-    <p>
-      {{ menu.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
-    </p>
-  </mat-card-content>
-
-  <mat-card-actions>
-    <button
-      *ngIf="buttonStatusChanged === false"
-      class="add-to-cart"
-      mat-button
-      type="button"
-      (click)="handleAddMenuToCart()"
-    >
-       Añadir a la cesta
-    </button>
-
-     <button
-      *ngIf="buttonStatusChanged === true"
-      class="added-to-cart"
-      readonly="true"
-      mat-button
-      type="button"
-      disabled="true"
-      >
-      Añadido
-    </button>
-  </mat-card-actions>
-</mat-card>
+       </div>
+     </div>
+   </div>

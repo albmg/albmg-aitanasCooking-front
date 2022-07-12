@@ -1,29 +1,132 @@
-
-<nav class="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
-  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-    <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
-      <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-teal-500" routerLink="./clientes">
-        La Cocina de Aitana
-      </a>
-      <button class="text-teal-500 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" (click)="toggleNavbar()">
-        <fa-icon [icon]="faBars"></fa-icon>
+<mat-sidenav-container class="max-w-screen-2xl mx-auto" >
+  <mat-sidenav #sidenav>
+    <mat-toolbar class="bg-white border-b-2 border-teal-500">
+      <h1 class="text-teal-500">La Cocina de Aitana</h1>
+      <img src="../../../../assets/logo.png" width="40%" alt="la-cocina-de-Aitana-logo" >
+      <span class="spacer"></span>
+      <button
+        class="bg-white"
+        mat-icon-button
+        (click)="sidenav.toggle()">
+        <mat-icon class="text-teal-500">menu</mat-icon>
       </button>
-    </div>
-    <div [ngClass]="{'hidden': !showMenu, 'flex': showMenu}" class="lg:flex lg:flex-grow items-center">
-      <ul class="flex flex-col lg:flex-row list-none ml-auto">
-        <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs font-bold leading-snug text-teal-500 hover:opacity-75" routerLink="./clientes/productos">
-            <fa-icon [icon]="faBars"></fa-icon>
-            <span class="ml-2">Platos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs font-bold leading-snug text-teal-500 hover:opacity-75" routerLink="./clientes/menus">
-            <i class="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Menus</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./clientes"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon class="text-teal-500" mat-list-icon>home</mat-icon>
+        <span class="text-teal-500">Inicio</span>
+      </a>
+
+      <a routerLink="./clientes/productos"
+         mat-list-item
+         (click)="sidenav.toggle()"
+
+      >
+        <mat-icon class="text-teal-500" mat-list-icon>egg</mat-icon>
+        <span class="text-teal-500">Ver productos</span>
+      </a>
+
+      <a routerLink="./clientes/menus"
+         mat-list-item
+         (click)="sidenav.toggle()"
+      >
+        <mat-icon class="text-teal-500" mat-list-icon>restaurant_menu</mat-icon>
+        <span class="text-teal-500">Ver menús</span>
+      </a>
+
+      <!-- Sidenav loggedIn -->
+     <div *ngIf="usuario.id">
+        <a routerLink="../dashboard/gestionar/productos"
+          mat-list-item
+          (click)="sidenav.toggle()"
+          >
+          <mat-icon mat-list-icon>egg</mat-icon>
+          <span>Gestionar productos</span>
+        </a>
+
+        <a routerLink="../dashboard/gestionar/menus"
+          mat-list-item
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+          <span>Gestionar menús</span>
+        </a>
+
+
+        <a routerLink="../dashboard/gestionar/pedidos"
+          mat-list-item
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon mat-list-icon>set_meal</mat-icon>
+          <span>Gestionar pedidos</span>
+        </a>
+
+      </div>
+
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar class="bg-white border-b-2 border-teal-500">
+
+    <button
+      class="bg-white"
+      mat-icon-button
+      (click)="sidenav.toggle()">
+      <mat-icon class="text-teal-500">menu</mat-icon>
+    </button>
+
+    <img class="bg-teal-500 rounded-xl" src="../../../../assets/logoHand.png" width="3%" alt="la-cocina-de-Aitana-logo">
+    <button routerLink="./clientes"><h1 routerLink="./clientes" class="text-center mx-auto text-teal-500">La Cocina de Aitana  </h1></button>
+
+
+
+
+    <span class="spacer"></span>
+
+
+    <button class="bg-white mt-3" type="button" color="warn">
+
+      <a routerLink="./clientes/cart"
+      >
+        <mat-icon
+          mat-list-icon
+          [matBadge]="badges"
+          matBadgeColor="warn"
+          matBadgePosition="before"
+          class="text-teal-500"
+          >
+          shopping_cart
+        </mat-icon>
+      </a>
+    </button>
+
+
+    <!-- <button class="logged bg-white" *ngIf="!usuario.id" mat-button routerLink="../auth/login"> -->
+    <button class="border-2 border-white bg-white" *ngIf="!usuario.id" mat-button (click)="goToLogin()">
+      <!-- <fa-icon class="text-teal-500" [icon]="faLock"></fa-icon> -->
+      <mat-icon class="text-teal-500">lock</mat-icon>
+      <h5 class="text-teal-500">Login</h5>
+    </button>
+
+   <!-- <button class="logged bg-white" *ngIf="usuario.id" mat-button routerLink="../auth/logout"> -->
+   <button class="logged bg-white" *ngIf="usuario.id" mat-button (click)="logout()">
+      <mat-icon class="text-teal-500">lock_open</mat-icon>
+      <h5 class="text-teal-500">logout</h5>
+
+    </button>
+
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+
+
+</mat-sidenav-container>
 

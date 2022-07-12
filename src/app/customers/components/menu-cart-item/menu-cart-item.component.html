@@ -1,72 +1,47 @@
-<mat-card
-  fxLayout="row"
-  >
-  <div
-    fxFlex="20"
-    fxFlex.xs="30"
-    fxLayoutAlign="start center"
-    fxLayoutAlign.xs="center center"
-    >
-    <img class="cart-item-image" src="{{ menu.image }}" alt="{{ menu.name }}-la-cocina-de-Aitana ">
+<div class="grid grid-cols-4 bg-white p-4 rounded-sm">
+  <div class="mr-3 border-2 border-gray-300">
+    <img src="{{ menu.image }}" alt="{{ menu.name }}-la-cocina-de-Aitana ">
   </div>
 
-  <mat-card-content
-    fxFlex="60"
-    fxFlex.xs="50"
-    fxLayout="column"
-
-    >
-    <h3>
-      {{ menu.name }}
-    </h3>
-
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      fxLayoutAlign.xs="space-around center"
-    >
+  <div class="col-span-2">
+    <div class="flex flex-col ml-2">
       <div>
-        {{ menu.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+        <h3>
+          {{ menu.name }}
+        </h3>
       </div>
-
-      <div>
-        <!-- Select product quantity -->
-        <!-- style="width:5vw"-->
-        <mat-form-field style="width:10vw">
-          <mat-label for="units">unidades</mat-label>
+      <div class="flex flex-row justify-between place-items-center">
+        <div>
+          <mat-icon [inline]="true">euro_symbol</mat-icon> {{ menu.price }}
+        </div>
+        <div>
+          <!-- <label class="mr-2">Uds</label> -->
+          <mat-icon [inline]="true">edit</mat-icon>
           <input
             autocomplete="off"
-            class="form-control"
+            class="form-control border-b-4 border-teal-500 rounded-sm p-4"
             type="number"
-            matInput
             [min]="1"
             [max]="3"
             [formControl]="units"
             (click)="setQuantity(menu._id)"
             (keyup)="setQuantity(menu._id)"
             >
-        </mat-form-field>
+        </div>
       </div>
     </div>
+  </div>
 
-  </mat-card-content>
-
-  <mat-card-actions
-    fxFlex="20"
-    fxFlex.xs="20"
-    fxLayoutAlign="end start"
-    fxLayoutAlign.xs="end start"
-    >
-    <button
-      mat-button
-      (click)="removeCartItem(menu._id)"
-      class="remove-cart-item-button"
+  <div class="flex flex-col">
+     <button
+        (click)="removeCartItem(menu._id)"
+        class="text-blue-500 self-end border-b-2 border-blue-300"
       >
         <mat-icon>delete</mat-icon>
     </button>
+  </div>
 
-  </mat-card-actions>
-</mat-card>
+ </div>
 
 
 

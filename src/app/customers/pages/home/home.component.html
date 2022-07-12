@@ -1,174 +1,115 @@
-<div class="container my-24 px-6 mx-auto">
-
-  <section class="mb-32 text-gray-800 background-radial-gradient">
-    <style>
-      .background-radial-gradient {
-        background-color: hsl(118, 41%, 15%);
-        background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(152, 41%, 35%) 15%,
-            hsl(152, 41%, 30%) 35%,
-            hsl(152, 41%, 20%) 75%,
-            hsl(152, 41%, 19%) 80%,
-            transparent 100%),
-          radial-gradient(1250px circle at 100% 100%,
-            hsl(152, 41%, 45%) 15%,
-            hsl(152, 41%, 30%) 35%,
-            hsl(152, 41%, 20%) 75%,
-            hsl(152, 41%, 19%) 80%,
-            transparent 100%);
-        }
-    </style>
-
-      <div class="px-6 py-12 md:px-12 text-center lg:text-left">
-        <div class="container mx-auto">
+<div class="container my-4 px-6 mx-auto">
+  <div class="mb-3 text-gray-800 background-radial-gradient ">
+      <div class="px-6 py-12 md:px-12 text-center lg:text-left bg-gray-50 rounded-sm">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="mt-12 lg:mt-0">
-              <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12"
-                style="color: hsl(218, 81%, 95%)">
-                Cocina casera y saludable <br />
+              <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12 text-teal-500">
+                Cocina casera y saludable en Gran Canaria.<br />
               </h1>
-              <p class="text-lg" style="color: hsl(218, 81%, 95%)">
+              <p class="text-lg text-teal-500">
                Te la llevamos donde quieras!
               </p>
+              <button class="bg-orange-500 text-white p-6 rounded-sm font-bold mr-2" (click)="goToProducts()">Ver platos</button>
+              <button class="bg-orange-500 text-white p-6 rounded-sm font-bold" (click)="goToMenus()">Ver menus</button>
             </div>
             <div class="mb-12 lg:mb-0">
               <div class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden rounded-lg shadow-lg">
-                <!-- <iframe class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
-                  allowfullscreen="" data-gtm-yt-inspected-2340190_699="true" id="240632615"></iframe> -->
-                  <img src="../../../../assets/landing-photo.jpg" alt="">
+                  <img src="../../../../assets/posibleLanding.jpg" alt="">
               </div>
             </div>
           </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Dishes List -->
+<div class="bg-teal-500 rounded-sm">
+  <div class="mx-2 pt-2">
+    <h2 class="text-white">¿ Qué hacemos ? / ¿ Cómo funcionamos ?</h2>
+    <h3 class="text-white text-center font-bold">
+      Preparamos meriendas saludables, bajo pedido, pensadas para celebraciones infantiles aunque sirven para acompañar cualquier otro tipo de reunión.
+      <br>
+      Tenemos la opción de reparto a domicilio.
+    </h3>
+    <hr>
+    <div class="flex flex-col p-5">
+      <div class="flex-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 p-6 text-white">
+        <div class="border-4 border-white p-24 m-4">
+          <mat-icon>notes</mat-icon>
+        </div>
+        <div class="col-span-2 p-4 sm:ml-8">
+          <p>
+            Accede a la carta de platos y/o menús y añadelos a tu cesta.
+          </p>
+          <p>
+            Selecciona la cantidad que deseas por cada producto.
+          </p>
+          <p>
+            Si estás conforme, tramita el pedido.
+          </p>
         </div>
       </div>
-    </section>
-  </div>
+      <div class="flex-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 p-6 text-white">
+        <div class="border-4 border-white p-24 m-4 md:order-last">
+          <mat-icon> notes</mat-icon>
+        </div>
+        <div class="col-span-2 p-4 sm:ml-8">
+         <p>
+            Añade la dirección en el mapa dónde quieres que te enviemos tu pedido, de esa forma podremos calcular las tasas según la distancia:
+          </p>
+        </div>
 
- <!-- Dishes List -->
-<!--   <div class="h-screen w-screen flex items-center justify-center"> -->
-
-<div class="flex flex-row items-center justify-center gap-20">
-  <div class="rounded-xl shadow-xl">
-      <img class="w-full rounded-t-xl h-36 object-cover"
-            src="https://ep01.epimg.net/elcomidista/imagenes/2020/01/16/articulo/1579198461_008900_1579199867_media_normal.jpg"
-            alt="">
-      <div class="p-6">
-        <h2 class="text-2x1 mt-2 font-bold">
-          Platos
-        </h2>
-        <p class="mt-2 text-gray-600">
-          Incredible, amazing and awesome
-        </p>
-        <button>
-          Ver Platos
-        </button>
       </div>
-  </div>
-
-  <!-- Menus List-->
- <div class="rounded-xl shadow-xl">
-      <img class="w-full rounded-t-xl h-36 object-cover"
-           src="https://ep01.epimg.net/elcomidista/imagenes/2020/01/16/articulo/1579198461_008900_1579199867_media_normal.jpg"
-           alt="">
-      <div class="p-6">
-        <h2 class="text-2x1 mt-2 font-bold">
-          Menus
-        </h2>
-        <p class="mt-2 text-gray-600">
-          Incredible, amazing and awesome
-        </p>
-        <button>
-          Ver Menus
-        </button>
+      <div class="flex-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 p-6 text-white">
+        <div class="border-4 border-white p-24 m-4">
+          <mat-icon> notes</mat-icon>
+        </div>
+        <div class="col-span-2 p-4 sm:ml-8">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur veniam vitae eaque rerum veritatis, animi reprehenderit earum placeat repellat modi laborum dolore architecto minima explicabo laudantium iste harum totam quisquam?
+          </p>
+        </div>
       </div>
- </div>
-
- </div>
-
-
+    </div>
+  </div>
+</div>
 
 
-
-<!-- <div fxLayout="row wrap"
-  fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="20px">
- -->
-
- <!--  <div fxFlex="40"
-       fxFlex.lg="15"
-       fxFlex.sm="30"
-       >
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Platos</mat-card-title>
-          <mat-card-subtitle>Platos</mat-card-subtitle>
-        </mat-card-header>
-
-        <img src="https://ep01.epimg.net/elcomidista/imagenes/2020/01/16/articulo/1579198461_008900_1579199867_media_normal.jpg" width="50%" alt="">
-
-        <mat-card-actions>
-          <button
-            mat-button
-            class="home-actions"
-            (click)="goToProducts()"
-            >
-            Ver
+<div class=" flex flex-row items-center justify-center gap-20 mt-20">
+    <div class="rounded-xl shadow-xl">
+        <img class="w-full rounded-t-xl h-36 object-cover"
+              src="https://ep01.epimg.net/elcomidista/imagenes/2020/01/16/articulo/1579198461_008900_1579199867_media_normal.jpg"
+              alt="">
+        <div class="p-6">
+          <h2 class="text-2x1 mt-2 font-bold">
+            Platos
+          </h2>
+          <p class="mt-2 text-gray-600">
+            Incredible, amazing and awesome
+          </p>
+          <button>
+            Ver Platos
           </button>
-        </mat-card-actions>
-      </mat-card>
+        </div>
+    </div>
 
-
-  </div> -->
-
-
-
-
-  <!-- <div fxFlex="40"
-       fxFlex.lg="15"
-       fxFlex.sm="30"
-       >
-      <mat-card>
-       <mat-card-header>
-          <mat-card-title>Menus</mat-card-title>
-          <mat-card-subtitle>Menus</mat-card-subtitle>
-        </mat-card-header>
-
-        <img src="https://ep01.epimg.net/elcomidista/imagenes/2021/11/30/articulo/1638263849_319378_1638267484_media_normal_recorte1.jpg" width="50%" alt="">
-
-        <mat-card-actions>
-          <button
-            mat-button
-            class="home-actions"
-            (click)="goToMenus()"
-            >
-            Ver
+    <!-- Menus List-->
+   <div class="rounded-xl shadow-xl">
+        <img class="w-full rounded-t-xl h-36 object-cover"
+             src="https://ep01.epimg.net/elcomidista/imagenes/2020/01/16/articulo/1579198461_008900_1579199867_media_normal.jpg"
+             alt="">
+        <div class="p-6">
+          <h2 class="text-2x1 mt-2 font-bold">
+            Menus
+          </h2>
+          <p class="mt-2 text-gray-600">
+            Incredible, amazing and awesome
+          </p>
+          <button>
+            Ver Menus
           </button>
-        </mat-card-actions>
-      </mat-card>
-  </div> -->
-
-  <!-- <div fxFlex="20"
-       fxFlex.lg="15"
-       fxFlex.sm="30">
-
-    <button
-      class="button-order"
-      mat-raised-button
-      (click)="goToOrders()"
-      >
-      Haz tu pedido
-    </button>
-
-  </div> -->
-
-  <!-- <div class="h-screen p-16">
-    <button class="bg-indigo-500 p4 rounded-xl text-white hover:bg-indigo-900">
-      Hello!
-    </button>
-  </div> -->
-
-<!-- </div> -->
-
-
+        </div>
+   </div>
+</div>

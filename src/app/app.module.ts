@@ -15,6 +15,7 @@ import { MapsModule } from './maps/maps.module';
 import { CartDialogComponent } from './shared/components/cart-dialog/cart-dialog.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ErrorPageComponent,
     ConfirmDialogComponent,
     CartDialogComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

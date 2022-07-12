@@ -7,7 +7,7 @@ import { Menu } from '../../interfaces/menus.interface';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styles: []
 })
 export class CartComponent implements DoCheck {
 

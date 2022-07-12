@@ -1,23 +1,30 @@
-<mat-card>
-        <mat-card-header>
-          <mat-card-title>Resumen del pedido</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-          <h3>
-            Valor del pedido: {{ totalPrice }} <mat-icon [inline]="true">euro_symbol</mat-icon>
-          </h3>
-          <h3>
-            Coste del envío: Pendiente
-          </h3>
-          <h2>
-            Importe total: Pendiente
-          </h2>
-          <p>
-            IGIC:
-          </p>
-          <mat-card-actions>
-            <button class="purchase-order-button" mat-raised-button [routerLink]="['../pedidos']">Tramitar pedido</button>
-          </mat-card-actions>
-        </mat-card-content>
-</mat-card>
+<div class="bg-white p-4 mr-4 mt-14">
+  <div>
+    <h2 class="border-b-2 border-teal-500">
+      Resumen del pedido
+    </h2>
+  </div>
+  <div>
+    <h3>
+      Valor del pedido: {{ totalPrice }}
+        <mat-icon [inline]="true">euro_symbol</mat-icon>
+    </h3>
+    <h3>
+      Coste del envío: Pendiente
+    </h3>
+    <h2>
+      Importe total: Pendiente
+    </h2>
+    <p>
+      IGIC:
+    </p>
+  </div>
+  <hr>
+  <div class="flex justify-center">
+    <button
+      class="bg-orange-500 rounded-md p-4 font-bold w-96 mt-2"
+      [routerLink]="['../pedidos']">
+        Tramitar pedido
+    </button>
+  </div>
+</div>

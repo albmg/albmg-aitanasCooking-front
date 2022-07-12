@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-menu-card',
   templateUrl: './menu-card.component.html',
-  styleUrls: ['./menu-card.component.css']
+  styles: []
 })
 export class MenuCardComponent implements OnInit {
 

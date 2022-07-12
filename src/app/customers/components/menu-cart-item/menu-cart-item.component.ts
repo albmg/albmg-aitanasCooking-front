@@ -8,7 +8,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-menu-cart-item',
   templateUrl: './menu-cart-item.component.html',
-  styleUrls: ['./menu-cart-item.component.css']
+  styles: []
 })
 export class MenuCartItemComponent implements OnInit {
 

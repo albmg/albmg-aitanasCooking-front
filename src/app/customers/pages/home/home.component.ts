@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styles: []
 })
 export class HomeComponent implements OnInit {
 
-  goToLogin() {
+  /* goToLogin() {
     this.router.navigateByUrl('/auth/login')
-  }
+  } */
 
   goToProducts() {
     this.router.navigateByUrl('/clientes/productos')
@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/clientes/menus')
   }
 
-  goToOrders() {
+  /* goToOrders() {
     this.router.navigateByUrl('/clientes/pedidos')
-  }
+  } */
 
   constructor( private router: Router ) { }
 

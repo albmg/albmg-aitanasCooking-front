@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-product-cart-item',
   templateUrl: './product-cart-item.component.html',
-  styleUrls: ['./product-cart-item.component.css']
+  styles: []
 })
 
 
