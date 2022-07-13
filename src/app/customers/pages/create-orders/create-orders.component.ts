@@ -34,10 +34,10 @@ export class CreateOrdersComponent implements OnInit, DoCheck  {
 
 
   createOrderForm: FormGroup = this.fb.group({
-    clientName: ['Claire', [ Validators.required ]],
-    email: ['claire@claire.com', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
+    clientName: ['', [ Validators.required ]],
+    email: ['', [ Validators.required, Validators.pattern( this.vs.emailPattern )]],
     adress: [ '' , [ Validators.required ]],
-    phone: ['286', [ Validators.required ]],
+    phone: ['', [ Validators.required ]],
     purchasedProducts: [this.purchasedProductsWithQty],
     purchasedMenus: [this.purchasedMenusWithQty],
     deliveryDate: ['' , [Validators.required]],

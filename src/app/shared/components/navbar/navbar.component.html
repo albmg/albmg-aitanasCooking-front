@@ -41,15 +41,15 @@
 
       <!-- Sidenav loggedIn -->
      <div *ngIf="usuario.id">
-        <a routerLink="../dashboard/gestionar/productos"
+        <a routerLink="../dashboard/gestionar"
           mat-list-item
           (click)="sidenav.toggle()"
           >
           <mat-icon mat-list-icon>egg</mat-icon>
-          <span>Gestionar productos</span>
+          <span>Panel de Gestión</span>
         </a>
 
-        <a routerLink="../dashboard/gestionar/menus"
+       <!--  <a routerLink="../dashboard/gestionar/menus"
           mat-list-item
           (click)="sidenav.toggle()"
         >
@@ -64,7 +64,7 @@
         >
           <mat-icon mat-list-icon>set_meal</mat-icon>
           <span>Gestionar pedidos</span>
-        </a>
+        </a> -->
 
       </div>
 

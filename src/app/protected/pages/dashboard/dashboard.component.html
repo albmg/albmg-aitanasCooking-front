@@ -1,83 +1,58 @@
-<!-- <mat-sidenav-container fullscreen>
+<div>
+  <h1 class="text-teal-500 bg-white p-4">Panel de Gestión</h1>
+</div>
 
-  <mat-sidenav #sidenav>
+<!-- <div class="sm:flex sm:flex-row gap-8"> -->
 
-
-
-   <mat-toolbar color="primary">
-      <span>Menú</span>
-
-
-      <button mat-icon-button
-              (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-nav-list>
-      <a routerLink="../gestionar/productos"
-         mat-list-item
-         (click)="sidenav.toggle()"
-
+  <h2 class="text-teal-500 border-b-4 border-teal-600 p-2">Gestionar Platos</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 border-b-4 border-teal-500 place-items-center p-5 sm:p-20">
+      <div
+        class="w-96 sm:w-96 col-span-1 rounded-lg p-10 sm:p-20 bg-teal-500 border-2 border-white text-center text-white font-bold mb-4"
+        routerLink="./productos"
       >
-        <mat-icon mat-list-icon>egg</mat-icon>
-        <span>Gestionar productos</span>
-      </a>
+        Añadir nuevo Plato
+      </div>
 
-      <a routerLink="../gestionar/menus"
-         mat-list-item
-         (click)="sidenav.toggle()"
+      <div
+        class="w-96 sm:w-96 col-span-1 rounded-lg p-10 sm:p-20 bg-yellow-500 border-2 border-white text-center text-white font-bold mb-4"
+        routerLink="./productos"
       >
-        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
-        <span>Gestionar menús</span>
-      </a>
+        Editar Plato
+      </div>
 
-
-      <a routerLink="../gestionar/pedidos"
-         mat-list-item
-         (click)="sidenav.toggle()"
-      >
-        <mat-icon mat-list-icon>set_meal</mat-icon>
-        <span>Gestionar pedidos</span>
-      </a>
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-
-
-  <mat-toolbar>
-    <button mat-icon-button
-            (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <span class="spacer"></span>
-
-    <button mat-button (click)="logout()">
-      Logout
-    </button>
-  </mat-toolbar>
-
-  <div class="container">
-    <router-outlet></router-outlet>
   </div>
 
-</mat-sidenav-container>
+  <h2 class="text-teal-500 border-b-4 border-teal-600 p-2">Gestionar Menús</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 border-b-4 border-teal-500 place-items-center p-5 sm:p-20">
+    <div
+      class="w-96 sm:w-96 col-span-1 rounded-lg p-10 sm:p-20 bg-teal-500 border-2 border-white text-center text-white font-bold mb-4"
+      routerLink="./menus"
+    >
+      Añadir nuevo Menú
+    </div>
 
-<h1>Dashboard - Gestión de la aplicación</h1>
-<hr>
+    <div
+      class="w-96 sm:w-96 col-span-1 rounded-lg p-10 sm:p-20 bg-yellow-500 border-2 border-white text-center text-white font-bold mb-4"
+      routerLink="./menus"
+    >
+      Editar Menú
+    </div>
 
-<p>Sólo funciona si estás logeado</p>
+  </div>
 
-<h4>User info</h4>
-<pre>{{ usuario | json }}</pre>
+  <h2 class="text-teal-500 border-b-4 border-teal-600 p-2">Gestionar Pedidos</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 border-b-4 border-teal-500 place-items-center p-5 sm:p-20">
 
-<button mat-button color="primary" >
-  Logout
-</button>
+    <div
+      class="w-96 sm:w-96 col-span-1 rounded-lg p-10 sm:p-20 bg-teal-500 border-2 border-white text-center text-white font-bold mb-4"
+      routerLink="./pedidos"
+    >
+      Ver Pedidos
+    </div>
+
+  </div>
+
+<!-- </div> -->
 
 
- -->
 
- <h1>Aquí van los cards con las cosillas que puedo hacer como admin</h1>

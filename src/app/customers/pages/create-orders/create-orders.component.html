@@ -1,84 +1,56 @@
-<div>
-  <h1 class="text-teal-500">Crear pedido</h1>
+<div class="flex flex-row">
 
-  <div fxFlex="50">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-    <form
-    class="form-class"
-    autocomplete="off"
-    [formGroup]="createOrderForm"
-    (ngSubmit)="submit()"
-    fxLayoutAlign="center center"
-    >
+    <!-- Order Form-->
+    <div class="sm:col-span-2 mt-14 ml-4">
+      <!-- <h1 class="text-teal-500">Crear pedido</h1> -->
 
-      <mat-card
+
+      <form
+        class="form-class"
+        autocomplete="off"
+        [formGroup]="createOrderForm"
+        (ngSubmit)="submit()"
       >
-        <mat-card-header>
-        </mat-card-header>
-        <mat-card-content >
-          <h2>Datos de contacto:</h2>
 
-          <!-- Name -->
-          <mat-form-field appearance="legacy">
-                <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Nombre" formControlName="clientName">
-                <mat-icon matSuffix>perm_identity</mat-icon>
-                <mat-hint>Introduce tu nombre</mat-hint>
-          </mat-form-field>
+      <mat-vertical-stepper>
 
-          <!-- email -->
-          <mat-form-field appearance="legacy">
-                <mat-label>Introduce email</mat-label>
-                <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email">
-                <mat-hint>Introduce tu correo electrónico</mat-hint>
-                <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
+          <mat-step label="Dirección de envío">
+            <p class="p-2">Añade la dirección de envío en el mapa, para poder calcular la distancia y duración. De esta forma podemos aplicar el coste del envío, si procede.</p>
 
-          <!-- Phone -->
-          <mat-form-field appearance="legacy">
-                <!-- <mat-label>Nombre</mat-label> -->
-                <input matInput placeholder="Telefono" formControlName="phone">
-                <mat-icon matSuffix>phone</mat-icon>
-                <mat-hint>Introduce tu teléfono</mat-hint>
-          </mat-form-field>
+            <div class="flex justify-center">
 
-          <hr>
+              <button class="bg-teal-500 rounded-sm p-4 text-white font-bold w-48" (click)="showMapDialog()">
+                <div class="flex flex-row justify-center">
+                  <mat-icon>add_location</mat-icon>
+                  <div *ngIf="!userLocation">
+                    Añadir dirección
+                  </div>
+                  <div *ngIf="userLocation">
+                    Editar dirección
+                  </div>
 
-          <!-- Datepicker -->
-          <mat-form-field appearance="legacy" *ngIf="orders">
-                <mat-label>Fecha de entrega</mat-label>
-                <input
-                  matInput
-                  [min]="availableOrderDate"
-                  [matDatepicker]="picker"
-                  formControlName="deliveryDate"
-                  placeholder="Haz click en el icono del calendario"
-                  [matDatepickerFilter]="myUnavailableDayFilter"
-                  [readonly]="true"
-                >
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker></mat-datepicker>
-                <mat-hint>Comprueba las fechas disponibles en el calendario</mat-hint>
-          </mat-form-field>
+                </div>
+              </button>
 
-          <!-- Time Picker -->
-          <mat-form-field appearance="legacy">
-                <mat-label>Elije un rango horario para la entrega</mat-label>
-                <input matInput type="time" formControlName="deliveryTime">
-                <mat-hint>Horario de entrega entre las 12h y 20h</mat-hint>
-          </mat-form-field>
+            </div>
 
-          <!-- Dirección -->
-          <mat-form-field appearance="legacy">
-                <mat-label>Introduce la ubicación de entrega</mat-label>
+
+            <br>
+
+             <!-- Adress -->
+              <mat-form-field *ngIf="userLocation" appearance="legacy" class="w-80 sm:w-96">
+                <!-- <mat-label>Introduce la ubicación de entrega</mat-label> -->
                 <input matInput placeholder="Dirección" formControlName="adress" [readonly]="true">
-                <mat-hint>Añade tu ubicación en el mapa</mat-hint>
-                <mat-icon matSuffix (click)="showMapDialog()">add_location
-                    <button type="button" color="primary" mat-button (click)="showMapDialog()"></button>
-                  </mat-icon>
-          </mat-form-field>
+                <!-- <mat-hint>Añade tu ubicación en el mapa</mat-hint> -->
+                <!-- <mat-icon matSuffix (click)="showMapDialog()">add_location
+                  <button type="button" color="primary" (click)="showMapDialog()"></button>
+                </mat-icon> -->
+              </mat-form-field>
 
-          <div *ngIf="userLocation">
+              <!-- Distance & time -->
+              <div *ngIf="userLocation">
                 <mat-form-field appearance="legacy">
                   <mat-label>Distancia</mat-label>
                   <input matInput placeholder="Distancia" formControlName="distance" [readonly]="true">
@@ -90,172 +62,210 @@
                   <input matInput placeholder="Tiempo" formControlName="duration" [readonly]="true">
                   <mat-hint>Tiempo al punto de entrega</mat-hint>
                 </mat-form-field>
+              </div>
+
+          </mat-step>
+
+          <mat-step label="Información de contacto" class="p-2">
+            <br>
+            <p class="p-2">Esta Información la necesitamos para ponernos en contacto contigo para informarte sobre el envío.</p>
+
+            <div class="sm:flex sm:flex-col sm:justify-around sm:items-start">
+
+
+              <!-- Name -->
+                <mat-form-field appearance="legacy" class="w-80 sm:w-96">
+                      <mat-label>Introduce tu nombre</mat-label>
+                      <input matInput placeholder="Nombre" formControlName="clientName">
+                      <mat-icon matSuffix>perm_identity</mat-icon>
+                      <!-- <mat-hint>Introduce tu nombre</mat-hint> -->
+                </mat-form-field>
+
+                <!-- email -->
+                <mat-form-field appearance="legacy" class="w-80 sm:w-96">
+                      <mat-label>Introduce tu email</mat-label>
+                      <input matInput placeholder="ejemplo@ejemplo.com" formControlName="email">
+                      <!-- <mat-hint>Introduce tu correo electrónico</mat-hint> -->
+                      <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <!-- Phone -->
+                <mat-form-field appearance="legacy" class="w-80 sm:w-96">
+                      <!-- <mat-label>Nombre</mat-label> -->
+                      <input matInput placeholder="Telefono" formControlName="phone">
+                      <mat-icon matSuffix>phone</mat-icon>
+                      <!-- <mat-hint>Introduce tu teléfono</mat-hint> -->
+                </mat-form-field>
+            </div>
+
+          </mat-step>
+
+          <mat-step label="Fecha y hora de entrega">
+            <br>
+            <p class="p-2 mb-2">Los pedidos tienen que hacerse mínimo con 4 días de antelación.</p>
+            <p class="p-2">El horario de entrega de pedidos es entre las 12pm y las 20h</p>
+
+            <div class="sm:flex sm:flex-col sm:justify-around">
+
+              <!-- Datepicker -->
+                <mat-form-field appearance="legacy" *ngIf="orders" class="w-80 p-4 sm:w-96">
+                  <mat-label>Fecha de entrega</mat-label>
+                  <input
+                    matInput
+                    [min]="availableOrderDate"
+                    [matDatepicker]="picker"
+                    formControlName="deliveryDate"
+                    placeholder="Haz click en el icono del calendario"
+                    [matDatepickerFilter]="myUnavailableDayFilter"
+                    [readonly]="true"
+                  >
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker></mat-datepicker>
+                  <mat-hint>Comprueba las fechas disponibles en el calendario</mat-hint>
+                </mat-form-field>
+
+                <!-- Time Picker -->
+                <mat-form-field appearance="legacy" class="w-80 p-4 sm:w-96">
+                      <mat-label>Elije un rango horario para la entrega</mat-label>
+                      <input matInput type="time" formControlName="deliveryTime">
+                      <mat-hint>Horario de entrega entre las 12h y 20h</mat-hint>
+                </mat-form-field>
+
+            </div>
+
+          </mat-step>
+
+          <mat-step label="Pago">
+
+             <!-- Submit button -->
+
+
+          </mat-step>
+
+
+
+
+      </mat-vertical-stepper>
+
+       <div>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="createOrderForm.invalid"
+              >
+                Enviar
+              </button>
           </div>
 
-        </mat-card-content>
+        </form>
 
-        <mat-card-actions>
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="createOrderForm.invalid"
-          >
-            Enviar
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </form>
+      <div >
+
+
+
+      </div>
+
+    </div>
+
+    <!-- End of form -->
+
+    <!-- Details & Summary Order -->
+
+    <div class="flex flex-col">
+      <div class="sm:col-span-1">
+
+        <!-- Order Summary-->
+
+        <!-- <div *ngIf="userLocation"> -->
+          <div class="rounded-sm border-2 border-gray-200 bg-white p-4 mr-4 mt-14">
+            <div>
+              <h2 class="border-b-2 border-teal-500">
+                Resumen del pedido
+              </h2>
+            </div>
+            <div>
+                <h3>
+                  Valor del pedido: {{ totalPriceFromCart }}
+                    <mat-icon [inline]="true">euro_symbol</mat-icon>
+                </h3>
+                <h3>
+                  Coste del envío:
+                </h3>
+                <h2>
+                  Importe total:
+                </h2>
+                <p>
+                  IGIC
+                </p>
+            </div>
+          </div>
+
+
+          <!-- Order Details -->
+
+          <div class="mt-2 p-2 bg-white rounded-sm border-2 border-gray-200 mr-4">
+            <div>
+              <h2 class="ml-2 border-b-2 border-teal-500">
+                Detalles del pedido
+              </h2>
+            </div>
+
+            <div
+              *ngFor="let item of productsFromCart"
+              class="grid grid-cols-3 my-2 p-2 border-b-2 border-teal-500"
+            >
+              <div class="col-span-1 p-2">
+                <img src="{{ item.image }}" alt="{{ item.image }}-la-cocina-de-Aitana">
+
+              </div>
+
+              <div class="col-span-2 p-1 ml-2">
+                <p class="font-bold">
+                  {{ item.name }}
+                </p>
+                <p class="font-bold">
+                  {{ item.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+                </p>
+                <p>
+                  Uds. {{ item.defaultUnits }}
+                </p>
+              </div>
+
+            </div>
+
+
+
+            <div
+              *ngFor="let item of menusFromCart"
+              class="grid grid-cols-3 my-2 p-2 border-b-2 border-teal-500"
+              >
+              <div class="col-span-1 p-2">
+                <img src="{{ item.image }}" alt="{{ item.image }}-la-cocina-de-Aitana">
+              </div>
+
+              <div class="col-span-2 p-1 ml-2">
+                <p class="font-bold">
+                  {{ item.name }}
+                </p>
+                <p class="font-bold">
+                  {{ item.price }} <mat-icon [inline]="true">euro_symbol</mat-icon>
+                </p>
+                <p>
+                  Uds. {{ item.defaultUnits }}
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        <!-- </div> -->
+
+      </div>
+
+    </div>
 
   </div>
 
-
-
-  <!-- <div fxFlex="30">
-    <div
-      fxLayout="column"
-      fxLayoutGap="20px"
-    >
-    <mat-card class="order-summary">
-      <mat-card-header>
-        <mat-card-title>Resumen del pedido</mat-card-title>
-
-      </mat-card-header>
-
-
-      <hr>
-
-      <mat-card-content>
-        <h3>
-          Valor del pedido: {{ totalPriceFromCart }}
-        </h3>
-        <h3>
-          Coste del envío:
-        </h3>
-        <h2>
-          Importe total:
-        </h2>
-        <p>
-          IGIC
-        </p>
-
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="order-details">
-       <mat-card-header>
-        <mat-card-title>Detalles del pedido</mat-card-title>
-      </mat-card-header>
-
-      <mat-divider></mat-divider>
-
-      <div *ngFor="let item of productsFromCart">
-        <mat-card-content fxLayout="row">
-          <div fxFlex="50">
-            <img src="{{ item.image }}" width="50%" alt="{{ item.image }}-la-cocina-de-Aitana">
-
-          </div>
-          <div
-            fxFlex="50"
-            fxLayout="column"
-            >
-            {{ item.name }}
-            {{ item.price }}
-            {{ item.defaultUnits }}
-          </div>
-        </mat-card-content>
-        <hr>
-      </div>
-
-      <div *ngFor="let item of menusFromCart">
-        <mat-card-content fxLayout="row">
-          <div fxFlex="50">
-            <img src="{{ item.image }}" width="50%" alt="{{ item.image }}-la-cocina-de-Aitana">
-
-          </div>
-          <div
-            fxFlex="50"
-            fxLayout="column"
-            >
-            {{ item.name }}
-            {{ item.price }}
-            {{ item.defaultUnits }}
-          </div>
-        </mat-card-content>
-        <hr>
-      </div>
-
-    </mat-card>
-
-    </div>
-  </div> -->
-
 </div>
-
-<div *ngIf="userLocation" class="grid grid-cols-1 sm:grid-cols-3">
-  <div class="sm:col-span-1">
-    <div class="bg-white p-4 mr-4 mt-14">
-      <div>
-        <h2 class="border-b-2 border-teal-500">
-          Resumen del pedido
-        </h2>
-      </div>
-      <div>
-          <h3>
-            Valor del pedido: {{ totalPriceFromCart }}
-          </h3>
-          <h3>
-            Coste del envío:
-          </h3>
-          <h2>
-            Importe total:
-          </h2>
-          <p>
-            IGIC
-          </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="mt-2 bg-white order-details">
-  <h2 class="border-b-2 border-teal-500">
-    Detalles del pedido
-  </h2>
-      <div *ngFor="let item of productsFromCart">
-       <div class="flex flex-row">
-          <div>
-            <img src="{{ item.image }}" width="50%" alt="{{ item.image }}-la-cocina-de-Aitana">
-
-          </div>
-          <div class="flex flex-col">
-            {{ item.name }}
-            {{ item.price }}
-            {{ item.defaultUnits }}
-          </div>
-        </div>
-
-      </div>
-
-      <div *ngFor="let item of menusFromCart">
-        <mat-card-content fxLayout="row">
-          <div fxFlex="50">
-            <img src="{{ item.image }}" width="50%" alt="{{ item.image }}-la-cocina-de-Aitana">
-
-          </div>
-          <div
-            fxFlex="50"
-            fxLayout="column"
-            >
-            {{ item.name }}
-            {{ item.price }}
-            {{ item.defaultUnits }}
-          </div>
-        </mat-card-content>
-        <hr>
-      </div>
-
-    </div>
-
-
-
