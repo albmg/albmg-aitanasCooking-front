@@ -5,14 +5,13 @@
   <h2>
     {{ menu ? 'Editar' : 'Crear' }}  Menú
   </h2>
-  <div fxLayout="row"
-        fxLayout.xs="column"
-        faxLayoutGap="30px">
 
-    <div fxFlex="50" fxLayout="column">
+  <div>
+
+    <div >
 
         <!-- Form -->
-        <div fxFlex="50">
+        <div >
           <form autocomplete="off"
           [formGroup]="createMenuForm"
           (ngSubmit)="saveMenu()">
@@ -123,7 +122,7 @@
 
     <mat-divider></mat-divider>
 
-    <div fxFlex="50" fxLayout="column">
+    <div >
        <!-- Image picker component -->
             <app-image-picker
               [menu]="menu"

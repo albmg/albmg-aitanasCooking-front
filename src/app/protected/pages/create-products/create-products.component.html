@@ -1,155 +1,135 @@
-
-<h1>Gestionar productos</h1>
-<mat-divider></mat-divider>
-
+<div>
   <h2>
     {{ product ? 'Editar' : 'Crear' }}  Producto
   </h2>
-  <div fxLayout="row"
-        fxLayout.xs="column"
-        faxLayoutGap="30px">
 
-    <div fxFlex="50" fxLayout="column">
+  <div>
 
-        <!-- Form -->
-        <div fxFlex="50">
-          <form autocomplete="off"
-          [formGroup]="createProductForm"
-          (ngSubmit)="saveProduct()">
-            <p>
-              <mat-form-field appearance="legacy">
-                <!-- <mat-label *ngIf="product">{{ product.name }}</mat-label> -->
-                <!-- <mat-label *ngIf="!product">Añadir nombre</mat-label> -->
-                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Nombre</mat-label>
-                <input matInput placeholder="Nombre" formControlName="name">
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p>
+      <div>
 
-            <p>
-              <mat-form-field appearance="legacy">
-                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Descripción</mat-label>
-                <input matInput placeholder="Añade un subtítulo" formControlName="description">
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p>
+          <!-- Form -->
+          <div>
+            <form autocomplete="off"
+            [formGroup]="createProductForm"
+            (ngSubmit)="saveProduct()">
+              <p>
+                <mat-form-field appearance="legacy">
+                  <!-- <mat-label *ngIf="product">{{ product.name }}</mat-label> -->
+                  <!-- <mat-label *ngIf="!product">Añadir nombre</mat-label> -->
+                  <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Nombre</mat-label>
+                  <input matInput placeholder="Nombre" formControlName="name">
+                  <mat-icon matSuffix>perm_identity</mat-icon>
+                </mat-form-field>
+              </p>
 
+              <p>
+                <mat-form-field appearance="legacy">
+                  <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Descripción</mat-label>
+                  <input matInput placeholder="Añade un subtítulo" formControlName="description">
+                  <mat-icon matSuffix>perm_identity</mat-icon>
+                </mat-form-field>
+              </p>
 
 
-            <div>
-              <label>{{ product ? 'Modificar' : 'Añadir'}} Ingredientes</label>
 
-              <!-- Add an ingrediente -->
-              <div class="input-group">
-                <input class="form-control"
-                       [formControl]="newIngredient"
-                       placeholder="p.e papas"
-                       (keyup.enter)="addIngredient()"
-                       >
-                <button (click)="addIngredient()"
-                type="button">
-                  Añadir
+              <div>
+                <label>{{ product ? 'Modificar' : 'Añadir'}} Ingredientes</label>
+
+                <!-- Add an ingrediente -->
+                <div class="input-group">
+                  <input class="form-control"
+                         [formControl]="newIngredient"
+                         placeholder="p.e papas"
+                         (keyup.enter)="addIngredient()"
+                         >
+                  <button (click)="addIngredient()"
+                  type="button">
+                    Añadir
+                  </button>
+                </div>
+
+                <!-- Remove an ingredient -->
+                <div formArrayName="ingredients">
+                    <div class="input-group"
+                          *ngFor="let ingredient of ingredientsArray.controls; let i = index">
+                      <input class="form-control"
+                             [formControlName]="i"
+                             >
+
+                      <button (click)="removeIngredient(i)"
+                      type="button">
+                        Eliminar
+                      </button>
+                    </div>
+                </div>
+              </div>
+
+
+              <p>
+                <mat-form-field appearance="legacy">
+                  <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Unidades</mat-label>
+                  <input matInput placeholder="Añadir unidades" formControlName="units" >
+                  <mat-icon matSuffix>perm_identity</mat-icon>
+                </mat-form-field>
+              </p>
+
+              <p>
+                <mat-form-field appearance="legacy">
+                  <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Peso</mat-label>
+                  <input matInput placeholder="Añadir peso" formControlName="weight" >
+                  <mat-icon matSuffix>perm_identity</mat-icon>
+                </mat-form-field>
+              </p>
+
+              <div *ngIf="product">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  [disabled]="createProductForm.invalid"
+                  (click)="updateProduct()">
+                    Actualizar
+                </button>
+
+                <button
+                  mat-raised-button
+                  color="warn"
+                  type="button"
+                  (click)="removeProduct()">
+                  Eliminar
                 </button>
               </div>
+              <div *ngIf="!product">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="submit"
+                  [disabled]="createProductForm.invalid">
+                    Crear producto
+                </button>
 
-              <!-- Remove an ingredient -->
-              <div formArrayName="ingredients">
-                  <div class="input-group"
-                        *ngFor="let ingredient of ingredientsArray.controls; let i = index">
-                    <input class="form-control"
-                           [formControlName]="i"
-                           >
 
-                    <button (click)="removeIngredient(i)"
-                    type="button">
-                      Eliminar
-                    </button>
-                  </div>
               </div>
-            </div>
 
-            <!-- <p>
-              <mat-form-field appearance="legacy">
-                <mat-label>Ingredientes</mat-label>
-                <input matInput placeholder="Nombre" formArrayName="ingredients" required>
-                <mat-icon matSuffix>perm_identity</mat-icon>
-                <button mat-button></button>
+            </form>
 
-              </mat-form-field>
-            </p>
+          </div>
 
-            <p>
-              <mat-form-field appearance="legacy">
-                <mat-label>Ingredientes</mat-label>
-                <input matInput placeholder="Nombre" formArrayName="ingredients" required>
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p> -->
+      </div>
 
+      <mat-divider></mat-divider>
 
+      <div>
+         <!-- Image picker component -->
+              <app-image-picker
+                [product]="product"
+                (onShareImage)="addImage( $event )"
+              >
 
-            <p>
-              <mat-form-field appearance="legacy">
-                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Unidades</mat-label>
-                <input matInput placeholder="Añadir unidades" formControlName="units" >
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p>
-
-            <p>
-              <mat-form-field appearance="legacy">
-                <mat-label>{{ product ? 'Actualizar' : 'Añadir' }} Peso</mat-label>
-                <input matInput placeholder="Añadir peso" formControlName="weight" >
-                <mat-icon matSuffix>perm_identity</mat-icon>
-              </mat-form-field>
-            </p>
-
-            <div *ngIf="product">
-              <button
-                mat-raised-button
-                color="primary"
-                type="button"
-                [disabled]="createProductForm.invalid"
-                (click)="updateProduct()">
-                  Actualizar
-              </button>
-
-              <button
-                mat-raised-button
-                color="warn"
-                type="button"
-                (click)="removeProduct()">
-                Eliminar
-              </button>
-            </div>
-            <div *ngIf="!product">
-              <button
-                mat-raised-button
-                color="primary"
-                type="submit"
-                [disabled]="createProductForm.invalid">
-                  Crear producto
-              </button>
-
-
-            </div>
-
-          </form>
-
-        </div>
+              </app-image-picker>
+      </div>
 
     </div>
 
-    <mat-divider></mat-divider>
+</div>
 
-    <div fxFlex="50" fxLayout="column">
-       <!-- Image picker component -->
-            <app-image-picker
-              [product]="product"
-              (onShareImage)="addImage( $event )"
-            >
-
-            </app-image-picker>
-    </div>
-
-  </div>

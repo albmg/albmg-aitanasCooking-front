@@ -10,16 +10,25 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class DashboardComponent {
 
- /*  get usuario() {
-    return this.authservice.usuario
+
+  minimizedProducts: boolean = false
+
+  minimizedStats: boolean = false
+
+  minimizePanelProduct() {
+    this.minimizedProducts = true
   }
 
-  constructor( private router: Router,
-               private authservice: AuthService ) { }
+  maximizePanelProduct() {
+    this.minimizedProducts = false
+  }
 
-  logout() {
-    this.router.navigateByUrl('/auth')
-    this.authservice.logout()
-  } */
+  minimizeStatsPanel() {
+    this.minimizedStats = true
+  }
+
+  maximizeStatsPanel() {
+    this.minimizedStats = false
+  }
 
 }

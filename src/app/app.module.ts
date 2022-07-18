@@ -5,9 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { MaterialModule } from './material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
@@ -31,7 +29,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
     MapsModule,

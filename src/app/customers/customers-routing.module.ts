@@ -8,6 +8,7 @@ import { ShowSingleMenuComponent } from './pages/show-single-menu/show-single-me
 import { ShowProductsComponent } from './pages/show-products/show-products.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ShowSingleProductComponent } from './pages/show-single-product/show-single-product.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'productos',
         component: ShowProductsComponent
+      },
+      {
+        path: 'productos/:id',
+        component: ShowSingleProductComponent
       },
       {
         path: 'cart',

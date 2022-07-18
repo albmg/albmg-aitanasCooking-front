@@ -5,13 +5,7 @@ import { Product } from '../../interfaces/products.interface';
 @Component({
   selector: 'app-show-products',
   templateUrl: './show-products.component.html',
-  styles: [
-    `
-    mat-card {
-      margin-top:20px;
-    }
-    `
-  ]
+  styles: []
 })
 
 export class ShowProductsComponent implements OnInit {

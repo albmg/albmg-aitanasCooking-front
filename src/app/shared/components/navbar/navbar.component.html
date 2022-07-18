@@ -1,42 +1,40 @@
 <mat-sidenav-container class="max-w-screen-2xl mx-auto" >
-  <mat-sidenav #sidenav>
-    <mat-toolbar class="bg-white border-b-2 border-teal-500">
-      <h1 class="text-teal-500">La Cocina de Aitana</h1>
-      <img src="../../../../assets/logo.png" width="40%" alt="la-cocina-de-Aitana-logo" >
+  <mat-sidenav #sidenav class="w-full sm:max-w-3xl">
+    <mat-toolbar class="bg-teal-500 border-b-2 border-white">
+      <h1 class="text-white">La Cocina de Aitana</h1>
+      <!-- <img src="../../../../assets/logo.png" width="40%" alt="la-cocina-de-Aitana-logo" > -->
       <span class="spacer"></span>
       <button
-        class="bg-white"
+        class="bg-teal-500"
         mat-icon-button
         (click)="sidenav.toggle()">
-        <mat-icon class="text-teal-500">menu</mat-icon>
+        <mat-icon class="text-white">menu</mat-icon>
       </button>
     </mat-toolbar>
 
-    <mat-nav-list>
+    <mat-nav-list class="bg-teal-500 text-white">
       <a routerLink="./clientes"
          mat-list-item
          (click)="sidenav.toggle()"
-
       >
-        <mat-icon class="text-teal-500" mat-list-icon>home</mat-icon>
-        <span class="text-teal-500">Inicio</span>
+        <mat-icon class="text-white" mat-list-icon>home</mat-icon>
+        <span class="text-white">Inicio</span>
       </a>
 
       <a routerLink="./clientes/productos"
          mat-list-item
          (click)="sidenav.toggle()"
-
       >
-        <mat-icon class="text-teal-500" mat-list-icon>egg</mat-icon>
-        <span class="text-teal-500">Ver productos</span>
+        <mat-icon class="text-white" mat-list-icon>egg</mat-icon>
+        <span class="text-white">Ver productos</span>
       </a>
 
       <a routerLink="./clientes/menus"
          mat-list-item
          (click)="sidenav.toggle()"
       >
-        <mat-icon class="text-teal-500" mat-list-icon>restaurant_menu</mat-icon>
-        <span class="text-teal-500">Ver menús</span>
+        <mat-icon class="text-white" mat-list-icon>restaurant_menu</mat-icon>
+        <span class="text-white">Ver menús</span>
       </a>
 
       <!-- Sidenav loggedIn -->
@@ -48,23 +46,6 @@
           <mat-icon mat-list-icon>egg</mat-icon>
           <span>Panel de Gestión</span>
         </a>
-
-       <!--  <a routerLink="../dashboard/gestionar/menus"
-          mat-list-item
-          (click)="sidenav.toggle()"
-        >
-          <mat-icon mat-list-icon>restaurant_menu</mat-icon>
-          <span>Gestionar menús</span>
-        </a>
-
-
-        <a routerLink="../dashboard/gestionar/pedidos"
-          mat-list-item
-          (click)="sidenav.toggle()"
-        >
-          <mat-icon mat-list-icon>set_meal</mat-icon>
-          <span>Gestionar pedidos</span>
-        </a> -->
 
       </div>
 
@@ -108,14 +89,11 @@
     </button>
 
 
-    <!-- <button class="logged bg-white" *ngIf="!usuario.id" mat-button routerLink="../auth/login"> -->
     <button class="border-2 border-white bg-white" *ngIf="!usuario.id" mat-button (click)="goToLogin()">
-      <!-- <fa-icon class="text-teal-500" [icon]="faLock"></fa-icon> -->
       <mat-icon class="text-teal-500">lock</mat-icon>
       <h5 class="text-teal-500">Login</h5>
     </button>
 
-   <!-- <button class="logged bg-white" *ngIf="usuario.id" mat-button routerLink="../auth/logout"> -->
    <button class="logged bg-white" *ngIf="usuario.id" mat-button (click)="logout()">
       <mat-icon class="text-teal-500">lock_open</mat-icon>
       <h5 class="text-teal-500">logout</h5>

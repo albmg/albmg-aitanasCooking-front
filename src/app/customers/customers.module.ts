@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 import { MaterialModule } from '../material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateOrdersComponent } from './pages/create-orders/create-orders.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -18,6 +18,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ProductCartItemComponent } from './components/product-cart-item/product-cart-item.component';
 import { ShowTotalPriceComponent } from './components/show-total-price/show-total-price.component';
 import { MenuCartItemComponent } from './components/menu-cart-item/menu-cart-item.component';
+import { ShowSingleProductComponent } from './pages/show-single-product/show-single-product.component';
 
 
 
@@ -35,13 +36,13 @@ import { MenuCartItemComponent } from './components/menu-cart-item/menu-cart-ite
     CartComponent,
     ProductCartItemComponent,
     ShowTotalPriceComponent,
-    MenuCartItemComponent
+    MenuCartItemComponent,
+    ShowSingleProductComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
     FormsModule,
-    FlexLayoutModule,
     MaterialModule,
     ReactiveFormsModule,
     MapsModule

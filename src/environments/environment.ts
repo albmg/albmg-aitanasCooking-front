@@ -6,12 +6,13 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:3000/api',
   firebaseConfig : {
-    apiKey: "AIzaSyAzxqAtd8HwYA8XvbSbIaw6ybUSjBgJBDg",
-    authDomain: "aitanas-cooking.firebaseapp.com",
-    projectId: "aitanas-cooking",
-    storageBucket: "aitanas-cooking.appspot.com",
-    messagingSenderId: "884488944797",
-    appId: "1:884488944797:web:e9105e69c3871e44a22874"
+    apiKey: "AIzaSyAZe2KmwK9oXZx_LYfX1pOGDgzn8QJurOQ",
+    authDomain: "la-cocina-de-aitana.firebaseapp.com",
+    projectId: "la-cocina-de-aitana",
+    storageBucket: "la-cocina-de-aitana.appspot.com",
+    messagingSenderId: "1015942572051",
+    appId: "1:1015942572051:web:fbea290b15e094830db7e6",
+    measurementId: "G-CZPYGZ0FFW"
   },
   mapboxApiKey: 'pk.eyJ1IjoiYWxibWciLCJhIjoiY2wyaTl1b3h1MGxtdDNtbDUwZGh3YXM1diJ9.JzZSaMSUvlqNrfFa1AwkSQ'
 };

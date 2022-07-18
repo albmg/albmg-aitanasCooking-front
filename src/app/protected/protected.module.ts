@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ProtectedRoutingModule } from './protected-routing.module';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -25,7 +24,6 @@ import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
   ],
   imports: [
     CommonModule,
-    FlexLayoutModule,
     FormsModule,
     MaterialModule,
     ProtectedRoutingModule,

@@ -1,5 +1,11 @@
 <div class="rounded-xl shadow-xl">
-     <img class="rounded-t-xl w-full h-36 object-cover" src="{{ product.image }}" alt="">
+     <img
+     class="rounded-t-xl w-full h-36 object-cover"
+     src="{{ product.image }}"
+     alt="{{ product.name }}-la-cocina-de-Aitana"
+     [routerLink]="['./', product._id]"
+
+     >
      <div class="flex flex-col p-7">
        <h2 class="text-xl font-bold truncate mt-1">
          {{ product.name }}
