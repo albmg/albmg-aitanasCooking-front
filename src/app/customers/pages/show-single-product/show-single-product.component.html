@@ -5,7 +5,7 @@
   <!-- Image details -->
   <div class="grid p-8 sm:col-span-2 sm:border-y-2 sm:border-gray-200 place-items-center border-b-2 border-gray-200">
 
-    <img class="h-auto w-full object-cover border-8 border-white" src="{{ product.image }}"/>
+    <img class="h-auto w-full object-cover border-8 border-white" src="{{ product?.image }}"/>
 
 
   </div>
@@ -14,15 +14,15 @@
   <div class="grid p-8 sm:border-l-2 sm:border-y-2 sm:border-gray-200 w-ful gap-4">
 
       <div class="w-full">
-        <h1>{{ product.name }}</h1>
+        <h1>{{ product?.name }}</h1>
       </div>
 
       <div class="font-bold w-full border-b-2 border-gray-200 p-4">
-        {{ product.price }} <mat-icon>euro</mat-icon>
+        {{ product?.price }} <mat-icon>euro</mat-icon>
       </div>
 
       <div class="w-full bg-blue-100 my-2 rounded-sm p-4 border-b-2 border-gray-200">
-        <span class="cdk-visually-hidden">Descripción</span> {{ product.description }}
+        <span class="cdk-visually-hidden">Descripción</span> {{ product?.description }}
       </div>
 
 
@@ -39,7 +39,7 @@
           <mat-icon >add</mat-icon>
         </button>
 
-        <div *ngFor="let ingredient of product.ingredients; let i = index" class="col-span-2">
+        <div *ngFor="let ingredient of product?.ingredients; let i = index" class="col-span-2">
 
           <div *ngIf="!hideList" class="flex flex-row p-4 gap-4 border-b-2 border-gray-200">
             {{ ingredient }}
