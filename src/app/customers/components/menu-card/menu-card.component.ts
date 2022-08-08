@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../../../shared/components/cart-dialog/cart-dialog.component';
 
 import { CartService } from '../../services/cart.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-menu-card',
@@ -22,9 +23,15 @@ export class MenuCardComponent implements OnInit {
   constructor(
     private cartService: CartService,
     public dialog: MatDialog,
+    private authService: AuthService
   ) { }
 
-   ngOnInit(): void {
+
+  get usuario() {
+    return this.authService.usuario
+  }
+
+  ngOnInit(): void {
 
     this.cart = this.cartService.menuCart
 

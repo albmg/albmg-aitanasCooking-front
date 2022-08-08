@@ -17,7 +17,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-create-orders',
   templateUrl: './create-orders.component.html',
-  styleUrls: ['./create-orders.component.css'],
+  styles : [],
   encapsulation: ViewEncapsulation.None,
 })
 export class CreateOrdersComponent implements OnInit, DoCheck  {

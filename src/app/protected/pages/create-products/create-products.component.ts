@@ -26,8 +26,8 @@ export class CreateProductsComponent implements OnInit {
     description: ['', [ Validators.required ]],
     ingredients: this.fb.array([], Validators.required ),
     image: ['', [ Validators.required ]],
-    units: [''],
-    weight: ['',],
+    details: ['',],
+    price: ['']
   })
 
   newIngredient: FormControl = this.fb.control('', Validators.required)

@@ -27,7 +27,7 @@ export class ShowSingleProductComponent implements OnInit {
   ) { }
 
 
-   get usuario() {
+  get usuario() {
     return this.authService.usuario
   }
 

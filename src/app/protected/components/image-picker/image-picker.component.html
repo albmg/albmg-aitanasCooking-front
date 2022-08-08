@@ -1,19 +1,42 @@
-<p>
-    <mat-card>
-      <mat-card-header>{{ product ? 'Modificar' : 'Añadir' }} imagen:</mat-card-header>
-      <img src="{{ prewImage }}" alt="" width="25%">
+
+    <div class="w-96">
+      <div class="text-teal-500">
+        {{ product || menu  ? 'Modificar' : 'Añadir' }} imagen
+      </div>
+
+      <h3 *ngIf="prewImage">Imagen nueva</h3>
+      <img src="{{ prewImage }}" alt="">
+
+      <div class="border-t-2 border-teal-500 w-56 mt-2" *ngIf="prewImage">
+        <h3>Imagen actual</h3>
+      </div>
+      <!-- <div *ngIf="!prewImage">
+        <h3>Imagen actual</h3>
+      </div> -->
+
       <div *ngIf="product">
-        <img src="{{ product.image }}" alt="" width="50%">
+        <img class="border-2 border-gray-200"  src="{{ product.image }}" alt="">
       </div>
 
       <div *ngIf="menu">
-        <img src="{{ menu.image }}" alt="" width="50%">
+        <img class="border-2 border-gray-200"  src="{{ menu.image }}" alt="">
       </div>
 
       <input id="inputFile" type="file" accept=".png, .jpg,.jpeg" (change)="loadImage($event)">
 
-      <label for="inputFile" class="labelInputFile">
-        <mat-icon>cloud_upload</mat-icon>
+      <!-- class="labelInputFile" -->
+
+
+      <label for="inputFile" class="cursor:pointer display:block">
+
+          <div class="bg-teal-500 text-white p-4 rounded-md mt-4 flex flex-row place-content-center">
+            <mat-icon class="mr-2">cloud_upload</mat-icon>
+            <p class="p-1">
+              {{ product || menu  ? 'Subir otra' : 'Subir' }} imagen
+            </p>
+          </div>
+
       </label>
-    </mat-card>
-</p>
+
+    </div>
+

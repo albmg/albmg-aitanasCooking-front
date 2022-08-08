@@ -7,7 +7,6 @@
 
     <img class="h-auto w-full object-cover border-8 border-white" src="{{ product?.image }}"/>
 
-
   </div>
 
   <!-- Menu details -->
@@ -43,9 +42,6 @@
 
           <div *ngIf="!hideList" class="flex flex-row p-4 gap-4 border-b-2 border-gray-200">
             {{ ingredient }}
-            <!-- {{ i + 1 }} - -->
-            <!-- <img src="{{ dish.image }}" width="25%"> -->
-           <!--  <a [routerLink]="['./../../productos', dish._id]" class="text-teal-500"> {{ dish.name }} </a> -->
 
           </div>
 
@@ -63,12 +59,12 @@
          Editar <!-- {{ menu._id }} -->
        </button>
 
-       <button
+      <!--  <button
          *ngIf="!usuario.id"
          class="bg-orange-500 text-white p-4 rounded-md w-full"
          >
          Añadir a la cesta
-       </button>
+       </button> -->
       </div>
 
   </div>

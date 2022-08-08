@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Product } from '../../../customers/interfaces/products.interface';
 import { CustomersService } from '../../../customers/services/customers.service';
+
 import { switchMap } from 'rxjs/operators'
+
 
 
 
@@ -33,11 +35,13 @@ export class CreateMenusComponent implements OnInit {
 
   createdMenu!: Menu
 
+  //productListOnMenu!: Product[]
+
   createMenuForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
     description: ['', [ Validators.required ]],
     dishes: this.fb.array([], Validators.required ),
-    image: ['https://assets.unileversolutions.com/recipes-v2/209717.jpg', [ Validators.required ]],
+    image: ['', [ Validators.required ]],
     number: [''],
     diners: ['',],
   })
@@ -48,19 +52,21 @@ export class CreateMenusComponent implements OnInit {
     return this.createMenuForm.get('dishes') as FormArray
   }
 
+
   constructor( private fb: FormBuilder,
-               private saveMenuService: ProtectedService,
+               private protectedService: ProtectedService,
                private router: Router,
                private activatedRoute: ActivatedRoute,
                private snackBar: MatSnackBar,
                public dialog: MatDialog,
-               private getAllProductsService: CustomersService) { }
+               private customerService: CustomersService) { }
 
   ngOnInit(): void {
 
-    this.getAllProductsService.getProducts()
+    this.customerService.getProducts()
       .subscribe(products => {
         this.dishesList = products
+        //this.productListOnMenu = products
       })
 
     if( !this.router.url.includes('/editar')) {
@@ -70,7 +76,7 @@ export class CreateMenusComponent implements OnInit {
 
     this.activatedRoute.params
     .pipe(
-      switchMap( ({id}) => this.saveMenuService.getMenutById(id))
+      switchMap( ({id}) => this.protectedService.getMenutById(id))
     )
     .subscribe( menu => {
       this.menu = menu
@@ -82,6 +88,8 @@ export class CreateMenusComponent implements OnInit {
 
     })
   }
+
+
 
   addDish() {
 
@@ -102,12 +110,14 @@ export class CreateMenusComponent implements OnInit {
 
   }
 
-  removeDish( i: number ) {
+  removeDish(i: number) {
+
     this.dishesArray.removeAt(i)
+
   }
 
   saveMenu() {
-    this.saveMenuService.saveMenu( this.createMenuForm.value )
+    this.protectedService.saveMenu( this.createMenuForm.value )
       .subscribe(createdMenu => {
         this.showSnackBar(' Menu creado satisfactoriamente ')
         this.router.navigate(['/dashboard/gestionar-productos/editar/', createdMenu._id])
@@ -115,10 +125,10 @@ export class CreateMenusComponent implements OnInit {
   }
 
   updateMenu() {
-    this.saveMenuService.upgradeMenu( this.menu._id, this.createMenuForm.value )
+    this.protectedService.upgradeMenu( this.menu._id, this.createMenuForm.value )
       .subscribe( updatedMenu => {
         this.showSnackBar(' Menu actualizado satisfactoriamente ')
-        //this.router.navigate(['/dashboard/gestionar-menus'])
+        this.router.navigate(['/dashboard/gestionar'])
       })
   }
 
@@ -131,7 +141,7 @@ export class CreateMenusComponent implements OnInit {
     dialog.afterClosed().subscribe(
       (result) => {
         if (result) {
-          this.saveMenuService.deleteMenu(this.menu._id)
+          this.protectedService.deleteMenu(this.menu._id)
             .subscribe(resp => {
               console.log(resp)
             })
@@ -151,7 +161,5 @@ export class CreateMenusComponent implements OnInit {
       duration: 2500
     })
   }
-
-
 
 }

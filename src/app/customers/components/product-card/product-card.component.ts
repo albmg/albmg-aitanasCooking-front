@@ -4,6 +4,7 @@ import { Product } from '../../interfaces/products.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../../../shared/components/cart-dialog/cart-dialog.component';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 
 
@@ -24,8 +25,12 @@ export class ProductCardComponent implements OnInit {
   constructor(
     private cartService: CartService,
     public dialog: MatDialog,
+    private authService: AuthService
   ) { }
 
+  get usuario() {
+    return this.authService.usuario
+  }
 
   ngOnInit(): void {
 
