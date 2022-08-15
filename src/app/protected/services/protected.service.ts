@@ -85,9 +85,19 @@ export class ProtectedService {
   // orders services
 
   viewAllOrders() {
-    const url = `${ this.baseUrl }/orders`
+    const url = `${this.baseUrl}/orders/me`
+    const headers = new HttpHeaders()
+      .set('token', localStorage.getItem('token') || '')
 
-    return this.http.get<Order[]>( url )
+    return this.http.get<Order[]>( url, { headers } )
+  }
+
+  getOrderById(id:string): Observable<Order> {
+    const url = `${this.baseUrl}/orders/me/${id}`
+    const headers = new HttpHeaders()
+      .set('token', localStorage.getItem('token') || '')
+
+    return this.http.get<Order>(url, { headers } )
   }
 
 }

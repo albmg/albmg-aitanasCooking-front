@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Order } from 'src/app/customers/interfaces/orders.interface';
+import { ProtectedService } from '../../services/protected.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view-orders',
@@ -9,12 +12,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewOrdersComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+
+  orderFromBackend!: Order
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private protectedService: ProtectedService
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params
-      //.subscribe( ({id}) => console.log(id))
-      .subscribe(resp => console.log(resp))
+      .pipe(
+        switchMap( ({ id }) => this.protectedService.getOrderById( id ))
+      )
+      .subscribe(order => {
+        this.orderFromBackend = order
+        console.log( 'que paso' , this.orderFromBackend )
+      })
+
   }
 
 }

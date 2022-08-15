@@ -1,1 +1,97 @@
-<p>view-orders works!</p>
+<div *ngIf="!orderFromBackend">
+  <mat-spinner></mat-spinner>
+</div>
+
+<h2 *ngIf="orderFromBackend" class="text-teal-500">Id del Pedido: {{ orderFromBackend._id }} </h2>
+<div class="grid sm:grid-cols-3 p-4" *ngIf="orderFromBackend">
+
+  <div class="border-b-2 border-teal-500">
+    <div class="flex flex-row text-teal-500">
+      <mat-icon>check</mat-icon>
+      <h3>Datos personales</h3>
+    </div>
+
+    <div class="p-2">
+      Nombre del cliente:
+      <br>
+      {{ orderFromBackend.clientName }}
+    </div>
+
+    <div class="p-2">
+      email cliente:
+      <br> {{ orderFromBackend.email}}
+    </div>
+
+    <div class="p-2">
+      telefóno cliente:
+      <br> {{ orderFromBackend.phone}}
+    </div>
+
+  </div>
+
+  <div class="border-b-2 border-teal-500">
+
+    <div class="flex flex-row text-teal-500 mt-2 pt-2">
+      <mat-icon>check</mat-icon>
+      <h3>Detalles del pedido</h3>
+    </div>
+
+    <div class="p-2">
+      Dirección de entrega:
+      <br>
+      {{ orderFromBackend.adress}}
+    </div>
+
+    <div class="p-2">
+      fecha de pedido:
+      <br> {{ orderFromBackend.createdDate}}
+    </div>
+
+    <div class="p-2">
+      fecha de entrega:
+      <br>{{ orderFromBackend.deliveryDate}}
+    </div>
+
+    <div class="p-2">
+      hora de entrega:
+      <br>{{ orderFromBackend.deliveryTime}}
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div class="flex flex-row text-teal-500 mt-2 pt-2">
+      <mat-icon>check</mat-icon>
+      <h3>Productos incluidos en el pedido</h3>
+    </div>
+
+    <div *ngIf="orderFromBackend.purchasedMenus">
+      Menus:
+      <div *ngFor="let menu of orderFromBackend.purchasedMenus">
+        {{ menu._id }}
+      </div>
+    </div>
+
+    <div *ngIf="orderFromBackend.purchasedProducts">
+      Platos:
+      <div *ngFor="let platos of orderFromBackend.purchasedProducts">
+        {{ platos._id }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div>
+  <button class="bg-blue-500 p-2 text-white">
+    Aceptar Pedido
+  </button>
+
+  <button class="bg-red-500 p-2 text-white">
+    Guardar Pedido
+  </button>
+
+</div>
